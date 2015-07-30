@@ -1,12 +1,12 @@
-`angular-sui` is a collection of [`AngularJS`](http://www.angularjs.org) for [`semantic-ui`](http://semantic-ui.com/).
+`angular-sui` is a collection of [`AngularJS`](http://www.angularjs.org) directives for [`semantic-ui`](http://semantic-ui.com/).
 
 Interactions supported by jQuery are reimplemented by `Angular`.
 
 > Note: `angular-sui` is not ready for production.
 
-## Demos
+## APIs & Demos
 
- - checkbox
+ [Documentation](http://agongdai.github.io/angular-sui/docs/)
 
 ## Testing
 
