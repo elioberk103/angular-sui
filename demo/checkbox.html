@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html ng-app="sui.demo">
+
+<head>
+    <title>Angular-sui checkbox demo</title>
+    <script type="text/javascript" charset="utf-8" src="../bower_components/jquery/dist/jquery.js"></script>
+    <script type="text/javascript" charset="utf-8" src="../bower_components/angular/angular.js"></script>
+    <script type="text/javascript" charset="utf-8" src="../bower_components/semantic-ui/dist/semantic.js"></script>
+    <script type="text/javascript" charset="utf-8" src="../src/sui-checkbox.js"></script>
+    <link rel="stylesheet" type="text/css" href="../bower_components/semantic-ui/dist/semantic.css">
+</head>
+<script>
+</script>
+
+<body>
+    <div id="play-ground">
+        <form action="" class="ui form" ng-controller="FormCtrl as ctrl">
+            <div class="field">
+                <div sui-checkbox label="Default Checkbox" checked="ctrl.defaultC.checked" on-toggle="ctrl.onToggle(status)"></div>
+            </div>
+            <div class="field">
+                <div sui-checkbox label="Toggle Checkbox" ui-style="toggle" checked="ctrl.toggle.checked"></div>
+            </div>
+            <div class="field">
+                <div sui-checkbox label="Disabled Toggle Checkbox" disabled="disabledToggle.disabled" ui-style="toggle" checked="ctrl.disabledToggle.checked"></div>
+            </div>
+            <div class="field">
+                <div sui-checkbox label="Slider Checkbox" ui-style="slider" checked="ctrl.slider.checked"></div>
+            </div>
+            <div class="ui divider"></div>
+            <div class="ui positive message">
+                <ul>
+                    <li>Default: {{ ctrl.defaultC.checked }} </li>
+                    <li>Toggle: {{ ctrl.toggle.checked }} </li>
+                    <li>disabledToggle: {{ ctrl.disabledToggle.checked }} </li>
+                    <li>Slider: {{ ctrl.slider.checked }} </li>
+                </ul>
+            </div>
+        </form>
+    </div>
+    <script>
+    angular.module('sui.demo', ['sui.checkbox'])
+        .controller('FormCtrl', ['$scope', function($scope) {
+            this.defaultC = {
+                checked: false
+            };
+            this.onToggle = function (checked) {
+                console.log(checked);
+            };
+
+            this.toggle = {
+                checked: true,
+            };
+            this.disabledToggle = {
+                disabled: true,
+                checked: true
+            };
+            this.slider = {
+                checked: true
+            };
+        }]);
+    </script>
+</body>
+
+</html>
