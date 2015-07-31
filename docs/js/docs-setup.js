@@ -5,8 +5,8 @@ NG_DOCS={
   "pages": [
     {
       "section": "api",
-      "id": "sui.checkbox.directive:sui-checkbox",
-      "shortName": "sui-checkbox",
+      "id": "sui.checkbox.directive:suiCheckbox",
+      "shortName": "suiCheckbox",
       "type": "directive",
       "moduleName": "sui.checkbox",
       "shortDescription": "Checkbox element",
@@ -14,8 +14,8 @@ NG_DOCS={
     },
     {
       "section": "api",
-      "id": "sui.rating.directiv:sui-rating",
-      "shortName": "sui-rating",
+      "id": "sui.rating.directiv:suiRating",
+      "shortName": "suiRating",
       "type": "directive",
       "moduleName": "sui.rating",
       "shortDescription": "Rating directive",

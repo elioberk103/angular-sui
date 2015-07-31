@@ -1,6 +1,6 @@
 /**
  * @ngdoc directive
- * @name sui.rating.directiv:sui-rating
+ * @name sui.rating.directiv:suiRating
  * @description
  * Rating directive
  *
