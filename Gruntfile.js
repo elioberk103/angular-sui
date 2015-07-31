@@ -5,9 +5,10 @@ module.exports = function (grunt) {
                 dest: 'docs',
                 scripts: [
                     'https://code.jquery.com/jquery-2.1.4.js',
-                    'https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.3/angular.js', 
+                    'https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.3/angular.js',
                     'https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.3/angular-animate.js',
-                    '../src/sui-checkbox.js'
+                    '../src/sui-checkbox.js',
+                    '../src/sui-rating.js'
                 ],
                 styles: [
                     'https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.0.7/semantic.css'
@@ -19,16 +20,33 @@ module.exports = function (grunt) {
             }
         },
         clean: ['docs'],
+        watch: {
+            livereload: {
+                options: {
+                    livereload: '<%= connect.options.livereload %>'
+                },
+                files: [
+                    'src/**/*.js'
+                ],
+                tasks: ['ngdocs']
+            }
+        },
         connect: {
             options: {
-                keepalive: true
+                port: 8000,
+                livereload: true
             },
-            server: {}
+            livereload: {
+                options: {
+                    open: true
+                }
+            }
         }
     });
 
     grunt.loadNpmTasks('grunt-ngdocs');
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-connect');
-    grunt.registerTask('default', ['clean', 'ngdocs', 'connect']);
+    grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.registerTask('api', ['clean', 'ngdocs', 'connect:livereload', 'watch']);
 };
