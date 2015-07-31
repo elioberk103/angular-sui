@@ -108,16 +108,20 @@ angular.module('sui.rating', [])
         };
 
         vm.hover = function (v) {
-            vm.hovered = v;
-            invokeHandler(vm.onHover, v);
+            if (!vm.disabled) {
+                vm.hovered = v;
+                invokeHandler(vm.onHover, v);
+            }
         };
 
         vm.leave = function () {
-            vm.hovered = NaN;
-            invokeHandler(vm.onLeave);
+            if (!vm.disabled) {
+                vm.hovered = NaN;
+                invokeHandler(vm.onLeave);
+            }
         };
 
-        function invokeHandler (fn, value) {
+        function invokeHandler(fn, value) {
             fn && fn({
                 value: value || vm.value
             });
