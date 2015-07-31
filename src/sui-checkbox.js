@@ -1,6 +1,6 @@
 /**
  * @ngdoc directive
- * @name sui.checkbox.directive:sui-checkbox
+ * @name sui.checkbox.directive:suiCheckbox
  * @description
  * Checkbox element
  * 
