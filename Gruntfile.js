@@ -49,4 +49,5 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-connect');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.registerTask('api', ['clean', 'ngdocs', 'connect:livereload', 'watch']);
+    grunt.registerTask('default', ['api']);
 };

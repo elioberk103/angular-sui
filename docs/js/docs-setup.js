@@ -10,7 +10,7 @@ NG_DOCS={
       "type": "directive",
       "moduleName": "sui.checkbox",
       "shortDescription": "Checkbox element",
-      "keywords": "$scope aftertoggle angular api app call called checkbox checked class click cloudflare controller css ctrl data democtrl directive disabled ea element false function href html https js json label message module ng-controller on-toggle ontoggle positive rel segment slider status stylesheet sui sui-checkbox text three toggle toggled true type ui ui-style var vm"
+      "keywords": "$scope aftertoggle angular api app call called checkbox checked class click cloudflare controller css ctrl data democtrl directive disabled ea element exchange false function href html https icon js json label message model module ng-controller ng-model on-toggle ontoggle positive rel segment slider status stylesheet sui sui-checkbox text three toggle toggled true type ui ui-style var vm"
     },
     {
       "section": "api",
