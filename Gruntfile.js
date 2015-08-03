@@ -3,6 +3,7 @@ module.exports = function (grunt) {
         ngdocs: {
             options: {
                 dest: 'docs',
+                titleLink: 'http://agongdai.github.io/angular-sui/',
                 scripts: [
                     'https://code.jquery.com/jquery-2.1.4.js',
                     'https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.3/angular.js',
