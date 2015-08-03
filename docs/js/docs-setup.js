@@ -5,6 +5,24 @@ NG_DOCS={
   "pages": [
     {
       "section": "api",
+      "id": "sui.accordion.directive:suiAccordion",
+      "shortName": "suiAccordion",
+      "type": "directive",
+      "moduleName": "sui.accordion",
+      "shortDescription": "Accordion to switch to different sub-sections. It has ng-transclude: true to include an array of directive suiAccordionItem.",
+      "keywords": "$scope acc accordion accordions acquire active ae allows angular animal api app array assess breed breeds buy buying callback choosing class cloudflare common companion compatible content controller convenient css ctrl democtrl desires directive dog dogs domesticated faithfulness find finding function good guest helps households href html https include item items js json lastly lifestyle loyalty message model module ng-controller ng-repeat ng-transclude on-switch onswitch owner owners pedigree pet positive private prospective rel segment select selected shelter shelters shop shops size stylesheet sub-sections sui sui-accordion sui-accordion-item suiaccordionitem switch switching temperament text three title true type ui upbringing var varies vm ways world"
+    },
+    {
+      "section": "api",
+      "id": "sui.accordion.directive:suiAccordionItem",
+      "shortName": "suiAccordionItem",
+      "type": "directive",
+      "moduleName": "sui.accordion",
+      "shortDescription": "The accordion item of suiAccordion. It requires the controller of its parent suiAccordion. So it cannot be used without suiAccordion.",
+      "keywords": "accordion active ae api controller demo directive example item parent requires sui suiaccordion title"
+    },
+    {
+      "section": "api",
       "id": "sui.checkbox.directive:suiCheckbox",
       "shortName": "suiCheckbox",
       "type": "directive",
@@ -33,6 +51,7 @@ NG_DOCS={
     "angular.js",
     "angular-animate.js",
     "sui-checkbox.js",
-    "sui-rating.js"
+    "sui-rating.js",
+    "sui-accordion.js"
   ]
 };

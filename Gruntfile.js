@@ -8,7 +8,8 @@ module.exports = function (grunt) {
                     'https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.3/angular.js',
                     'https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.3/angular-animate.js',
                     '../src/sui-checkbox.js',
-                    '../src/sui-rating.js'
+                    '../src/sui-rating.js',
+                    '../src/sui-accordion.js'
                 ],
                 styles: [
                     'https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.0.7/semantic.css'
