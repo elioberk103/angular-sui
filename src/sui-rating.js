@@ -8,6 +8,7 @@
  * @element ANY
  * @scope 
  *
+ * @param {int} ng-model <i class="exchange icon"></i>The selected value
  * @param {enum} size "`mini`" || "`tiny`" || "`small`" || "`large`" || "`huge`" || "`massive`" || `empty`
  * @param {enum} ui-style "`star`" || "`heart`"
  * @param {array} options <i class="exchange icon"></i> Array of integer values, e.g., `[1, 2, 3, 5, 8, 13]`
@@ -22,7 +23,7 @@
             <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.0.7/semantic.css">
             <div class="ui segment" ng-controller="demoCtrl as ctrl">
                 <div sui-rating ng-model="ctrl.value" options="ctrl.options" 
-                    on-rate="ctrl.onRate(value)" on-leave="ctrl.onLeave(value)" on-hover="ctrl.onHover(value)" 
+                    on-rate="ctrl.onRate(model)" on-leave="ctrl.onLeave(model)" on-hover="ctrl.onHover(model)" 
                     size="{{ctrl.size}}" ui-style="{{ctrl.uiStyle}}" disabled="{{ctrl.disabled}}"></div>
                 <div class="ui divider"></div>
                 <button class="ui tiny negative button" ng-click="ctrl.toggleDisable()">Toggle disable</button>

@@ -8,6 +8,7 @@
 </div></div>
 <h2 id="usage">Usage</h2>
 <div class="usage">as element:<pre class="prettyprint linenums">&lt;sui-rating
+       ng-model="{int}"
        size="{enum}"
        ui-style="{enum}"
        options="{array}"
@@ -17,6 +18,7 @@
        on-rate="{function}"&gt;
 &lt;/sui-rating&gt;</pre>
 as attribute<pre class="prettyprint linenums">&lt;ANY sui-rating
+     ng-model="{int}"
      size="{enum}"
      ui-style="{enum}"
      options="{array}"
@@ -30,7 +32,8 @@ as attribute<pre class="prettyprint linenums">&lt;ANY sui-rating
 <div class="directive-info"><ul><li>This directive creates new scope.</li>
 </ul>
 </div>
-<h4 id="usage_directive-info_parameters">Parameters</h4><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>size</td><td><a href="" class="label type-hint type-hint-enum">enum</a></td><td><div class="sui-rating-directiv-page sui-rating-directiv-suirating-page"><p>&quot;<code>mini</code>&quot; || &quot;<code>tiny</code>&quot; || &quot;<code>small</code>&quot; || &quot;<code>large</code>&quot; || &quot;<code>huge</code>&quot; || &quot;<code>massive</code>&quot; || <code>empty</code></p>
+<h4 id="usage_directive-info_parameters">Parameters</h4><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>ng-model</td><td><a href="" class="label type-hint type-hint-int">int</a></td><td><div class="sui-rating-directiv-page sui-rating-directiv-suirating-page"><p><i class="exchange icon"></i>The selected value</p>
+</div></td></tr><tr><td>size</td><td><a href="" class="label type-hint type-hint-enum">enum</a></td><td><div class="sui-rating-directiv-page sui-rating-directiv-suirating-page"><p>&quot;<code>mini</code>&quot; || &quot;<code>tiny</code>&quot; || &quot;<code>small</code>&quot; || &quot;<code>large</code>&quot; || &quot;<code>huge</code>&quot; || &quot;<code>massive</code>&quot; || <code>empty</code></p>
 </div></td></tr><tr><td>ui-style</td><td><a href="" class="label type-hint type-hint-enum">enum</a></td><td><div class="sui-rating-directiv-page sui-rating-directiv-suirating-page"><p>&quot;<code>star</code>&quot; || &quot;<code>heart</code>&quot;</p>
 </div></td></tr><tr><td>options</td><td><a href="" class="label type-hint type-hint-array">array</a></td><td><div class="sui-rating-directiv-page sui-rating-directiv-suirating-page"><p><i class="exchange icon"></i> Array of integer values, e.g., <code>[1, 2, 3, 5, 8, 13]</code></p>
 </div></td></tr><tr><td>disabled</td><td><a href="" class="label type-hint type-hint-boolean">boolean</a></td><td><div class="sui-rating-directiv-page sui-rating-directiv-suirating-page"><p>Disabled or not</p>
@@ -47,7 +50,7 @@ as attribute<pre class="prettyprint linenums">&lt;ANY sui-rating
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.0.7/semantic.css">
     <div class="ui segment" ng-controller="demoCtrl as ctrl">
         <div sui-rating ng-model="ctrl.value" options="ctrl.options" 
-            on-rate="ctrl.onRate(value)" on-leave="ctrl.onLeave(value)" on-hover="ctrl.onHover(value)" 
+            on-rate="ctrl.onRate(model)" on-leave="ctrl.onLeave(model)" on-hover="ctrl.onHover(model)" 
             size="{{ctrl.size}}" ui-style="{{ctrl.uiStyle}}" disabled="{{ctrl.disabled}}"></div>
         <div class="ui divider"></div>
         <button class="ui tiny negative button" ng-click="ctrl.toggleDisable()">Toggle disable</button>
