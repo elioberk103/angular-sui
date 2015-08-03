@@ -108,18 +108,22 @@ angular.module('sui.rating', [])
         };
 
         vm.hover = function (v) {
-            vm.hovered = v;
-            invokeHandler(vm.onHover, v);
+            if (!vm.disabled) {
+                vm.hovered = v;
+                invokeHandler(vm.onHover, v);
+            }
         };
 
-        vm.leave = function () {
-            vm.hovered = NaN;
-            invokeHandler(vm.onLeave);
+        vm.leave = function (v) {
+            if (!vm.disabled) {
+                vm.hovered = NaN;
+                invokeHandler(vm.onLeave, v);
+            }
         };
 
-        function invokeHandler (fn, value) {
+        function invokeHandler(fn, value) {
             fn && fn({
-                value: value || vm.value
+                model: value || vm.value
             });
         }
 
@@ -139,7 +143,7 @@ angular.module('sui.rating', [])
             require: ['suiRating', 'ngModel'],
             template: 
                 '<div class="ui {{vm.uiStyle}} {{vm.size}} rating sui-rating">' +
-                    '<i ng-repeat="v in vm.options track by $index" ng-mouseenter="vm.hover(v)" ng-mouseleave="vm.leave()" ng-click="vm.rate(v)" ' +
+                    '<i ng-repeat="v in vm.options track by $index" ng-mouseenter="vm.hover(v)" ng-mouseleave="vm.leave(v)" ng-click="vm.rate(v)" ' +
                         'ng-class="{ selected: v <= vm.hovered, active: v <= vm.value, disabled: vm.disabled }" class="icon"></i>' +
                 '</div>',
             controllerAs: 'vm',

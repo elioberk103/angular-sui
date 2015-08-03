@@ -1,0 +1,70 @@
+<h1><code ng:non-bindable="">suiAccordion</code>
+<div><span class="hint">directive in module <code ng:non-bindable="">sui.accordion</code>
+</span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="sui-accordion-directive-page sui-accordion-directive-suiaccordion-page"><p>Accordion to switch to different sub-sections. It has <code>ng-transclude: true</code> to include an array of directive <a href="#/api/sui.accordion.directive:suiAccordionItem">suiAccordionItem</a>.</p>
+</div></div>
+<h2 id="usage">Usage</h2>
+<div class="usage">as element:<pre class="prettyprint linenums">&lt;sui-accordion
+       on-switch="{function}"&gt;
+&lt;/sui-accordion&gt;</pre>
+as attribute<pre class="prettyprint linenums">&lt;any sui-accordion
+     on-switch="{function}"&gt;
+   ...
+&lt;/any&gt;</pre>
+<h3 id="usage_directive-info">Directive info</h3>
+<div class="directive-info"><ul><li>This directive creates new scope.</li>
+</ul>
+</div>
+<h4 id="usage_directive-info_parameters">Parameters</h4><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>on-switch</td><td><a href="" class="label type-hint type-hint-function">function</a></td><td><div class="sui-accordion-directive-page sui-accordion-directive-suiaccordion-page"><p>Callback when switching between items</p>
+</div></td></tr></tbody></table></div>
+<h2 id="example">Example</h2>
+<div class="example"><div class="sui-accordion-directive-page sui-accordion-directive-suiaccordion-page"><h4 id="example_source">Source</h4>
+<div source-edit="sui.accordion" source-edit-deps="angular.js app.js" source-edit-html="index.html" source-edit-css="" source-edit-js="app.js" source-edit-json="" source-edit-unit="" source-edit-scenario=""></div>
+<div class="tabbable"><div class="tab-pane" title="index.html">
+<pre class="prettyprint linenums" ng-set-text="index.html" ng-html-wrap-loaded="sui.accordion angular.js app.js"></pre>
+<script type="text/ng-template" id="index.html">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.0.7/semantic.css">
+    <div class="ui segment" ng-controller="demoCtrl as ctrl">
+        <div sui-accordion on-switch="ctrl.onSwitch(model)">
+            <div sui-accordion-item ng-repeat="acc in ctrl.accordions" title="{{acc.title}}" active="acc.active">
+                {{ acc.content }}
+            </div>
+        </div>
+        <div class="ui positive message">
+            Selected item after callback: {{ ctrl.model | json }}
+        </div>
+    </div>
+</script>
+</div>
+<div class="tab-pane" title="app.js">
+<pre class="prettyprint linenums" ng-set-text="app.js"></pre>
+<script type="text/ng-template" id="app.js">
+angular.module('sui.accordion')
+    .controller('demoCtrl', ['$scope', function ($scope) {
+        var vm = this;
+
+        vm.accordions = [{
+            title: 'Item One',
+            content: 'A dog is a type of domesticated animal. Known for its loyalty and faithfulness, it can be found as a welcome guest in many households across the world.'
+        }, {
+            title: 'Item Two',
+            content: 'There are many breeds of dogs. Each breed varies in size and temperament. Owners often select a breed of dog that they find to be compatible with their own lifestyle and desires from a companion.',
+            active: true
+        }, {
+            title: 'Item Three',
+            content: 'Three common ways for a prospective owner to acquire a dog is from pet shops, private owners, or shelters. A pet shop may be the most convenient way to buy a dog. Buying a dog from a private owner allows you to assess the pedigree and upbringing of your dog before choosing to take it home. Lastly, finding your dog from a shelter, helps give a good home to a dog who may not find one so readily.'
+        }];
+
+        vm.onSwitch = function (model) {
+            vm.model = model.title;
+        };
+    }]);
+</script>
+</div>
+</div><h4 id="example_demo">Demo</h4>
+<div class="well doc-example-live animate-container" ng-embed-app="sui.accordion" ng-set-html="index.html" ng-eval-javascript="app.js"></div>
+</div></div>
+</div>
