@@ -32,6 +32,15 @@ NG_DOCS={
     },
     {
       "section": "api",
+      "id": "sui.loader.directive:suiLoader",
+      "shortName": "suiLoader",
+      "type": "directive",
+      "moduleName": "sui.loader",
+      "shortDescription": "A dimmed loader background when you are loading something.",
+      "keywords": "$scope active angular api app background button class cloudflare controller css ctrl democtrl dim-whole-page dimmed dimming dimwholepage directive false function href html https js json loader loading loading-text massive message module ng-click ng-controller positive primary rel segment size stylesheet sui sui-loader text toggle toggledimmingwholepage type ui var vm"
+    },
+    {
+      "section": "api",
       "id": "sui.rating.directiv:suiRating",
       "shortName": "suiRating",
       "type": "directive",
@@ -52,6 +61,7 @@ NG_DOCS={
     "angular-animate.js",
     "sui-checkbox.js",
     "sui-rating.js",
-    "sui-accordion.js"
+    "sui-accordion.js",
+    "sui-loader.js"
   ]
 };

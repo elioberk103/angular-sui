@@ -1,0 +1,58 @@
+<h1><code ng:non-bindable="">suiLoader</code>
+<div><span class="hint">directive in module <code ng:non-bindable="">sui.loader</code>
+</span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="sui-loader-directive-page sui-loader-directive-suiloader-page"><p>A dimmed loader background when you are loading something.</p>
+</div></div>
+<h2 id="usage">Usage</h2>
+<div class="usage">as attribute<pre class="prettyprint linenums">&lt;ANY sui-loader&gt;
+   ...
+&lt;/ANY&gt;</pre>
+</div>
+<h2 id="example">Example</h2>
+<div class="example"><div class="sui-loader-directive-page sui-loader-directive-suiloader-page"><h4 id="example_source">Source</h4>
+<div source-edit="sui.loader" source-edit-deps="angular.js app.js" source-edit-html="index.html-1" source-edit-css="" source-edit-js="app.js" source-edit-json="" source-edit-unit="" source-edit-scenario=""></div>
+<div class="tabbable"><div class="tab-pane" title="index.html">
+<pre class="prettyprint linenums" ng-set-text="index.html-1" ng-html-wrap-loaded="sui.loader angular.js app.js"></pre>
+<script type="text/ng-template" id="index.html-1">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.0.7/semantic.css">
+    <div class="ui segment" ng-controller="demoCtrl as ctrl">
+        <div sui-loader active="ctrl.loader.active" size="{{ctrl.loader.size}}"
+            dim-whole-page="ctrl.loader.dimWholePage" loading-text="Loading...">
+            <div class="ui positive message">
+                {{ ctrl.loader | json }}
+            </div>
+        </div>
+        <div>
+            <button class="ui primary button" ng-click="ctrl.toggle()">Toggle loader</button>
+            <button class="ui primary button" ng-click="ctrl.toggleDimmingWholePage()">Toggle dimming whole page</button>
+        </div>
+    </div>
+</script>
+</div>
+<div class="tab-pane" title="app.js">
+<pre class="prettyprint linenums" ng-set-text="app.js"></pre>
+<script type="text/ng-template" id="app.js">
+angular.module('sui.loader')
+.controller('demoCtrl', ['$scope', function ($scope) {
+    var vm = this;
+    vm.loader = {
+        active: false,
+        dimWholePage: false,
+        size: 'massive'
+    };
+    vm.toggle = function () {
+        vm.loader.active = !vm.loader.active;
+    };
+    vm.toggleDimmingWholePage = function () {
+        vm.loader.dimWholePage = !vm.loader.dimWholePage;
+    };
+}]);
+</script>
+</div>
+</div><h4 id="example_demo">Demo</h4>
+<div class="well doc-example-live animate-container" ng-embed-app="sui.loader" ng-set-html="index.html-1" ng-eval-javascript="app.js"></div>
+</div></div>
+</div>
