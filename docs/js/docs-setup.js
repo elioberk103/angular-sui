@@ -59,9 +59,6 @@ NG_DOCS={
     "jquery-2.1.4.js",
     "angular.js",
     "angular-animate.js",
-    "sui-checkbox.js",
-    "sui-rating.js",
-    "sui-accordion.js",
-    "sui-loader.js"
+    "sui.js"
   ]
 };

@@ -8,10 +8,7 @@ module.exports = function (grunt) {
                     'https://code.jquery.com/jquery-2.1.4.js',
                     'https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.3/angular.js',
                     'https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.3/angular-animate.js',
-                    '../src/sui-checkbox.js',
-                    '../src/sui-rating.js',
-                    '../src/sui-accordion.js',
-                    '../src/sui-loader.js'
+                    '../dist/sui.js'
                 ],
                 styles: [
                     'https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.0.7/semantic.css'
@@ -22,7 +19,13 @@ module.exports = function (grunt) {
                 title: "Angular-sui Documentation"
             }
         },
-        clean: ['docs'],
+        clean: ['docs', 'dist'],
+        concat: {
+            dist: {
+                src: ['src/**/*.js'],
+                dest: 'dist/sui.js'
+            }
+        },
         watch: {
             livereload: {
                 options: {
@@ -51,6 +54,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-connect');
     grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.registerTask('api', ['clean', 'ngdocs', 'connect:livereload', 'watch']);
+    grunt.loadNpmTasks('grunt-contrib-concat');
+    grunt.registerTask('api', ['clean', 'concat', 'ngdocs', 'connect:livereload', 'watch']);
     grunt.registerTask('default', ['api']);
 };
