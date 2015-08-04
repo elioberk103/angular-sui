@@ -7,10 +7,28 @@
 <div class="description"><div class="sui-loader-directive-page sui-loader-directive-suiloader-page"><p>A dimmed loader background when you are loading something.</p>
 </div></div>
 <h2 id="usage">Usage</h2>
-<div class="usage">as attribute<pre class="prettyprint linenums">&lt;ANY sui-loader&gt;
+<div class="usage">as element:<pre class="prettyprint linenums">&lt;sui-loader
+       loading-text="{string}"
+       active="{boolean}"
+       size="{emun}"
+       dim-whole-page="{boolean}"&gt;
+&lt;/sui-loader&gt;</pre>
+as attribute<pre class="prettyprint linenums">&lt;ANY sui-loader
+     loading-text="{string}"
+     active="{boolean}"
+     size="{emun}"
+     dim-whole-page="{boolean}"&gt;
    ...
 &lt;/ANY&gt;</pre>
+<h3 id="usage_directive-info">Directive info</h3>
+<div class="directive-info"><ul><li>This directive creates new scope.</li>
+</ul>
 </div>
+<h4 id="usage_directive-info_parameters">Parameters</h4><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>loading-text</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="sui-loader-directive-page sui-loader-directive-suiloader-page"><p>The text to be displayed under the spinner icon</p>
+</div></td></tr><tr><td>active</td><td><a href="" class="label type-hint type-hint-boolean">boolean</a></td><td><div class="sui-loader-directive-page sui-loader-directive-suiloader-page"><p><i class="exchange icon"></i>To display dimmer or not</p>
+</div></td></tr><tr><td>size</td><td><a href="" class="label type-hint type-hint-emun">emun</a></td><td><div class="sui-loader-directive-page sui-loader-directive-suiloader-page"><p>&quot;<code>mini</code>&quot; || &quot;<code>tiny</code>&quot; || &quot;<code>small</code>&quot; || &quot;<code>large</code>&quot; || &quot;<code>huge</code>&quot; || &quot;<code>massive</code>&quot; || <code>empty</code></p>
+</div></td></tr><tr><td>dim-whole-page</td><td><a href="" class="label type-hint type-hint-boolean">boolean</a></td><td><div class="sui-loader-directive-page sui-loader-directive-suiloader-page"><p><i class="exchange icon"></i>To dim the whole page or not</p>
+</div></td></tr></tbody></table></div>
 <h2 id="example">Example</h2>
 <div class="example"><div class="sui-loader-directive-page sui-loader-directive-suiloader-page"><h4 id="example_source">Source</h4>
 <div source-edit="sui.loader" source-edit-deps="angular.js app.js" source-edit-html="index.html-1" source-edit-css="" source-edit-js="app.js" source-edit-json="" source-edit-unit="" source-edit-scenario=""></div>

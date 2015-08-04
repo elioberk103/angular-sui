@@ -37,7 +37,7 @@ NG_DOCS={
       "type": "directive",
       "moduleName": "sui.loader",
       "shortDescription": "A dimmed loader background when you are loading something.",
-      "keywords": "$scope active angular api app background button class cloudflare controller css ctrl democtrl dim-whole-page dimmed dimming dimwholepage directive false function href html https js json loader loading loading-text massive message module ng-click ng-controller positive primary rel segment size stylesheet sui sui-loader text toggle toggledimmingwholepage type ui var vm"
+      "keywords": "$scope active ae angular api app background button class cloudflare controller css ctrl democtrl dim dim-whole-page dimmed dimmer dimming dimwholepage directive display displayed empty exchange false function href html https huge icon js json large loader loading loading-text massive message mini module ng-click ng-controller positive primary rel segment size small spinner stylesheet sui sui-loader text tiny toggle toggledimmingwholepage type ui var vm"
     },
     {
       "section": "api",

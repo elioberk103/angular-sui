@@ -1,6 +1,10 @@
 /**
  * @ngdoc directive
  * @name sui.loader.directive:suiLoader
+ * @element ANY
+ * @restrict AE
+ * @scope
+ * 
  * @description 
  * A dimmed loader background when you are loading something.
  *
@@ -39,6 +43,11 @@
         }]);
         </file>
     </example>
+
+ * @param {string} loading-text The text to be displayed under the spinner icon
+ * @param {boolean} active <i class="exchange icon"></i>To display dimmer or not
+ * @param {emun} size "`mini`" || "`tiny`" || "`small`" || "`large`" || "`huge`" || "`massive`" || `empty`
+ * @param {boolean} dim-whole-page <i class="exchange icon"></i>To dim the whole page or not
  */
 
 angular.module('sui.loader', [])
