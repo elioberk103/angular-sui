@@ -1,0 +1,121 @@
+<h1><code ng:non-bindable="">suiProgress</code>
+<div><span class="hint">directive in module <code ng:non-bindable="">sui.progress</code>
+</span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="sui-progress-directive-page sui-progress-directive-suiprogress-page"><p>A progress bar.</p>
+</div></div>
+<h2 id="usage">Usage</h2>
+<div class="usage">as element:<pre class="prettyprint linenums">&lt;sui-progress
+       percentage="{int}"
+       size="{enum}"
+       color="{string}"
+       disabled
+       show-percentage="{boolean}"
+       bottom-attached="{boolean}"
+       top-attached="{boolean}"
+       type="{enum}"
+       active="{boolean}"
+       indicating="{boolean}"
+       label="{string}"&gt;
+&lt;/sui-progress&gt;</pre>
+as attribute<pre class="prettyprint linenums">&lt;ANY sui-progress
+     percentage="{int}"
+     size="{enum}"
+     color="{string}"
+     disabled
+     show-percentage="{boolean}"
+     bottom-attached="{boolean}"
+     top-attached="{boolean}"
+     type="{enum}"
+     active="{boolean}"
+     indicating="{boolean}"
+     label="{string}"&gt;
+   ...
+&lt;/ANY&gt;</pre>
+<h3 id="usage_directive-info">Directive info</h3>
+<div class="directive-info"><ul><li>This directive creates new scope.</li>
+</ul>
+</div>
+<h4 id="usage_directive-info_parameters">Parameters</h4><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>percentage</td><td><a href="" class="label type-hint type-hint-int">int</a></td><td><div class="sui-progress-directive-page sui-progress-directive-suiprogress-page"><p><i class="exchange icon"></i>[0, 100] integer number indicating percentage</p>
+</div></td></tr><tr><td>size</td><td><a href="" class="label type-hint type-hint-enum">enum</a></td><td><div class="sui-progress-directive-page sui-progress-directive-suiprogress-page"><p>&quot;<code>mini</code>&quot; || &quot;<code>tiny</code>&quot; || &quot;<code>small</code>&quot; || &quot;<code>large</code>&quot; || &quot;<code>huge</code>&quot; || &quot;<code>massive</code>&quot; || <code>empty</code></p>
+</div></td></tr><tr><td>color</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="sui-progress-directive-page sui-progress-directive-suiprogress-page"><p>Color of the bar</p>
+</div></td></tr><tr><td>disabled</td><td><a href="" class="label type-hint type-hint-boolean">boolean</a></td><td><div class="sui-progress-directive-page sui-progress-directive-suiprogress-page"><p>Disabled or not</p>
+</div></td></tr><tr><td>show-percentage</td><td><a href="" class="label type-hint type-hint-boolean">boolean</a></td><td><div class="sui-progress-directive-page sui-progress-directive-suiprogress-page"><p>Whether to show the percentage number on the bar</p>
+</div></td></tr><tr><td>bottom-attached</td><td><a href="" class="label type-hint type-hint-boolean">boolean</a></td><td><div class="sui-progress-directive-page sui-progress-directive-suiprogress-page"><p>Attach the bar to bottom of the transcluded content</p>
+</div></td></tr><tr><td>top-attached</td><td><a href="" class="label type-hint type-hint-boolean">boolean</a></td><td><div class="sui-progress-directive-page sui-progress-directive-suiprogress-page"><p>Attach the bar to top of the transcluded content</p>
+</div></td></tr><tr><td>type</td><td><a href="" class="label type-hint type-hint-enum">enum</a></td><td><div class="sui-progress-directive-page sui-progress-directive-suiprogress-page"><p>&quot;<code>success</code>&quot; || &quot;<code>warning</code>&quot; || &quot;<code>error</code>&quot;</p>
+</div></td></tr><tr><td>active</td><td><a href="" class="label type-hint type-hint-boolean">boolean</a></td><td><div class="sui-progress-directive-page sui-progress-directive-suiprogress-page"><p>Whether show animation on the bar</p>
+</div></td></tr><tr><td>indicating</td><td><a href="" class="label type-hint type-hint-boolean">boolean</a></td><td><div class="sui-progress-directive-page sui-progress-directive-suiprogress-page"><p>If <code>true</code>: different color when the value is different. Colors are: gray-&gt;red-&gt;yellow-&gt;green</p>
+</div></td></tr><tr><td>label</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="sui-progress-directive-page sui-progress-directive-suiprogress-page"><p>If not empty, display the label under the bar</p>
+</div></td></tr></tbody></table></div>
+<h2 id="example">Example</h2>
+<div class="example"><div class="sui-progress-directive-page sui-progress-directive-suiprogress-page"><p><div class="alert alert-error" role="alert">
+ Note: The UI of this demo crashes because of CSS collision (<code>.progress</code>, <code>.label</code>) between Bootstrap and Semantic-UI. Please click The link &quot;Edit in Plunker&quot; to view.
+</div>
+<h4 id="example_source">Source</h4>
+<div source-edit="sui.progress" source-edit-deps="angular.js app.js" source-edit-html="index.html-2" source-edit-css="" source-edit-js="app.js" source-edit-json="" source-edit-unit="" source-edit-scenario=""></div>
+<div class="tabbable"><div class="tab-pane" title="index.html">
+<pre class="prettyprint linenums" ng-set-text="index.html-2" ng-html-wrap-loaded="sui.progress angular.js app.js"></pre>
+<script type="text/ng-template" id="index.html-2">
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.0.7/semantic.css">
+        <div class="ui segment" ng-controller="demoCtrl as ctrl">
+            <div sui-progress percentage="ctrl.progress.percentage" active="{{ctrl.progress.active}}" 
+                show-percentage="{{ctrl.progress.showPercentage}}" 
+                bottom-attached="{{ctrl.progress.bottomAttached}}" 
+                top-attached="{{ctrl.progress.topAttached}}" 
+                indicating="true" label="Loading ({{ ctrl.progress.percentage }}%)...">
+                <div>Then content</div>
+            </div>
+            <div class="ui segment">
+                <div class="ui primary button" ng-click="ctrl.tiptap()">Start Progress</div>
+                <div class="ui primary button" ng-click="ctrl.attachedToContent()">Attach to top and bottom</div>
+            </div>
+            <div class="ui positive message">
+                {{ ctrl.progress | json }}
+            </div>
+        </div>
+    </script>
+</div>
+<div class="tab-pane" title="app.js">
+<pre class="prettyprint linenums" ng-set-text="app.js"></pre>
+<script type="text/ng-template" id="app.js">
+    angular.module('sui.progress')
+        .controller('demoCtrl', ['$interval', function ($interval) {
+            var vm = this;
+            vm.progress = {
+                percentage: 33,
+                showPercentage: true,
+                indicating: true,
+                label: 'We are working...',
+                active: true,
+                bottomAttached: '',
+                topAttached: ''
+            };
+
+            var t;
+            vm.tiptap = function() {
+                if (t) {
+                    return;
+                }
+                t = $interval(function() {
+                    if (vm.progress.percentage >= 100) {
+                        $interval.cancel(t);
+                        t = null;
+                    } else {
+                        vm.progress.percentage++;
+                    }
+                }, 1000);
+            };
+            vm.attachedToContent = function () {
+                vm.progress.bottomAttached = true;
+                vm.progress.topAttached = true;
+            };
+        }]);
+    </script>
+</div>
+</div><h4 id="example_demo">Demo</h4>
+<div class="well doc-example-live animate-container" ng-embed-app="sui.progress" ng-set-html="index.html-2" ng-eval-javascript="app.js"></div>
+</div></div>
+</div>

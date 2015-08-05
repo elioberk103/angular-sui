@@ -34,7 +34,7 @@ module.exports = function (grunt) {
                 files: [
                     'src/**/*.js'
                 ],
-                tasks: ['ngdocs']
+                tasks: ['concat', 'ngdocs']
             }
         },
         connect: {
