@@ -87,42 +87,46 @@
 angular.module('sui.rating', [])
     .controller('suiRatingCtrl', ['$scope', function ($scope) {
         var vm = this;
+        vm.hovered = NaN;
+        vm.init = init;
+        vm.rate = rate;
+        vm.hover = hover;
+        vm.leave = leave;
+
         var ngModelCtrl = {
             $setViewValue: angular.noop
         };
 
-        this.init = function (ngModelCtrl_) {
+        function init (ngModelCtrl_) {
             ngModelCtrl = ngModelCtrl_;
             ngModelCtrl.$render = function () {
                 vm.value = ngModelCtrl.$viewValue;
             };
         }
 
-        vm.hovered = NaN;
-
-        vm.rate = function (v) {
+        function rate (v) {
             if (!vm.disabled) {
                 ngModelCtrl.$setViewValue(ngModelCtrl.$viewValue === v ? 0 : v);
                 ngModelCtrl.$render();
                 invokeHandler(vm.onRate, v);
             }
-        };
+        }
 
-        vm.hover = function (v) {
+        function hover (v) {
             if (!vm.disabled) {
                 vm.hovered = v;
                 invokeHandler(vm.onHover, v);
             }
-        };
+        }
 
-        vm.leave = function (v) {
+        function leave (v) {
             if (!vm.disabled) {
                 vm.hovered = NaN;
                 invokeHandler(vm.onLeave, v);
             }
-        };
+        }
 
-        function invokeHandler(fn, value) {
+        function invokeHandler (fn, value) {
             fn && fn({
                 model: value || vm.value
             });
