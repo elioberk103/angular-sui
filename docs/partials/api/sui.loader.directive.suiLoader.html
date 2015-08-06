@@ -1,0 +1,76 @@
+<h1><code ng:non-bindable="">suiLoader</code>
+<div><span class="hint">directive in module <code ng:non-bindable="">sui.loader</code>
+</span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="sui-loader-directive-page sui-loader-directive-suiloader-page"><p>A dimmed loader background when you are loading something.</p>
+</div></div>
+<h2 id="usage">Usage</h2>
+<div class="usage">as element:<pre class="prettyprint linenums">&lt;sui-loader
+       loading-text="{string}"
+       active="{boolean}"
+       size="{enum}"
+       dim-whole-page="{boolean}"&gt;
+&lt;/sui-loader&gt;</pre>
+as attribute<pre class="prettyprint linenums">&lt;ANY sui-loader
+     loading-text="{string}"
+     active="{boolean}"
+     size="{enum}"
+     dim-whole-page="{boolean}"&gt;
+   ...
+&lt;/ANY&gt;</pre>
+<h3 id="usage_directive-info">Directive info</h3>
+<div class="directive-info"><ul><li>This directive creates new scope.</li>
+</ul>
+</div>
+<h4 id="usage_directive-info_parameters">Parameters</h4><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>loading-text</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="sui-loader-directive-page sui-loader-directive-suiloader-page"><p>The text to be displayed under the spinner icon</p>
+</div></td></tr><tr><td>active</td><td><a href="" class="label type-hint type-hint-boolean">boolean</a></td><td><div class="sui-loader-directive-page sui-loader-directive-suiloader-page"><p><i class="exchange icon"></i>To display dimmer or not</p>
+</div></td></tr><tr><td>size</td><td><a href="" class="label type-hint type-hint-enum">enum</a></td><td><div class="sui-loader-directive-page sui-loader-directive-suiloader-page"><p>&quot;<code>mini</code>&quot; || &quot;<code>tiny</code>&quot; || &quot;<code>small</code>&quot; || &quot;<code>large</code>&quot; || &quot;<code>huge</code>&quot; || &quot;<code>massive</code>&quot; || <code>empty</code></p>
+</div></td></tr><tr><td>dim-whole-page</td><td><a href="" class="label type-hint type-hint-boolean">boolean</a></td><td><div class="sui-loader-directive-page sui-loader-directive-suiloader-page"><p><i class="exchange icon"></i>To dim the whole page or not</p>
+</div></td></tr></tbody></table></div>
+<h2 id="example">Example</h2>
+<div class="example"><div class="sui-loader-directive-page sui-loader-directive-suiloader-page"><h4 id="example_source">Source</h4>
+<div source-edit="sui.loader" source-edit-deps="angular.js app.js" source-edit-html="index.html-1" source-edit-css="" source-edit-js="app.js" source-edit-json="" source-edit-unit="" source-edit-scenario=""></div>
+<div class="tabbable"><div class="tab-pane" title="index.html">
+<pre class="prettyprint linenums" ng-set-text="index.html-1" ng-html-wrap-loaded="sui.loader angular.js app.js"></pre>
+<script type="text/ng-template" id="index.html-1">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.0.7/semantic.css">
+    <div class="ui segment" ng-controller="demoCtrl as ctrl">
+        <div sui-loader active="ctrl.loader.active" size="{{ctrl.loader.size}}"
+            dim-whole-page="ctrl.loader.dimWholePage" loading-text="Loading...">
+            <div class="ui positive message">
+                {{ ctrl.loader | json }}
+            </div>
+        </div>
+        <div>
+            <button class="ui primary button" ng-click="ctrl.toggle()">Toggle loader</button>
+            <button class="ui primary button" ng-click="ctrl.toggleDimmingWholePage()">Toggle dimming whole page</button>
+        </div>
+    </div>
+</script>
+</div>
+<div class="tab-pane" title="app.js">
+<pre class="prettyprint linenums" ng-set-text="app.js"></pre>
+<script type="text/ng-template" id="app.js">
+angular.module('sui.loader')
+.controller('demoCtrl', ['$scope', function ($scope) {
+    var vm = this;
+    vm.loader = {
+        active: false,
+        dimWholePage: false,
+        size: 'massive'
+    };
+    vm.toggle = function () {
+        vm.loader.active = !vm.loader.active;
+    };
+    vm.toggleDimmingWholePage = function () {
+        vm.loader.dimWholePage = !vm.loader.dimWholePage;
+    };
+}]);
+</script>
+</div>
+</div><h4 id="example_demo">Demo</h4>
+<div class="well doc-example-live animate-container" ng-embed-app="sui.loader" ng-set-html="index.html-1" ng-eval-javascript="app.js"></div>
+</div></div>
+</div>

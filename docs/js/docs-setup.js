@@ -32,6 +32,24 @@ NG_DOCS={
     },
     {
       "section": "api",
+      "id": "sui.loader.directive:suiLoader",
+      "shortName": "suiLoader",
+      "type": "directive",
+      "moduleName": "sui.loader",
+      "shortDescription": "A dimmed loader background when you are loading something.",
+      "keywords": "$scope active ae angular api app background button class cloudflare controller css ctrl democtrl dim dim-whole-page dimmed dimmer dimming dimwholepage directive display displayed empty exchange false function href html https huge icon js json large loader loading loading-text massive message mini module ng-click ng-controller positive primary rel segment size small spinner stylesheet sui sui-loader text tiny toggle toggledimmingwholepage type ui var vm"
+    },
+    {
+      "section": "api",
+      "id": "sui.progress.directive:suiProgress",
+      "shortName": "suiProgress",
+      "type": "directive",
+      "moduleName": "sui.progress",
+      "shortDescription": "A progress bar.",
+      "keywords": "$interval active ae alert alert-error angular animation api app attach attachedtocontent bar bootstrap bottom bottom-attached bottomattached button cancel class click cloudflare collision color colors content controller crashes css ctrl demo democtrl directive disabled display edit empty error exchange function gray- href html https huge icon indicating integer js json label large link loading massive message mini module ng-click ng-controller note null number percentage plunker positive primary progress rel return role segment semantic-ui show-percentage showpercentage size small stylesheet success sui sui-progress text tiny tiptap top top-attached topattached transcluded true type ui var view vm warning working"
+    },
+    {
+      "section": "api",
       "id": "sui.rating.directiv:suiRating",
       "shortName": "suiRating",
       "type": "directive",
@@ -50,8 +68,6 @@ NG_DOCS={
     "jquery-2.1.4.js",
     "angular.js",
     "angular-animate.js",
-    "sui-checkbox.js",
-    "sui-rating.js",
-    "sui-accordion.js"
+    "sui.js"
   ]
 };

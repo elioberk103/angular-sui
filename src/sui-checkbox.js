@@ -38,7 +38,7 @@
                         checked: true
                     },
                     four: {
-                        label: 'slider',
+                        label: 'Slider',
                         checked: true
                     }
                 };
@@ -61,53 +61,36 @@
  *
  */
 angular.module('sui.checkbox', [])
-    .controller('suiCheckboxCtrl', ['$scope', '$timeout', function ($scope, $timeout) {
-        var vm = this;
-        var ngModelCtrl = {
-            $setViewValue: angular.noop
-        };
-
-        vm.init = function (ngModelCtrl_) {
-            ngModelCtrl = ngModelCtrl_;
-            $timeout(function () {
-                vm.checked = ngModelCtrl.$viewValue;
-            });
-        }
-
-        vm.toggle = function () {
-            if (!vm.disabled) {
-                ngModelCtrl.$viewValue = !ngModelCtrl.$viewValue;
-                vm.checked = ngModelCtrl.$viewValue;
-                vm.onToggle && vm.onToggle({
-                    status: {
-                        model: ngModelCtrl.$viewValue
-                    }
-                });
-            }
-        };
-
-    }])
     .directive('suiCheckbox', [function () {
         return {
             restrict: 'AE',
             scope: {
+                ngModel: '=',
                 label: '@',
                 disabled: '@?',
                 uiStyle: '@?',
                 onToggle: '&?'
             },
-            require: ['suiCheckbox', 'ngModel'],
-            template: '<div class="ui {{vm.uiStyle}} checkbox" ng-class="{disabled: vm.disabled}" ng-click="vm.toggle()">' +
-                '<input type="checkbox" class="hidden" ng-checked="vm.checked">' +
-                '<label ng-bind="vm.label"></label>' +
+            template: 
+                '<div class="ui {{vm.uiStyle}} checkbox" ng-class="{disabled: vm.disabled}" ng-click="vm.onCheck()">' +
+                    '<input type="checkbox" ng-model="vm.ngModel" ng-disabled="{{vm.disabled}}" class="hidden" ng-checked="vm.ngModel">' +
+                    '<label ng-bind="vm.label"></label>' +
                 '</div>',
             controllerAs: 'vm',
             bindToController: true,
-            controller: 'suiCheckboxCtrl',
-            link: function (scope, iElement, attrs, ctrls) {
-                var checkboxCtrl = ctrls[0];
-                var ngModelCtrl = ctrls[1];
-                checkboxCtrl.init(ngModelCtrl);
-            }
+            controller: [function () {
+                var vm = this;
+                vm.onCheck = onCheck;
+
+                function onCheck() {
+                    if (vm.disabled) {
+                        return;
+                    }
+                    vm.ngModel = !vm.ngModel;
+                    vm.onToggle && vm.onToggle({
+                        status: vm.ngModel
+                    });
+                }
+            }]
         };
     }]);
