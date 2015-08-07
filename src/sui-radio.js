@@ -13,15 +13,16 @@
             <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.0.7/semantic.css">
             <div class="ui segment form" ng-controller="demoCtrl as ctrl">
                 <div class="inline fields">
-                    <div sui-radio-item ng-repeat="r in ctrl.radios" ng-model="ctrl.checked" 
+                    <div sui-radio-item ng-repeat="r in ctrl.radios" ng-model="ctrl.value" 
                         label="{{r.label}}" 
                         name="{{r.name}}" 
                         value="{{r.value}}" 
                         on-toggle="r.onToggle(model)">
                     </div>
                 </div>
+                <div sui-radio inline="true" options="ctrl.radios" ng-model="ctrl.value" name="groupColor"></div>
                 <div class="ui positive message">
-                    {{ ctrl.checked }}
+                    {{ ctrl.value }}
                 </div>
             </div>
         </file>
@@ -29,7 +30,7 @@
         angular.module('sui.radio')
             .controller('demoCtrl', [function () {
                 var vm = this;
-                vm.checked = null;
+                vm.value = null;
                 vm.radios = [{
                     label: 'Green',
                     checked: vm.checked,
@@ -52,7 +53,7 @@
 
                 function onToggle (model) {
                     console.log(model);
-                    vm.checked = model;
+                    vm.value = model;
                 }
             }]);
         </file>
@@ -72,7 +73,26 @@ angular.module('sui.radio', [])
                 inline: '@?'
             },
             template: 
-                '<div class="ui fields">'
+                '<div class="sui-radio" ng-class="{\'ui fields\': vm.inline}">' +
+                    '<div sui-radio-item ng-repeat="r in vm.options" ng-model="vm.ngModel" ' +
+                        'label="{{r.label}}" ' +
+                        'name="{{vm.name}}" ' +
+                        'value="{{r.value}}" ' +
+                        'on-toggle="vm.onInternalChange(model)">' +
+                    '</div>' +
+                '</div>',
+            controllerAs: 'vm',
+            bindToController: true,
+            controller: [function () {
+                var vm = this;
+                vm.onInternalChange = onInternalChange;
+
+                function onInternalChange () {
+                    !vm.disabled && vm.onChange && vm.onChange({
+                        model: vm.ngModel
+                    });
+                }
+            }]
         };
     }]);
 
@@ -89,7 +109,7 @@ angular.module('sui.radio')
                 onToggle: '&?'
             },
             template: 
-                '<div class="field sui-radio">' +
+                '<div class="field sui-radio-item">' +
                     '<div ng-click="vm.onChange()" class="ui radio checkbox" ng-class="{ checked: vm.ngModel === vm.value, disabled: vm.disabled }">' +
                         '<input type="radio" name="{{ vm.name }}" class="hidden" ng-model="vm.ngModel" value="{{ vm.value }}">' + 
                         '<label ng-bind="vm.label"></label>' +

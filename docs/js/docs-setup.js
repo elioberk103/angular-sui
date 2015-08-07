@@ -55,7 +55,7 @@ NG_DOCS={
       "type": "directive",
       "moduleName": "sui.radio",
       "shortDescription": "Single form radio.",
-      "keywords": "ae angular api app checked class cloudflare color console controller css ctrl democtrl directive fields form function green greencolor href html https inline js label log message model module ng-controller ng-model ng-repeat null on-toggle ontoggle orange orangecolor positive radio radios red redcolor rel segment single stylesheet sui sui-radio-item text type ui var vm"
+      "keywords": "ae angular api app checked class cloudflare color console controller css ctrl democtrl directive fields form function green greencolor groupcolor href html https inline js label log message model module ng-controller ng-model ng-repeat null on-toggle ontoggle options orange orangecolor positive radio radios red redcolor rel segment single stylesheet sui sui-radio sui-radio-item text true type ui var vm"
     },
     {
       "section": "api",

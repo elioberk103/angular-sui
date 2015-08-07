@@ -26,15 +26,16 @@ as attribute<pre class="prettyprint linenums">&lt;ANY sui-radio&gt;
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.0.7/semantic.css">
     <div class="ui segment form" ng-controller="demoCtrl as ctrl">
         <div class="inline fields">
-            <div sui-radio-item ng-repeat="r in ctrl.radios" ng-model="ctrl.checked" 
+            <div sui-radio-item ng-repeat="r in ctrl.radios" ng-model="ctrl.value" 
                 label="{{r.label}}" 
                 name="{{r.name}}" 
                 value="{{r.value}}" 
                 on-toggle="r.onToggle(model)">
             </div>
         </div>
+        <div sui-radio inline="true" options="ctrl.radios" ng-model="ctrl.value" name="groupColor"></div>
         <div class="ui positive message">
-            {{ ctrl.checked }}
+            {{ ctrl.value }}
         </div>
     </div>
 </script>
@@ -45,7 +46,7 @@ as attribute<pre class="prettyprint linenums">&lt;ANY sui-radio&gt;
 angular.module('sui.radio')
     .controller('demoCtrl', [function () {
         var vm = this;
-        vm.checked = null;
+        vm.value = null;
         vm.radios = [{
             label: 'Green',
             checked: vm.checked,
@@ -68,7 +69,7 @@ angular.module('sui.radio')
 
         function onToggle (model) {
             console.log(model);
-            vm.checked = model;
+            vm.value = model;
         }
     }]);
 </script>
