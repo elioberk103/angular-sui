@@ -28,7 +28,7 @@ NG_DOCS={
       "type": "directive",
       "moduleName": "sui.checkbox",
       "shortDescription": "Checkbox element",
-      "keywords": "$scope aftertoggle angular api app call called checkbox checked class click cloudflare controller css ctrl data democtrl directive disabled ea element exchange false function href html https icon js json label message model module ng-controller ng-model on-toggle ontoggle positive rel segment slider status stylesheet sui sui-checkbox text three toggle toggled true type ui ui-style var vm"
+      "keywords": "$scope aftertoggle angular api app call called checkbox checked class click cloudflare controller css ctrl data democtrl directive disabled ea element exchange false function href html https icon js json label message model module ng-controller ng-model on-toggle ontoggle positive rel segment slider stylesheet sui sui-checkbox text three toggle toggled true type ui ui-style var vm"
     },
     {
       "section": "api",
@@ -47,6 +47,15 @@ NG_DOCS={
       "moduleName": "sui.progress",
       "shortDescription": "A progress bar.",
       "keywords": "$interval active ae alert alert-error angular animation api app attach attachedtocontent bar bootstrap bottom bottom-attached bottomattached button cancel class click cloudflare collision color colors content controller crashes css ctrl demo democtrl directive disabled display edit empty error exchange function gray- href html https huge icon indicating integer js json label large link loading massive message mini module ng-click ng-controller note null number percentage plunker positive primary progress rel return role segment semantic-ui show-percentage showpercentage size small stylesheet success sui sui-progress text tiny tiptap top top-attached topattached transcluded true type ui var view vm warning working"
+    },
+    {
+      "section": "api",
+      "id": "sui.radio.directive:suiRadio",
+      "shortName": "suiRadio",
+      "type": "directive",
+      "moduleName": "sui.radio",
+      "shortDescription": "Single form radio.",
+      "keywords": "ae angular api app checked class cloudflare color console controller css ctrl democtrl directive fields form function green greencolor href html https inline js label log message model module ng-controller ng-model ng-repeat null on-toggle ontoggle orange orangecolor positive radio radios red redcolor rel segment single stylesheet sui sui-radio-item text type ui var vm"
     },
     {
       "section": "api",
