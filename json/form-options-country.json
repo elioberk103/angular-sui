@@ -1,0 +1,23 @@
+{
+    "options": [{
+        "label": "China",
+        "value": "cn",
+        "icon": "cn flag"
+    }, {
+        "label": "United States",
+        "value": "us",
+        "icon": "us flag"
+    }, {
+        "label": "Russia",
+        "value": "ru",
+        "icon": "ru flag"
+    }, {
+        "label": "United Kingdom",
+        "value": "uk",
+        "icon": "uk flag"
+    }, {
+        "label": "Philippines",
+        "value": "ph",
+        "icon": "ph flag"
+    }]
+}

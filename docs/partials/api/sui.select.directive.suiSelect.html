@@ -51,11 +51,11 @@ as attribute<pre class="prettyprint linenums">&lt;ANY sui-select
                 <div sui-select options="ctrl.countryOptions" selected="ctrl.selected" label="Country: " default-option="uk" searchable="true"></div>
             </div>
             <div class="eight wide field">
-                <div sui-select ajax-url="../json/form-options-country.json" label="From: " selected="ctrl.ajaxSelected" default-option="Click to fetch country list" searchable="true"></div>
+                <div sui-select ajax-url="../json/form-options-country.json" label="Load options from some URL: " selected="ctrl.ajaxSelected" default-option="Click to fetch country list" searchable="true"></div>
             </div>
         </div>
         <div class="ui positive message">
-            Country: {{ ctrl.selected }}; From: {{ ctrl.ajaxSelected }}
+            Country: {{ ctrl.selected }}; From Ajax: {{ ctrl.ajaxSelected }}
         </div>
     <div>
 </script>
