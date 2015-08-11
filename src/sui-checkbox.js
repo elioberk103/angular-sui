@@ -9,7 +9,7 @@
         <file name="index.html">
             <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.0.7/semantic.css">
             <div class="ui segment" ng-controller="demoCtrl as ctrl">
-                <div sui-checkbox label="{{ctrl.data.one.label}}" ng-model="ctrl.data.one.checked" ui-style="" on-toggle="ctrl.onToggle(status)"></div>
+                <div sui-checkbox label="{{ctrl.data.one.label}}" ng-model="ctrl.data.one.checked" ui-style="" on-toggle="ctrl.onToggle(model)"></div>
                 <div sui-checkbox label="{{ctrl.data.two.label}}" ng-model="ctrl.data.two.checked" disabled="{{ctrl.data.two.disabled}}" ui-style="toggle"></div>
                 <div sui-checkbox label="{{ctrl.data.three.label}}" ng-model="ctrl.data.three.checked" ui-style="toggle"></div>
                 <div sui-checkbox label="{{ctrl.data.four.label}}" ng-model="ctrl.data.four.checked" ui-style="slider"></div>
@@ -42,8 +42,8 @@
                         checked: true
                     }
                 };
-                vm.onToggle = function (status) {
-                    vm.afterToggle = status;  
+                vm.onToggle = function (model) {
+                    vm.afterToggle = model;  
                 };
             }]);
         </file>
@@ -69,11 +69,12 @@ angular.module('sui.checkbox', [])
                 label: '@',
                 disabled: '@?',
                 uiStyle: '@?',
-                onToggle: '&?'
+                onToggle: '&?',
+                name: '@'
             },
             template: 
                 '<div class="ui {{vm.uiStyle}} checkbox" ng-class="{disabled: vm.disabled}" ng-click="vm.onCheck()">' +
-                    '<input type="checkbox" ng-model="vm.ngModel" ng-disabled="{{vm.disabled}}" class="hidden" ng-checked="vm.ngModel">' +
+                    '<input type="checkbox" name="{{vm.name}}" ng-model="vm.ngModel" ng-disabled="{{vm.disabled}}" class="hidden" ng-checked="vm.ngModel">' +
                     '<label ng-bind="vm.label"></label>' +
                 '</div>',
             controllerAs: 'vm',
@@ -88,7 +89,7 @@ angular.module('sui.checkbox', [])
                     }
                     vm.ngModel = !vm.ngModel;
                     vm.onToggle && vm.onToggle({
-                        status: vm.ngModel
+                        model: vm.ngModel
                     });
                 }
             }]

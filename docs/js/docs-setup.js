@@ -28,7 +28,7 @@ NG_DOCS={
       "type": "directive",
       "moduleName": "sui.checkbox",
       "shortDescription": "Checkbox element",
-      "keywords": "$scope aftertoggle angular api app call called checkbox checked class click cloudflare controller css ctrl data democtrl directive disabled ea element exchange false function href html https icon js json label message model module ng-controller ng-model on-toggle ontoggle positive rel segment slider status stylesheet sui sui-checkbox text three toggle toggled true type ui ui-style var vm"
+      "keywords": "$scope aftertoggle angular api app call called checkbox checked class click cloudflare controller css ctrl data democtrl directive disabled ea element exchange false function href html https icon js json label message model module ng-controller ng-model on-toggle ontoggle positive rel segment slider stylesheet sui sui-checkbox text three toggle toggled true type ui ui-style var vm"
     },
     {
       "section": "api",
@@ -50,12 +50,30 @@ NG_DOCS={
     },
     {
       "section": "api",
+      "id": "sui.radio.directive:suiRadio",
+      "shortName": "suiRadio",
+      "type": "directive",
+      "moduleName": "sui.radio",
+      "shortDescription": "Single form radio.",
+      "keywords": "ae angular api app checked class cloudflare color console controller css ctrl democtrl directive fields form function green greencolor groupcolor href html https inline js label log message model module ng-controller ng-model ng-repeat null on-toggle ontoggle options orange orangecolor positive radio radios red redcolor rel segment single stylesheet sui sui-radio sui-radio-item text true type ui var vm"
+    },
+    {
+      "section": "api",
       "id": "sui.rating.directiv:suiRating",
       "shortName": "suiRating",
       "type": "directive",
       "moduleName": "sui.rating",
       "shortDescription": "Rating directive",
       "keywords": "angular api app array button callback class cloudflare confirming controller css ctrl default democtrl directiv directive disable disabled divider ea empty exchange function heart hover hovering href html https huge icon integer js json large leave leaving massive message mini module negative ng-click ng-controller ng-model on-hover on-leave on-rate onhover onleave onrate options positive primary rate rating rel segment selected setsize setstyle size small star stylesheet sui sui-rating text tiny toggledisable true type ui ui-style uistyle values var vm"
+    },
+    {
+      "section": "api",
+      "id": "sui.select.directive:suiSelect",
+      "shortName": "suiSelect",
+      "type": "directive",
+      "moduleName": "sui.select",
+      "shortDescription": "Form select field.",
+      "keywords": "ae ajax-url ajaxselected ajaxurl angular api app china class click cloudflare cn color controller country countryoptions css ctrl default default-option defaultoption democtrl directive disabled exchange fetch field fields flag form function gray href html https icon js json kingdom label list message module ng-controller null option options ph philippines positive rel ru russia searchable segment select selected stylesheet sui sui-select text true type ui uk united url var vm wide"
     }
   ],
   "apis": {
