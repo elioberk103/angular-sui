@@ -65,6 +65,15 @@ NG_DOCS={
       "moduleName": "sui.rating",
       "shortDescription": "Rating directive",
       "keywords": "angular api app array button callback class cloudflare confirming controller css ctrl default democtrl directiv directive disable disabled divider ea empty exchange function heart hover hovering href html https huge icon integer js json large leave leaving massive message mini module negative ng-click ng-controller ng-model on-hover on-leave on-rate onhover onleave onrate options positive primary rate rating rel segment selected setsize setstyle size small star stylesheet sui sui-rating text tiny toggledisable true type ui ui-style uistyle values var vm"
+    },
+    {
+      "section": "api",
+      "id": "sui.select.directive:suiSelect",
+      "shortName": "suiSelect",
+      "type": "directive",
+      "moduleName": "sui.select",
+      "shortDescription": "Form select field.",
+      "keywords": "ae ajax-url ajaxselected ajaxurl angular api app china class click cloudflare cn color controller country countryoptions css ctrl default default-option defaultoption democtrl directive disabled exchange fetch field fields flag form function gray href html https icon js json kingdom label list message module ng-controller null option options ph philippines positive rel ru russia searchable segment select selected stylesheet sui sui-select text true type ui uk united url var vm wide"
     }
   ],
   "apis": {
