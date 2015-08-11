@@ -73,7 +73,7 @@ NG_DOCS={
       "type": "directive",
       "moduleName": "sui.select",
       "shortDescription": "Form select field.",
-      "keywords": "ae ajax-url ajaxselected ajaxurl angular api app china class click cloudflare cn color controller country countryoptions css ctrl default default-option defaultoption democtrl directive disabled exchange fetch field fields flag form function gray href html https icon js json kingdom label list message module ng-controller null option options ph philippines positive rel ru russia searchable segment select selected stylesheet sui sui-select text true type ui uk united url var vm wide"
+      "keywords": "ae ajax ajax-url ajaxselected ajaxurl angular api app china class click cloudflare cn color controller country countryoptions css ctrl default default-option defaultoption democtrl directive disabled exchange fetch field fields flag form function gray href html https icon js json kingdom label list load message module ng-controller null option options ph philippines positive rel ru russia searchable segment select selected stylesheet sui sui-select text true type ui uk united url var vm wide"
     }
   ],
   "apis": {
