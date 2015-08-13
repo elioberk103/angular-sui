@@ -140,10 +140,10 @@ angular.module('sui.rating', [])
                 size: '@?',
                 uiStyle: '@?',
                 options: '=',
-                disabled: '@?',
-                onLeave: '&?',
-                onHover: '&?',
-                onRate: '&?'
+                disabled: '@',
+                onLeave: '&',
+                onHover: '&',
+                onRate: '&'
             },
             require: ['suiRating', 'ngModel'],
             template: 

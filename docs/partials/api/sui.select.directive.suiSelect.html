@@ -48,14 +48,14 @@ as attribute<pre class="prettyprint linenums">&lt;ANY sui-select
     <div class="ui segment form" ng-controller="demoCtrl as ctrl">
         <div class="fields">
             <div class="eight wide field">
-                <div sui-select options="ctrl.countryOptions" selected="ctrl.selected" label="Country: " default-option="uk" searchable="true"></div>
+                <div sui-select on-change="ctrl.onChange(selected)" options="ctrl.countryOptions" selected="ctrl.selected" label="Country: " default-option="uk" searchable="true"></div>
             </div>
             <div class="eight wide field">
                 <div sui-select ajax-url="../json/form-options-country.json" label="Load options from some URL: " selected="ctrl.ajaxSelected" default-option="Click to fetch country list" searchable="true"></div>
             </div>
         </div>
         <div class="ui positive message">
-            Country: {{ ctrl.selected }}; From Ajax: {{ ctrl.ajaxSelected }}
+            Country: {{ ctrl.selected }}; From Ajax: {{ ctrl.ajaxSelected }}; After change: {{ ctrl.valueAfterSelect }}
         </div>
     <div>
 </script>
@@ -89,6 +89,9 @@ angular.module('sui.select')
             value: 'ph',
             icon: 'ph flag'
         }];
+        vm.onChange = function (selected) {
+            vm.valueAfterSelect = selected;
+        };
     });
 </script>
 </div>
