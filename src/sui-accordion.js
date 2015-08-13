@@ -71,7 +71,7 @@ angular.module('sui.accordion', [])
         return {
             restrict: 'A',
             scope: {
-                onSwitch: '&?'
+                onSwitch: '&'
             },
             transclude: true,
             replace: true,

@@ -22,14 +22,14 @@
             <div class="ui segment form" ng-controller="demoCtrl as ctrl">
                 <div class="fields">
                     <div class="eight wide field">
-                        <div sui-select options="ctrl.countryOptions" selected="ctrl.selected" label="Country: " default-option="uk" searchable="true"></div>
+                        <div sui-select on-change="ctrl.onChange(selected)" options="ctrl.countryOptions" selected="ctrl.selected" label="Country: " default-option="uk" searchable="true"></div>
                     </div>
                     <div class="eight wide field">
                         <div sui-select ajax-url="../json/form-options-country.json" label="Load options from some URL: " selected="ctrl.ajaxSelected" default-option="Click to fetch country list" searchable="true"></div>
                     </div>
                 </div>
                 <div class="ui positive message">
-                    Country: {{ ctrl.selected }}; From Ajax: {{ ctrl.ajaxSelected }}
+                    Country: {{ ctrl.selected }}; From Ajax: {{ ctrl.ajaxSelected }}; After change: {{ ctrl.valueAfterSelect }}
                 </div>
             <div>
         </file>
@@ -60,6 +60,9 @@
                     value: 'ph',
                     icon: 'ph flag'
                 }];
+                vm.onChange = function (selected) {
+                    vm.valueAfterSelect = selected;
+                };
             });
         </file>
     </example>
@@ -76,7 +79,8 @@ angular.module('sui.select', [])
                 options: '=',       // {Object}  Options of the select
                 defaultOption: '@', // {String}  Default text in gray color; if null, the first option is selected
                 searchable: '@',    // {Boolean} The menu is searchable
-                ajaxUrl: '@'        // {String}  If specified, go to fetch options from this URL
+                ajaxUrl: '@',       // {String}  If specified, go to fetch options from this URL
+                onChange: '&'       // {Function} The callback after changing
             },
             transclude: true,
             template: 
@@ -129,6 +133,9 @@ angular.module('sui.select', [])
                     $scope._selectedOption = opt;
                     $scope.selected = opt.value;
                     $scope.resetFlags();
+                    $scope.onChange && $scope.onChange({
+                        selected: $scope.selected
+                    });
                 };
 
                 $scope.isSelected = function (opt) {

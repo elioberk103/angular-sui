@@ -69,8 +69,8 @@ angular.module('sui.radio', [])
                 options: '=',
                 ngModel: '=',
                 name: '@',
-                onChange: '&?',
-                inline: '@?'
+                onChange: '&',
+                inline: '@'
             },
             template: 
                 '<div class="sui-radio" ng-class="{\'ui fields\': vm.inline}">' +

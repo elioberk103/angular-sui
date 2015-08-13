@@ -67,9 +67,9 @@ angular.module('sui.checkbox', [])
             scope: {
                 ngModel: '=',
                 label: '@',
-                disabled: '@?',
-                uiStyle: '@?',
-                onToggle: '&?',
+                disabled: '@',
+                uiStyle: '@',
+                onToggle: '&',
                 name: '@'
             },
             template: 
