@@ -32,6 +32,18 @@ NG_DOCS={
     },
     {
       "section": "api",
+<<<<<<< HEAD
+=======
+      "id": "sui.common.directive: suiCommon",
+      "shortName": "suiCommon",
+      "type": "directive",
+      "moduleName": "sui.common",
+      "shortDescription": "Accepts common parameters like color, size, to its parent directive.",
+      "keywords": "accepts active api blue brown color common directive disabled displayed empty github green grey https huge icon inverted io label large massive mini olive orange parameters parent pink purple red size small sui suicommon teal text tiny vertical violet yellow"
+    },
+    {
+      "section": "api",
+>>>>>>> master
       "id": "sui.loader.directive:suiLoader",
       "shortName": "suiLoader",
       "type": "directive",
@@ -41,6 +53,18 @@ NG_DOCS={
     },
     {
       "section": "api",
+<<<<<<< HEAD
+=======
+      "id": "sui.menu.directive: suiDropdownMenu",
+      "shortName": "suiDropdownMenu",
+      "type": "directive",
+      "moduleName": "sui.menu",
+      "shortDescription": "Dropdown menu. When hovered, the menus is displayed.",
+      "keywords": "$scope ae angular api app cloudflare controller css ctrl democtrl directive displayed dropdown function hovered href html https icon js label large menu menus module ng-controller option options rel size stylesheet sui sui-dropdown-menu suidropdownmenu text type wrench"
+    },
+    {
+      "section": "api",
+>>>>>>> master
       "id": "sui.progress.directive:suiProgress",
       "shortName": "suiProgress",
       "type": "directive",

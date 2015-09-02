@@ -170,10 +170,18 @@ img.AngularJS-small {
 }
 
 .content code {
+<<<<<<< HEAD
   background-color: inherit;
   color: inherit;
   border: none;
   padding: 0;
+=======
+  background-color: rgba(0, 0, 0, 0.08);
+  color: rgba(0, 0, 0, 0.8);
+  border: none;
+  padding: 1px 6px;
+  border-radius: 3px;
+>>>>>>> master
   font-size: inherit;
   font-family: monospace;
 }
