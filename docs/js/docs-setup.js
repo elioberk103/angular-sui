@@ -28,16 +28,7 @@ NG_DOCS={
       "type": "directive",
       "moduleName": "sui.checkbox",
       "shortDescription": "Checkbox element",
-      "keywords": "$scope aftertoggle angular api app call called checkbox checked class click cloudflare controller css ctrl data democtrl directive disabled ea element exchange false function href html https icon js json label message model module ng-controller ng-model on-toggle ontoggle positive rel segment slider stylesheet sui sui-checkbox text three toggle toggled true type ui ui-style var vm"
-    },
-    {
-      "section": "api",
-      "id": "sui.common.directive: suiCommon",
-      "shortName": "suiCommon",
-      "type": "directive",
-      "moduleName": "sui.common",
-      "shortDescription": "Accepts common parameters like color, size, to its parent directive.",
-      "keywords": "accepts active api blue brown color common directive disabled displayed empty github green grey https huge icon inverted io label large massive mini olive orange parameters parent pink purple red size small sui suicommon teal text tiny vertical violet yellow"
+      "keywords": "$scope aftercheck angular api app call called check checkbox checked class click cloudflare controller css ctrl data democtrl directive disabled ea element exchange false function href html https icon js json label message model module ng-controller ng-model on-check on-toggle oncheck positive rel segment slider stylesheet sui sui-checkbox text three toggle toggled true type ui ui-style var vm"
     },
     {
       "section": "api",

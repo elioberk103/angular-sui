@@ -9,13 +9,13 @@
         <file name="index.html">
             <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.0.7/semantic.css">
             <div class="ui segment" ng-controller="demoCtrl as ctrl">
-                <div sui-checkbox label="{{ctrl.data.one.label}}" ng-model="ctrl.data.one.checked" ui-style="" on-toggle="ctrl.onToggle(model)"></div>
-                <div sui-checkbox label="{{ctrl.data.two.label}}" ng-model="ctrl.data.two.checked" disabled="{{ctrl.data.two.disabled}}" ui-style="toggle"></div>
-                <div sui-checkbox label="{{ctrl.data.three.label}}" ng-model="ctrl.data.three.checked" ui-style="toggle"></div>
-                <div sui-checkbox label="{{ctrl.data.four.label}}" ng-model="ctrl.data.four.checked" ui-style="slider"></div>
+                <div sui-checkbox label="{{ctrl.data.one.label}}" model="ctrl.data.one.checked" ui-style="" on-check="ctrl.onCheck(model)"></div>
+                <div sui-checkbox label="{{ctrl.data.two.label}}" model="ctrl.data.two.checked" disabled="{{ctrl.data.two.disabled}}" ui-style="toggle"></div>
+                <div sui-checkbox label="{{ctrl.data.three.label}}" model="ctrl.data.three.checked" ui-style="toggle"></div>
+                <div sui-checkbox label="{{ctrl.data.four.label}}" model="ctrl.data.four.checked" ui-style="slider"></div>
                 <div class="ui positive message">
                     <div>Status: {{ ctrl.data | json }}</div>
-                    <div>After toggle: {{ ctrl.afterToggle }}</div>
+                    <div>After check: {{ ctrl.afterCheck }}</div>
                 </div>
             </div>
         </file>
@@ -25,7 +25,7 @@
                 var vm = this;
                 vm.data = {
                     one: {
-                        label: 'Click to call `onToggle` function',
+                        label: 'Click to call `onCheck` function',
                         checked: false
                     },
                     two: {
@@ -42,8 +42,8 @@
                         checked: true
                     }
                 };
-                vm.onToggle = function (model) {
-                    vm.afterToggle = model;  
+                vm.onCheck = function (model) {
+                    vm.afterCheck = model;  
                 };
             }]);
         </file>
@@ -65,31 +65,31 @@ angular.module('sui.checkbox', [])
         return {
             restrict: 'AE',
             scope: {
-                ngModel: '=',
+                model: '=',
                 label: '@',
                 disabled: '@',
                 uiStyle: '@',
-                onToggle: '&',
+                onCheck: '&',
                 name: '@'
             },
             template: 
-                '<div class="ui {{vm.uiStyle}} checkbox" ng-class="{disabled: vm.disabled}" ng-click="vm.onCheck()">' +
-                    '<input type="checkbox" name="{{vm.name}}" ng-model="vm.ngModel" ng-disabled="{{vm.disabled}}" class="hidden" ng-checked="vm.ngModel">' +
+                '<div class="ui {{vm.uiStyle}} checkbox" ng-class="{disabled: vm.disabled}" ng-click="vm.onClick()">' +
+                    '<input type="checkbox" name="{{vm.name}}" ng-model="vm.model" ng-disabled="{{vm.disabled}}" class="hidden" ng-checked="vm.model">' +
                     '<label ng-bind="vm.label"></label>' +
                 '</div>',
             controllerAs: 'vm',
             bindToController: true,
             controller: [function () {
                 var vm = this;
-                vm.onCheck = onCheck;
+                vm.onClick = onClick;
 
-                function onCheck() {
+                function onClick() {
                     if (vm.disabled) {
                         return;
                     }
-                    vm.ngModel = !vm.ngModel;
-                    vm.onToggle && vm.onToggle({
-                        model: vm.ngModel
+                    vm.model = !vm.model;
+                    vm.onCheck && vm.onCheck({
+                        model: vm.model
                     });
                 }
             }]
