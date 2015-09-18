@@ -1,0 +1,80 @@
+<h1><code ng:non-bindable="">suiCheckboxGroup</code>
+<div><span class="hint">directive in module <code ng:non-bindable="">sui.checkbox</code>
+</span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="sui-checkbox-directive-page sui-checkbox-directive-suicheckboxgroup-page"><p>A checkbox group.
+Check <a href="#/api/sui.checkbox.directive:suiCheckbox">suiCheckbox</a>.</p>
+</div></div>
+<h2 id="usage">Usage</h2>
+<div class="usage">as element:<pre class="prettyprint linenums">&lt;sui-checkbox-group
+       model="{array}"
+       disabled
+       name="{string}"
+       options="{array}"
+       on-check="{function}"&gt;
+&lt;/sui-checkbox-group&gt;</pre>
+as attribute<pre class="prettyprint linenums">&lt;ANY sui-checkbox-group
+     model="{array}"
+     disabled
+     name="{string}"
+     options="{array}"
+     on-check="{function}"&gt;
+   ...
+&lt;/ANY&gt;</pre>
+<h3 id="usage_directive-info">Directive info</h3>
+<div class="directive-info"><ul><li>This directive creates new scope.</li>
+</ul>
+</div>
+<h4 id="usage_directive-info_parameters">Parameters</h4><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>model</td><td><a href="" class="label type-hint type-hint-array">array</a></td><td><div class="sui-checkbox-directive-page sui-checkbox-directive-suicheckboxgroup-page"><p><i class="exchange icon"></i>The values of selected items.</p>
+</div></td></tr><tr><td>disabled</td><td><a href="" class="label type-hint type-hint-boolean">boolean</a></td><td><div class="sui-checkbox-directive-page sui-checkbox-directive-suicheckboxgroup-page"><p>Disabled or not</p>
+</div></td></tr><tr><td>name</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="sui-checkbox-directive-page sui-checkbox-directive-suicheckboxgroup-page"><p>Name for grouping</p>
+</div></td></tr><tr><td>options</td><td><a href="" class="label type-hint type-hint-array">array</a></td><td><div class="sui-checkbox-directive-page sui-checkbox-directive-suicheckboxgroup-page"><p>A list of options to populate the checkboxes. Every option should contain <code>label</code> and <code>value</code>.</p>
+</div></td></tr><tr><td>on-check</td><td><a href="" class="label type-hint type-hint-function">function</a></td><td><div class="sui-checkbox-directive-page sui-checkbox-directive-suicheckboxgroup-page"><p>The function to be called when the checkbox is toggled.</p>
+</div></td></tr></tbody></table></div>
+<h2 id="example">Example</h2>
+<div class="example"><div class="sui-checkbox-directive-page sui-checkbox-directive-suicheckboxgroup-page"><h4 id="example_source">Source</h4>
+<div source-edit="sui.checkbox" source-edit-deps="angular.js app.js" source-edit-html="index.html-3" source-edit-css="" source-edit-js="app.js" source-edit-json="" source-edit-unit="" source-edit-scenario=""></div>
+<div class="tabbable"><div class="tab-pane" title="index.html">
+<pre class="prettyprint linenums" ng-set-text="index.html-3" ng-html-wrap-loaded="sui.checkbox angular.js app.js"></pre>
+<script type="text/ng-template" id="index.html-3">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.0.7/semantic.css">
+    <div class="ui segment" ng-controller="DemoController as vm">
+        <div class="ui segment">
+            <div>This is a `sui-checkbox-group`:</div>
+            <div sui-checkbox-group options="vm.options" model="vm.groupSelected"></div>
+        </div>
+        <div class="ui positive message">
+            <div>groupSelected: {{ vm.groupSelected }}</div>
+        </div>
+    </div>
+</script>
+</div>
+<div class="tab-pane" title="app.js">
+<pre class="prettyprint linenums" ng-set-text="app.js"></pre>
+<script type="text/ng-template" id="app.js">
+angular.module('sui.checkbox')
+    .controller('DemoController', ['$scope', function ($scope) {
+        var vm = this;
+        vm.options = [{
+            label: 'Orange',
+            value: 'orangeColor'
+        }, {
+            label: 'Blue',
+            value: 'blueColor'
+        }, {
+            label: 'Green',
+            value: 'greenColor'
+        }, {
+            label: 'Red',
+            value: 'redColor'
+        }];
+        vm.groupSelected = ['redColor', 'blueColor'];
+    }]);
+</script>
+</div>
+</div><h4 id="example_demo">Demo</h4>
+<div class="well doc-example-live animate-container" ng-embed-app="sui.checkbox" ng-set-html="index.html-3" ng-eval-javascript="app.js"></div>
+</div></div>
+</div>

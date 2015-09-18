@@ -28,16 +28,34 @@ NG_DOCS={
       "type": "directive",
       "moduleName": "sui.checkbox",
       "shortDescription": "Checkbox element",
-      "keywords": "$scope aftertoggle angular api app call called checkbox checked class click cloudflare controller css ctrl data democtrl directive disabled ea element exchange false function href html https icon js json label message model module ng-controller ng-model on-toggle ontoggle positive rel segment slider stylesheet sui sui-checkbox text three toggle toggled true type ui ui-style var vm"
+      "keywords": "$scope aftercheck angular api app call called check checkbox checked class click cloudflare controller css data defined democontroller directive disabled ea element exchange false function href html https icon js json label message model module ng-controller on-check oncheck positive rel segment slider stylesheet sui sui-checkbox text three toggle toggled true type ui ui-style var vm"
     },
     {
       "section": "api",
-      "id": "sui.common.directive: suiCommon",
-      "shortName": "suiCommon",
+      "id": "sui.checkbox.directive:suiCheckboxGroup",
+      "shortName": "suiCheckboxGroup",
       "type": "directive",
-      "moduleName": "sui.common",
-      "shortDescription": "Accepts common parameters like color, size, to its parent directive.",
-      "keywords": "accepts active api blue brown color common directive disabled displayed empty github green grey https huge icon inverted io label large massive mini olive orange parameters parent pink purple red size small sui suicommon teal text tiny vertical violet yellow"
+      "moduleName": "sui.checkbox",
+      "shortDescription": "A checkbox group.",
+      "keywords": "$scope angular api app blue bluecolor called check checkbox checkboxes class cloudflare controller css democontroller directive disabled ea exchange function green greencolor group grouping groupselected href html https icon items js label list message model module ng-controller on-check option options orange orangecolor populate positive red redcolor rel segment selected stylesheet sui sui-checkbox-group suicheckbox text toggled type ui values var vm"
+    },
+    {
+      "section": "api",
+      "id": "sui.checkbox.directive:suiSliderCheckbox",
+      "shortName": "suiSliderCheckbox",
+      "type": "directive",
+      "moduleName": "sui.checkbox",
+      "shortDescription": "Checkbox element with ui-style as slider.",
+      "keywords": "$scope alias angular api app called check checkbox checked class cloudflare controller css data democontroller directive disabled ea element exchange function href html https icon js json label message model module ng-controller on-check positive rel segment slider specific style stylesheet sui sui-slider-checkbox suicheckbox text toggled true type ui ui-style var vm"
+    },
+    {
+      "section": "api",
+      "id": "sui.checkbox.directive:suiToggleCheckbox",
+      "shortName": "suiToggleCheckbox",
+      "type": "directive",
+      "moduleName": "sui.checkbox",
+      "shortDescription": "Checkbox element with ui-style as toggle.",
+      "keywords": "$scope alias angular api app called check checkbox checked class cloudflare controller css data democontroller directive disabled ea element exchange function href html https icon js json label message model module ng-controller on-check positive rel segment specific style stylesheet sui sui-toggle-checkbox suicheckbox text toggle toggled true type ui ui-style var vm"
     },
     {
       "section": "api",
@@ -72,8 +90,17 @@ NG_DOCS={
       "shortName": "suiRadio",
       "type": "directive",
       "moduleName": "sui.radio",
-      "shortDescription": "Single form radio.",
-      "keywords": "ae angular api app checked class cloudflare color console controller css ctrl democtrl directive fields form function green greencolor groupcolor href html https inline js label log message model module ng-controller ng-model ng-repeat null on-toggle ontoggle options orange orangecolor positive radio radios red redcolor rel segment single stylesheet sui sui-radio sui-radio-item text true type ui var vm"
+      "shortDescription": "A single radio. It is used by suiRadioGroup.",
+      "keywords": "ae api callback checked class demo directive disabled displayed example exchange function grouping icon label model on-check radio single sui suiradiogroup text"
+    },
+    {
+      "section": "api",
+      "id": "sui.radio.directive:suiRadioGroup",
+      "shortName": "suiRadioGroup",
+      "type": "directive",
+      "moduleName": "sui.radio",
+      "shortDescription": "A form radio group.",
+      "keywords": "ae angular api app callback checked class cloudflare color console controller css democontroller directive disabled elements exchange fields form function green greencolor group groupcolor href html https icon inline item items js label list log message model module ng-controller ng-repeat null on-toggle oncheck option options orange orangecolor populate positive radio radios red redcolor rel segment selected stylesheet sui sui-radio sui-radio-group text true type ui var vm"
     },
     {
       "section": "api",
@@ -82,7 +109,7 @@ NG_DOCS={
       "type": "directive",
       "moduleName": "sui.rating",
       "shortDescription": "Rating directive",
-      "keywords": "angular api app array button callback class cloudflare confirming controller css ctrl default democtrl directiv directive disable disabled divider ea empty exchange function heart hover hovering href html https huge icon integer js json large leave leaving massive message mini module negative ng-click ng-controller ng-model on-hover on-leave on-rate onhover onleave onrate options positive primary rate rating rel segment selected setsize setstyle size small star stylesheet sui sui-rating text tiny toggledisable true type ui ui-style uistyle values var vm"
+      "keywords": "angular api app array button callback class cloudflare confirming controller css default democontroller directiv directive disable disabled divider ea empty exchange function heart hover hovering href html https huge icon integer js json large leave leaving massive message mini model module negative ng-click ng-controller on-hover on-leave on-rate onhover onleave onrate options positive primary rate rating rel segment selected setsize setstyle size small star stylesheet sui sui-rating text tiny toggledisable true type ui ui-style uistyle values var vm"
     },
     {
       "section": "api",
