@@ -6,9 +6,9 @@
  *
  * @restrict EA
  * @element ANY
- * @scope 
+ * @scope
  *
- * @param {int} ng-model <i class="exchange icon"></i>The selected value
+ * @param {int} model <i class="exchange icon"></i>The selected value
  * @param {enum} size "`mini`" || "`tiny`" || "`small`" || "`large`" || "`huge`" || "`massive`" || `empty`
  * @param {enum} ui-style "`star`" || "`heart`"
  * @param {array} options <i class="exchange icon"></i> Array of integer values, e.g., `[1, 2, 3, 5, 8, 13]`
@@ -21,38 +21,38 @@
     <example module="sui.rating">
         <file name="index.html">
             <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.0.7/semantic.css">
-            <div class="ui segment" ng-controller="demoCtrl as ctrl">
-                <div sui-rating ng-model="ctrl.value" options="ctrl.options" 
-                    on-rate="ctrl.onRate(model)" on-leave="ctrl.onLeave(model)" on-hover="ctrl.onHover(model)" 
-                    size="{{ctrl.size}}" ui-style="{{ctrl.uiStyle}}" disabled="{{ctrl.disabled}}"></div>
+            <div class="ui segment" ng-controller="DemoController as vm">
+                <div sui-rating model="vm.value" options="vm.options"
+                    on-rate="vm.onRate(model)" on-leave="vm.onLeave(model)" on-hover="vm.onHover(model)"
+                    size="{{vm.size}}" ui-style="{{vm.uiStyle}}" disabled="{{vm.disabled}}"></div>
                 <div class="ui divider"></div>
-                <button class="ui tiny negative button" ng-click="ctrl.toggleDisable()">Toggle disable</button>
-                <button class="ui tiny primary button" ng-click="ctrl.setSize('mini')">mini</button>
-                <button class="ui tiny primary button" ng-click="ctrl.setSize('tiny')">tiny</button>
-                <button class="ui tiny primary button" ng-click="ctrl.setSize('small')">small</button>
-                <button class="ui tiny primary button" ng-click="ctrl.setSize('')">normal</button>
-                <button class="ui tiny primary button" ng-click="ctrl.setSize('large')">large</button>
-                <button class="ui tiny primary button" ng-click="ctrl.setSize('huge')">huge</button>
-                <button class="ui tiny primary button" ng-click="ctrl.setSize('massive')">massive</button>
+                <button class="ui tiny negative button" ng-click="vm.toggleDisable()">Toggle disable</button>
+                <button class="ui tiny primary button" ng-click="vm.setSize('mini')">mini</button>
+                <button class="ui tiny primary button" ng-click="vm.setSize('tiny')">tiny</button>
+                <button class="ui tiny primary button" ng-click="vm.setSize('small')">small</button>
+                <button class="ui tiny primary button" ng-click="vm.setSize('')">normal</button>
+                <button class="ui tiny primary button" ng-click="vm.setSize('large')">large</button>
+                <button class="ui tiny primary button" ng-click="vm.setSize('huge')">huge</button>
+                <button class="ui tiny primary button" ng-click="vm.setSize('massive')">massive</button>
                 <div class="ui divider"></div>
-                <button class="ui tiny primary button" ng-click="ctrl.setStyle('heart')">
+                <button class="ui tiny primary button" ng-click="vm.setStyle('heart')">
                     <i class="heart icon"></i>
                     Heart Icon
                 </button>
-                <button class="ui tiny primary button" ng-click="ctrl.setStyle('star')">
+                <button class="ui tiny primary button" ng-click="vm.setStyle('star')">
                     <i class="star icon"></i>
                     Star Icon
                 </button>
-                <button class="ui tiny primary button" ng-click="ctrl.setStyle('')">
+                <button class="ui tiny primary button" ng-click="vm.setStyle('')">
                     <i class="icon"></i>
                     Default Icon
                 </button>
-                <div class="ui positive message">{{ ctrl | json }}</div>
+                <div class="ui positive message">{{ vm | json }}</div>
             </div>
         </file>
         <file name="app.js">
             angular.module('sui.rating')
-                .controller('demoCtrl', [function () {
+                .controller('DemoController', [function () {
                     var vm = this;
 
                     vm.options = [1, 2, 3, 5, 8, 13];
@@ -85,58 +85,11 @@
  */
 
 angular.module('sui.rating', [])
-    .controller('suiRatingCtrl', ['$scope', function ($scope) {
-        var vm = this;
-        vm.hovered = NaN;
-        vm.init = init;
-        vm.rate = rate;
-        vm.hover = hover;
-        vm.leave = leave;
-
-        var ngModelCtrl = {
-            $setViewValue: angular.noop
-        };
-
-        function init (ngModelCtrl_) {
-            ngModelCtrl = ngModelCtrl_;
-            ngModelCtrl.$render = function () {
-                vm.value = ngModelCtrl.$viewValue;
-            };
-        }
-
-        function rate (v) {
-            if (!vm.disabled) {
-                ngModelCtrl.$setViewValue(ngModelCtrl.$viewValue === v ? 0 : v);
-                ngModelCtrl.$render();
-                invokeHandler(vm.onRate, v);
-            }
-        }
-
-        function hover (v) {
-            if (!vm.disabled) {
-                vm.hovered = v;
-                invokeHandler(vm.onHover, v);
-            }
-        }
-
-        function leave (v) {
-            if (!vm.disabled) {
-                vm.hovered = NaN;
-                invokeHandler(vm.onLeave, v);
-            }
-        }
-
-        function invokeHandler (fn, value) {
-            fn && fn({
-                model: value || vm.value
-            });
-        }
-
-    }])
     .directive('suiRating', [function () {
         return {
             restrict: 'A',
             scope: {
+                model: '=',
                 size: '@?',
                 uiStyle: '@?',
                 options: '=',
@@ -146,18 +99,42 @@ angular.module('sui.rating', [])
                 onRate: '&'
             },
             require: ['suiRating', 'ngModel'],
-            template: 
-                '<div class="ui {{vm.uiStyle}} {{vm.size}} rating sui-rating">' +
-                    '<i ng-repeat="v in vm.options track by $index" ng-mouseenter="vm.hover(v)" ng-mouseleave="vm.leave(v)" ng-click="vm.rate(v)" ' +
-                        'ng-class="{ selected: v <= vm.hovered, active: v <= vm.value, disabled: vm.disabled }" class="icon"></i>' +
-                '</div>',
+            template: '<div class="ui {{vm.uiStyle}} {{vm.size}} rating sui-rating">' +
+            '<i ng-repeat="v in vm.options track by $index" ng-mouseenter="vm._onHover(v)" ng-mouseleave="vm._onLeave(v)" ng-click="vm._onRate(v)" ' +
+            'ng-class="{ selected: v <= vm.hovered, active: v <= vm.model, disabled: vm.disabled }" class="icon"></i>' +
+            '</div>',
             controllerAs: 'vm',
             bindToController: true,
-            controller: 'suiRatingCtrl',
-            link: function (scope, iElement, attrs, ctrls) {
-                var ratingCtrl = ctrls[0];
-                var ngModelCtrl = ctrls[1];
-                ratingCtrl.init(ngModelCtrl);
-            }
+            controller: [function () {
+                var vm = this;
+                vm.hovered = NaN;
+                vm._onRate = _onRate;
+                vm._onHover = _onHover;
+                vm._onLeave = _onLeave;
+
+                function _onRate(value) {
+                    vm.model = value;
+                    invokeHandler(vm.onRate, value);
+                }
+
+                function _onHover(value) {
+                    invokeHandler(vm.onHover, value);
+                }
+
+                function _onLeave(value) {
+                    vm.hovered = NaN;
+                    invokeHandler(vm.onLeave, value);
+                }
+
+                function invokeHandler(fn, value) {
+                    console.log('disabled: ' + vm.disabled);
+                    if (!vm.disabled) {
+                        vm.hovered = value;
+                        fn && fn({
+                            model: value || vm.model
+                        });
+                    }
+                }
+            }]
         };
     }]);

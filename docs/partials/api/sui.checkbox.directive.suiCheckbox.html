@@ -9,17 +9,17 @@
 <h2 id="usage">Usage</h2>
 <div class="usage">as element:<pre class="prettyprint linenums">&lt;sui-checkbox
        label="{string}"
-       ng-model="{boolean}"
+       model="{boolean}"
        disabled
        ui-style="{enum}"
-       on-toggle="{function}"&gt;
+       on-check="{function}"&gt;
 &lt;/sui-checkbox&gt;</pre>
 as attribute<pre class="prettyprint linenums">&lt;ANY sui-checkbox
      label="{string}"
-     ng-model="{boolean}"
+     model="{boolean}"
      disabled
      ui-style="{enum}"
-     on-toggle="{function}"&gt;
+     on-check="{function}"&gt;
    ...
 &lt;/ANY&gt;</pre>
 <h3 id="usage_directive-info">Directive info</h3>
@@ -27,10 +27,10 @@ as attribute<pre class="prettyprint linenums">&lt;ANY sui-checkbox
 </ul>
 </div>
 <h4 id="usage_directive-info_parameters">Parameters</h4><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>label</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="sui-checkbox-directive-page sui-checkbox-directive-suicheckbox-page"><p>Label</p>
-</div></td></tr><tr><td>ng-model</td><td><a href="" class="label type-hint type-hint-boolean">boolean</a></td><td><div class="sui-checkbox-directive-page sui-checkbox-directive-suicheckbox-page"><p><i class="exchange icon"></i>The model of this directive</p>
+</div></td></tr><tr><td>model</td><td><a href="" class="label type-hint type-hint-boolean">boolean</a></td><td><div class="sui-checkbox-directive-page sui-checkbox-directive-suicheckbox-page"><p><i class="exchange icon"></i>The model of this directive</p>
 </div></td></tr><tr><td>disabled</td><td><a href="" class="label type-hint type-hint-boolean">boolean</a></td><td><div class="sui-checkbox-directive-page sui-checkbox-directive-suicheckbox-page"><p>Disabled or not</p>
 </div></td></tr><tr><td>ui-style</td><td><a href="" class="label type-hint type-hint-enum">enum</a></td><td><div class="sui-checkbox-directive-page sui-checkbox-directive-suicheckbox-page"><p>&quot;<code>checkbox</code>&quot; || &quot;<code>toggle</code>&quot; || &quot;<code>slider</code>&quot;</p>
-</div></td></tr><tr><td>on-toggle</td><td><a href="" class="label type-hint type-hint-function">function</a></td><td><div class="sui-checkbox-directive-page sui-checkbox-directive-suicheckbox-page"><p>The function to be called when the checkbox is toggled.</p>
+</div></td></tr><tr><td>on-check</td><td><a href="" class="label type-hint type-hint-function">function</a></td><td><div class="sui-checkbox-directive-page sui-checkbox-directive-suicheckbox-page"><p>The function to be called when the checkbox is toggled.</p>
 </div></td></tr></tbody></table></div>
 <h2 id="example">Example</h2>
 <div class="example"><div class="sui-checkbox-directive-page sui-checkbox-directive-suicheckbox-page"><h4 id="example_source">Source</h4>
@@ -39,14 +39,17 @@ as attribute<pre class="prettyprint linenums">&lt;ANY sui-checkbox
 <pre class="prettyprint linenums" ng-set-text="index.html-0" ng-html-wrap-loaded="sui.checkbox angular.js app.js"></pre>
 <script type="text/ng-template" id="index.html-0">
         <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.0.7/semantic.css">
-        <div class="ui segment" ng-controller="demoCtrl as ctrl">
-            <div sui-checkbox label="{{ctrl.data.one.label}}" model="ctrl.data.one.checked" ui-style="" on-check="ctrl.onCheck(model)"></div>
-            <div sui-checkbox label="{{ctrl.data.two.label}}" model="ctrl.data.two.checked" disabled="{{ctrl.data.two.disabled}}" ui-style="toggle"></div>
-            <div sui-checkbox label="{{ctrl.data.three.label}}" model="ctrl.data.three.checked" ui-style="toggle"></div>
-            <div sui-checkbox label="{{ctrl.data.four.label}}" model="ctrl.data.four.checked" ui-style="slider"></div>
+        <div class="ui segment" ng-controller="DemoController as vm">
+            <div class="ui segment">
+                <div>These four are defined through `sui-checkbox`:</div>
+                <div sui-checkbox label="{{vm.data.one.label}}" model="vm.data.one.checked" ui-style="" on-check="vm.onCheck(model)"></div>
+                <div sui-checkbox label="{{vm.data.two.label}}" model="vm.data.two.checked" disabled="{{vm.data.two.disabled}}" ui-style="toggle"></div>
+                <div sui-checkbox label="{{vm.data.three.label}}" model="vm.data.three.checked" ui-style="toggle"></div>
+                <div sui-checkbox label="{{vm.data.four.label}}" model="vm.data.four.checked" ui-style="slider"></div>
+            </div>
             <div class="ui positive message">
-                <div>Status: {{ ctrl.data | json }}</div>
-                <div>After check: {{ ctrl.afterCheck }}</div>
+                <div>Status: {{ vm.data | json }}</div>
+                <div>After check: {{ vm.afterCheck }}</div>
             </div>
         </div>
     </script>
@@ -55,7 +58,7 @@ as attribute<pre class="prettyprint linenums">&lt;ANY sui-checkbox
 <pre class="prettyprint linenums" ng-set-text="app.js"></pre>
 <script type="text/ng-template" id="app.js">
     angular.module('sui.checkbox')
-        .controller('demoCtrl', ['$scope', function ($scope) {
+        .controller('DemoController', ['$scope', function ($scope) {
             var vm = this;
             vm.data = {
                 one: {
