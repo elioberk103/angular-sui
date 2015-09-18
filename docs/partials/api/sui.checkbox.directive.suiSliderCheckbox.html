@@ -1,0 +1,66 @@
+<h1><code ng:non-bindable="">suiSliderCheckbox</code>
+<div><span class="hint">directive in module <code ng:non-bindable="">sui.checkbox</code>
+</span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="sui-checkbox-directive-page sui-checkbox-directive-suislidercheckbox-page"><p>Checkbox element with <code>ui-style</code> as <code>slider</code>.</p>
+<p>It is an alias of <code>suiCheckbox</code> with a specific UI style. Check <a href="#/api/sui.checkbox.directive:suiCheckbox">suiCheckbox</a>.</p>
+</div></div>
+<h2 id="usage">Usage</h2>
+<div class="usage">as element:<pre class="prettyprint linenums">&lt;sui-slider-checkbox
+       label="{string}"
+       model="{boolean}"
+       disabled
+       on-check="{function}"&gt;
+&lt;/sui-slider-checkbox&gt;</pre>
+as attribute<pre class="prettyprint linenums">&lt;ANY sui-slider-checkbox
+     label="{string}"
+     model="{boolean}"
+     disabled
+     on-check="{function}"&gt;
+   ...
+&lt;/ANY&gt;</pre>
+<h3 id="usage_directive-info">Directive info</h3>
+<div class="directive-info"><ul><li>This directive creates new scope.</li>
+</ul>
+</div>
+<h4 id="usage_directive-info_parameters">Parameters</h4><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>label</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="sui-checkbox-directive-page sui-checkbox-directive-suislidercheckbox-page"><p>Label</p>
+</div></td></tr><tr><td>model</td><td><a href="" class="label type-hint type-hint-boolean">boolean</a></td><td><div class="sui-checkbox-directive-page sui-checkbox-directive-suislidercheckbox-page"><p><i class="exchange icon"></i>The model of this directive</p>
+</div></td></tr><tr><td>disabled</td><td><a href="" class="label type-hint type-hint-boolean">boolean</a></td><td><div class="sui-checkbox-directive-page sui-checkbox-directive-suislidercheckbox-page"><p>Disabled or not</p>
+</div></td></tr><tr><td>on-check</td><td><a href="" class="label type-hint type-hint-function">function</a></td><td><div class="sui-checkbox-directive-page sui-checkbox-directive-suislidercheckbox-page"><p>The function to be called when the checkbox is toggled.</p>
+</div></td></tr></tbody></table></div>
+<h2 id="example">Example</h2>
+<div class="example"><div class="sui-checkbox-directive-page sui-checkbox-directive-suislidercheckbox-page"><h4 id="example_source">Source</h4>
+<div source-edit="sui.checkbox" source-edit-deps="angular.js app.js" source-edit-html="index.html-1" source-edit-css="" source-edit-js="app.js" source-edit-json="" source-edit-unit="" source-edit-scenario=""></div>
+<div class="tabbable"><div class="tab-pane" title="index.html">
+<pre class="prettyprint linenums" ng-set-text="index.html-1" ng-html-wrap-loaded="sui.checkbox angular.js app.js"></pre>
+<script type="text/ng-template" id="index.html-1">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.0.7/semantic.css">
+    <div class="ui segment" ng-controller="DemoController as vm">
+        <div class="ui segment">
+            <div sui-slider-checkbox label="{{vm.data.label}}" model="vm.data.checked"></div>
+        </div>
+        <div class="ui positive message">
+            <div>Status: {{ vm.data | json }}</div>
+        </div>
+    </div>
+</script>
+</div>
+<div class="tab-pane" title="app.js">
+<pre class="prettyprint linenums" ng-set-text="app.js"></pre>
+<script type="text/ng-template" id="app.js">
+angular.module('sui.checkbox')
+    .controller('DemoController', ['$scope', function ($scope) {
+        var vm = this;
+        vm.data = {
+            label: 'I am a Slider',
+            checked: true
+        };
+    }]);
+</script>
+</div>
+</div><h4 id="example_demo">Demo</h4>
+<div class="well doc-example-live animate-container" ng-embed-app="sui.checkbox" ng-set-html="index.html-1" ng-eval-javascript="app.js"></div>
+</div></div>
+</div>
