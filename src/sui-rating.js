@@ -113,7 +113,7 @@ angular.module('sui.rating', [])
                 vm._onLeave = _onLeave;
 
                 function _onRate(value) {
-                    vm.model = value;
+                    !vm.disabled && (vm.model = value);
                     invokeHandler(vm.onRate, value);
                 }
 
@@ -127,7 +127,6 @@ angular.module('sui.rating', [])
                 }
 
                 function invokeHandler(fn, value) {
-                    console.log('disabled: ' + vm.disabled);
                     if (!vm.disabled) {
                         vm.hovered = value;
                         fn && fn({
