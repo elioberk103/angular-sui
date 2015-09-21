@@ -968,7 +968,7 @@ angular.module('sui.rating', [])
                 vm._onLeave = _onLeave;
 
                 function _onRate(value) {
-                    vm.model = value;
+                    !vm.disabled && (vm.model = value);
                     invokeHandler(vm.onRate, value);
                 }
 
@@ -982,7 +982,6 @@ angular.module('sui.rating', [])
                 }
 
                 function invokeHandler(fn, value) {
-                    console.log('disabled: ' + vm.disabled);
                     if (!vm.disabled) {
                         vm.hovered = value;
                         fn && fn({
@@ -1003,47 +1002,47 @@ angular.module('sui.rating', [])
  * @description
  * Form select field.
  *
+ * @param {string} model <i class="exchange icon"></i>Value of the selected option
+ * @param {object} options <i class="exchange icon"></i>Options of the select
+ * @param {string} indicating-text Text when no default option is selected
  * @param {boolean} disabled The select is disabled or not
  * @param {string} label The text shown above the select
- * @param {string} selected <i class="exchange icon"></i>Value of the selected option
- * @param {object} options <i class="exchange icon"></i>Options of the select
- * @param {string} defaultOption Default text in gray color; if null, the first option is selected
  * @param {boolean} searchable Whether searchable or not
- * @param {string} ajaxUrl If specified, go to fetch options from this URL
+ * @param {string} ajax-url If specified, go to fetch options from this URL
  *
  * @example
     <example module="sui.select">
         <file name="index.html">
             <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.0.7/semantic.css">
-            <div class="ui segment form" ng-controller="demoCtrl as ctrl">
+            <div class="ui segment form" ng-controller="DemoCtrl as vm">
                 <div class="fields">
                     <div class="eight wide field">
-                        <div sui-select on-change="ctrl.onChange(selected)" options="ctrl.countryOptions" selected="ctrl.selected" label="Country: " default-option="uk" searchable="true"></div>
+                        <div sui-select indicating-text="select a country" on-select="vm.onSelect(model)" options="vm.countryOptions" model="vm.selected" label="Country: " searchable="true"></div>
                     </div>
                     <div class="eight wide field">
-                        <div sui-select ajax-url="../json/form-options-country.json" label="Load options from some URL: " selected="ctrl.ajaxSelected" default-option="Click to fetch country list" searchable="true"></div>
+                        <div sui-select indicating-text="click to load options" ajax-url="../json/form-options-country.json" label="Load options from some URL: " selected="vm.ajaxSelected" default-option="Click to fetch country list" searchable="true"></div>
                     </div>
                 </div>
                 <div class="ui positive message">
-                    Country: {{ ctrl.selected }}; From Ajax: {{ ctrl.ajaxSelected }}; After change: {{ ctrl.valueAfterSelect }}
+                    Country: {{ vm.selected }}; From Ajax: {{ vm.ajaxSelected }}; After change: {{ vm.valueAfterSelect }}
                 </div>
             <div>
         </file>
         <file name="app.js">
         angular.module('sui.select')
-            .controller('demoCtrl', function () {
+            .controller('DemoCtrl', function () {
                 var vm = this;
-                vm.selected = '';
+                vm.selected = {
+                    label: 'United States',
+                    value: 'us',
+                    icon: 'us flag'
+                };
                 vm.ajaxSelected = '';
                 vm.countryOptions = [{
                     label: 'China',
                     value: 'cn',
                     icon: 'cn flag'
-                }, {
-                    label: 'United States',
-                    value: 'us',
-                    icon: 'us flag'
-                }, {
+                }, vm.selected, {
                     label: 'Russia',
                     value: 'ru',
                     icon: 'ru flag'
@@ -1056,8 +1055,8 @@ angular.module('sui.rating', [])
                     value: 'ph',
                     icon: 'ph flag'
                 }];
-                vm.onChange = function (selected) {
-                    vm.valueAfterSelect = selected;
+                vm.onSelect = function (model) {
+                    vm.valueAfterSelect = model;
                 };
             });
         </file>
@@ -1069,32 +1068,33 @@ angular.module('sui.select', [])
         return {
             restrict: 'AE',
             scope: {
-                disabled: '@',      // {Boolean} Indicate whether the whole select menu is disabled
-                label: '@',         // {String}  Label to be displayed as beside the select
-                selected: '=',      // {String}  Value of the selected option
-                options: '=',       // {Object}  Options of the select
-                defaultOption: '@', // {String}  Default text in gray color; if null, the first option is selected
-                searchable: '@',    // {Boolean} The menu is searchable
-                ajaxUrl: '@',       // {String}  If specified, go to fetch options from this URL
-                onChange: '&'       // {Function} The callback after changing
+                model: '=',
+                options: '=',
+                indicatingText: '@',
+                disabled: '@',
+                label: '@',
+                searchable: '@',
+                ajaxUrl: '@',
+                onSelect: '&'
             },
-            transclude: true,
+            controllerAs: 'vm',
+            bindToController: true,
             template: 
-                '<div class="field sui-select" ng-class="{error: _failed}">' +
+                '<div class="field sui-select" ng-class="{error: vm._failed}">' +
                     '<label ng-bind="label"></label>' +
-                    '<div class="ui search selection dropdown" ng-class="{active: _isSelecting, disabled: disabled}" ng-click="onSelect($event)">' +
-                        '<select ng-model="selected">' +
-                           '<option ng-repeat="opt in options" value="{{opt.value}}" ng-bind="opt.label"></option>' +
+                    '<div class="ui search selection dropdown" ng-class="{active: vm._isSelecting, disabled: disabled}" ng-click="vm._loadOptions($event)">' +
+                        '<select ng-model="vm.model.value">' +
+                           '<option ng-repeat="opt in vm.options" value="{{opt.value}}" ng-bind="opt.label"></option>' +
                         '</select>' +
-                        '<i class="dropdown icon"></i><div ng-show="_isLoading" class="ui active mini inline loader"></div> ' +
-                        '<input class="search"" ng-show="searchable" ng-model="_keyword" ng-model-options="{debounce: 300}" ng-change="search(_keyword)">' +
-                        '<div class="text" ng-hide="_keyword || _isLoading" ng-class="{default: !selected}">' + 
-                            '<i ng-show="_selectedOption.icon" class="{{ _selectedOption.icon }}"></i>' +
-                            '<span ng-bind="_selectedOption ? _selectedOption.label : defaultOption"></span>' +
+                        '<i class="dropdown icon"></i><div ng-show="vm._isLoading" class="ui active mini inline loader"></div> ' +
+                        '<input class="search"" ng-show="vm.searchable" ng-model="vm._keyword" ng-model-options="{debounce: 300}" ng-change="vm._search(vm._keyword)">' +
+                        '<div class="text" ng-hide="vm._keyword || vm._isLoading" ng-class="{default: vm._noDefaultModel() }">' + 
+                            '<i ng-show="vm.model.icon" class="{{ vm.model.icon }}"></i>' +
+                            '<span ng-bind="vm.model.label || vm.indicatingText"></span>' +
                         '</div>' +
-                        '<div class="menu transition animating slide down in" ng-class="{visible: _isSelecting, _hidden: !_isSelecting}">' +
-                            '<div class="item" ng-class="{active: isSelected(opt), selected: isSelected(opt)}"' + 
-                                'ng-click="onSelectOption(opt, $event)" ng-repeat="opt in options" ng-hide="opt._hidden">' + 
+                        '<div class="menu transition animating slide down in" ng-class="{visible: vm._isSelecting, _hidden: !vm._isSelecting}">' +
+                            '<div class="item" ng-class="{active: vm._isSelected(opt), selected: vm._isSelected(opt)}"' + 
+                                'ng-click="vm._onSelect(opt, $event)" ng-repeat="opt in vm.options" ng-hide="opt._hidden">' + 
                                 '<i ng-show="opt.icon" class="{{ opt.icon }}"></i>' + 
                                 '<span ng-bind="opt.label"></span>' +
                             '</div>' + 
@@ -1102,97 +1102,108 @@ angular.module('sui.select', [])
                     '</div>' +
                 '</div>',
             controller: ['$scope', '$timeout', function ($scope, $timeout) {
-                $scope.defaultOption && angular.forEach($scope.options, function (opt) {
-                    if (opt.value === $scope.defaultOption) {
-                        $scope._selectedOption = opt;
-                        $scope.selected = opt.value;
-                    }
-                });
 
-                $scope.search = function (_keyword) {
-                    $timeout(function () {
-                        findInAllFields(_keyword);
-                    });
-                };
+                var vm = this;
+                vm._search = _search;
+                vm._onSelect = _onSelect;
+                vm._isSelected = _isSelected;
+                vm._indexOptions = _indexOptions;
+                vm._reset = _reset;
+                vm._noDefaultModel = _noDefaultModel;
 
-                function findInAllFields (_keyword) {
-                    _keyword = _keyword.toLowerCase();
-                    angular.forEach($scope._indexes, function(fieldString, index) {
-                        var opt = $scope.options[index];
-                        opt._hidden = true;
-                        (fieldString.indexOf(_keyword) >= 0) && (opt._hidden = false);
-                    });
-                }
+                _indexOptions();
 
-                $scope.onSelectOption = function (opt, $event) {
-                    $event.stopPropagation();
-                    $scope._selectedOption = opt;
-                    $scope.selected = opt.value;
-                    $scope.resetFlags();
-                    $scope.onChange && $scope.onChange({
-                        selected: $scope.selected
-                    });
-                };
-
-                $scope.isSelected = function (opt) {
-                    return $scope.selected === opt.value;
-                };
-
-                $scope.resetFlags = function () {
-                    angular.forEach($scope.options, function (opts) {
-                        opts._hidden = false;
-                    });
-                    $scope._keyword = '';
-                    $scope._isSelecting = false;
-                };
-            }],
-            link: function (scope, iElement, attrs) {
-                indexOptions();
-
-                scope.onSelect = function ($event) {
-                    $event.stopPropagation();
-
-                    if (!scope.options && scope.ajaxUrl) {
-                        scope._isLoading = true;
-                        $http.get(scope.ajaxUrl).success(function (data) {
-                            scope.options = data.options;
-                            indexOptions();
-                            scope._isLoading = false;
-                            scope._failed = false;
-                        }).error(function () {
-                            console.error('_failed to load options from ' + scope.ajaxUrl);
-                            scope._isLoading = false;
-                            scope._failed = true;
-                        });
-                    }
-
-                    if (scope._isSelecting && scope.searchable) {
-                        return;
-                    }
-                    scope._isSelecting = !scope._isSelecting;
-                    if (scope._isSelecting) {
-                        $document.on('click', clickToHideSelect);
-                    } else {
-                        $document.off('click', clickToHideSelect);
-                    }
-                };
-
-                function indexOptions () {
-                    scope._indexes = [];
-                    angular.forEach(scope.options, function (field, index) {
+                // Index the all fields of the options
+                function _indexOptions () {
+                    vm._indexes = [];
+                    angular.forEach(vm.options, function (field, index) {
                         var chainedFields = '';
                         angular.forEach(field, function (value, key) {
                             (key.indexOf('$') < 0) && (key !== '_hidden') && (chainedFields += value.toString().toLowerCase() + '***');
                         });
-                        scope._indexes.push(chainedFields);
+                        vm._indexes.push(chainedFields);
                     });
                 }
 
-                function clickToHideSelect(e) {
-                    scope.$apply(function () {
-                        scope.resetFlags();
+                // Search the options
+                function _search (keyword) {
+                    $timeout(function () {
+                        findInAllFields(keyword);
+                    });
+
+                    function findInAllFields (keyword) {
+                        keyword = keyword.toLowerCase();
+                        angular.forEach(vm._indexes, function(fieldString, index) {
+                            var opt = vm.options[index];
+                            opt._hidden = true;
+                            (fieldString.indexOf(keyword) >= 0) && (opt._hidden = false);
+                        });
+                    }
+                }
+
+                // When clicking on some option on the dropdown
+                function _onSelect(opt, $event) {
+                    $event.stopPropagation();
+                    vm.model = opt;
+                    vm._reset();
+                    vm.onSelect && vm.onSelect({
+                        model: vm.model
                     });
                 }
+
+                // Reset all flags on the view model
+                function _reset() {
+                    angular.forEach(vm.options, function (opts) {
+                        opts._hidden = false;
+                    });
+                    vm._keyword = '';
+                    vm._isSelecting = false;
+                    vm._isLoading = false;
+                };
+
+                // Check whether an option is selected
+                function _isSelected(opt) {
+                    return vm.model === opt;
+                }
+
+                function _noDefaultModel() {
+                    return !(vm.model && vm.model.hasOwnProperty('value'));
+                }
+
+            }],
+            link: function (scope, iElement, attrs) {
+                var vm = scope.vm;
+                vm._loadOptions = _loadOptions;
+
+                function _loadOptions($event) {
+                    $event.stopPropagation();
+
+                    if (!vm.options && vm.ajaxUrl) {
+                        vm._isLoading = true;
+                        $http.get(vm.ajaxUrl).success(function (data) {
+                            vm.options = data.options;
+                            vm._indexOptions();
+                            vm._reset();
+                            vm._isSelecting = true;
+                        }).error(function () {
+                            console.error('_failed to load options from ' + scope.ajaxUrl);
+                            vm._reset();
+                        });
+                    }
+
+                    if (vm._isSelecting && vm.searchable) {
+                        return;
+                    }
+
+                    vm._isSelecting = !vm._isSelecting;
+                    vm._isSelecting ? $document.on('click', clickToHideSelect) : $document.off('click', clickToHideSelect);
+
+                    function clickToHideSelect(e) {
+                        scope.$apply(function () {
+                            vm._reset();
+                        });
+                    }
+                };
             }
         };
     }]);
