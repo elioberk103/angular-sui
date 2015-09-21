@@ -8,20 +8,20 @@
 </div></div>
 <h2 id="usage">Usage</h2>
 <div class="usage">as element:<pre class="prettyprint linenums">&lt;sui-select
+       model="{string}"
+       options="{object}"
+       indicating-text="{string}"
        disabled
        label="{string}"
-       selected
-       options="{object}"
-       default-option="{string}"
        searchable="{boolean}"
        ajax-url="{string}"&gt;
 &lt;/sui-select&gt;</pre>
 as attribute<pre class="prettyprint linenums">&lt;ANY sui-select
+     model="{string}"
+     options="{object}"
+     indicating-text="{string}"
      disabled
      label="{string}"
-     selected
-     options="{object}"
-     default-option="{string}"
      searchable="{boolean}"
      ajax-url="{string}"&gt;
    ...
@@ -30,13 +30,13 @@ as attribute<pre class="prettyprint linenums">&lt;ANY sui-select
 <div class="directive-info"><ul><li>This directive creates new scope.</li>
 </ul>
 </div>
-<h4 id="usage_directive-info_parameters">Parameters</h4><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>disabled</td><td><a href="" class="label type-hint type-hint-boolean">boolean</a></td><td><div class="sui-select-directive-page sui-select-directive-suiselect-page"><p>The select is disabled or not</p>
-</div></td></tr><tr><td>label</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="sui-select-directive-page sui-select-directive-suiselect-page"><p>The text shown above the select</p>
-</div></td></tr><tr><td>selected</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="sui-select-directive-page sui-select-directive-suiselect-page"><p><i class="exchange icon"></i>Value of the selected option</p>
+<h4 id="usage_directive-info_parameters">Parameters</h4><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>model</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="sui-select-directive-page sui-select-directive-suiselect-page"><p><i class="exchange icon"></i>Value of the selected option</p>
 </div></td></tr><tr><td>options</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="sui-select-directive-page sui-select-directive-suiselect-page"><p><i class="exchange icon"></i>Options of the select</p>
-</div></td></tr><tr><td>defaultOption</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="sui-select-directive-page sui-select-directive-suiselect-page"><p>Default text in gray color; if null, the first option is selected</p>
+</div></td></tr><tr><td>indicating-text</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="sui-select-directive-page sui-select-directive-suiselect-page"><p>Text when no default option is selected</p>
+</div></td></tr><tr><td>disabled</td><td><a href="" class="label type-hint type-hint-boolean">boolean</a></td><td><div class="sui-select-directive-page sui-select-directive-suiselect-page"><p>The select is disabled or not</p>
+</div></td></tr><tr><td>label</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="sui-select-directive-page sui-select-directive-suiselect-page"><p>The text shown above the select</p>
 </div></td></tr><tr><td>searchable</td><td><a href="" class="label type-hint type-hint-boolean">boolean</a></td><td><div class="sui-select-directive-page sui-select-directive-suiselect-page"><p>Whether searchable or not</p>
-</div></td></tr><tr><td>ajaxUrl</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="sui-select-directive-page sui-select-directive-suiselect-page"><p>If specified, go to fetch options from this URL</p>
+</div></td></tr><tr><td>ajax-url</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="sui-select-directive-page sui-select-directive-suiselect-page"><p>If specified, go to fetch options from this URL</p>
 </div></td></tr></tbody></table></div>
 <h2 id="example">Example</h2>
 <div class="example"><div class="sui-select-directive-page sui-select-directive-suiselect-page"><h4 id="example_source">Source</h4>
@@ -45,17 +45,17 @@ as attribute<pre class="prettyprint linenums">&lt;ANY sui-select
 <pre class="prettyprint linenums" ng-set-text="index.html-9" ng-html-wrap-loaded="sui.select angular.js app.js"></pre>
 <script type="text/ng-template" id="index.html-9">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.0.7/semantic.css">
-    <div class="ui segment form" ng-controller="demoCtrl as ctrl">
+    <div class="ui segment form" ng-controller="DemoCtrl as vm">
         <div class="fields">
             <div class="eight wide field">
-                <div sui-select on-change="ctrl.onChange(selected)" options="ctrl.countryOptions" selected="ctrl.selected" label="Country: " default-option="uk" searchable="true"></div>
+                <div sui-select indicating-text="select a country" on-select="vm.onSelect(model)" options="vm.countryOptions" model="vm.selected" label="Country: " searchable="true"></div>
             </div>
             <div class="eight wide field">
-                <div sui-select ajax-url="../json/form-options-country.json" label="Load options from some URL: " selected="ctrl.ajaxSelected" default-option="Click to fetch country list" searchable="true"></div>
+                <div sui-select indicating-text="click to load options" ajax-url="../json/form-options-country.json" label="Load options from some URL: " selected="vm.ajaxSelected" default-option="Click to fetch country list" searchable="true"></div>
             </div>
         </div>
         <div class="ui positive message">
-            Country: {{ ctrl.selected }}; From Ajax: {{ ctrl.ajaxSelected }}; After change: {{ ctrl.valueAfterSelect }}
+            Country: {{ vm.selected }}; From Ajax: {{ vm.ajaxSelected }}; After change: {{ vm.valueAfterSelect }}
         </div>
     <div>
 </script>
@@ -64,19 +64,19 @@ as attribute<pre class="prettyprint linenums">&lt;ANY sui-select
 <pre class="prettyprint linenums" ng-set-text="app.js"></pre>
 <script type="text/ng-template" id="app.js">
 angular.module('sui.select')
-    .controller('demoCtrl', function () {
+    .controller('DemoCtrl', function () {
         var vm = this;
-        vm.selected = '';
+        vm.selected = {
+            label: 'United States',
+            value: 'us',
+            icon: 'us flag'
+        };
         vm.ajaxSelected = '';
         vm.countryOptions = [{
             label: 'China',
             value: 'cn',
             icon: 'cn flag'
-        }, {
-            label: 'United States',
-            value: 'us',
-            icon: 'us flag'
-        }, {
+        }, vm.selected, {
             label: 'Russia',
             value: 'ru',
             icon: 'ru flag'
@@ -89,8 +89,8 @@ angular.module('sui.select')
             value: 'ph',
             icon: 'ph flag'
         }];
-        vm.onChange = function (selected) {
-            vm.valueAfterSelect = selected;
+        vm.onSelect = function (model) {
+            vm.valueAfterSelect = model;
         };
     });
 </script>
