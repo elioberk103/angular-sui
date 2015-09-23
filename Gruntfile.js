@@ -22,7 +22,7 @@ module.exports = function (grunt) {
         clean: ['docs', 'dist'],
         concat: {
             dist: {
-                src: ['src/sui-common.js', 'src/**/*.js'],
+                src: ['src/**/*.js', '!src/**/*.spec.js'],
                 dest: 'dist/sui.js'
             }
         },

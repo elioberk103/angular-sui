@@ -90,24 +90,24 @@ angular.module('sui.rating', [])
             restrict: 'A',
             scope: {
                 model: '=',
-                size: '@?',
-                uiStyle: '@?',
+                size: '@',
+                uiStyle: '@',
                 options: '=',
                 disabled: '@',
                 onLeave: '&',
                 onHover: '&',
                 onRate: '&'
             },
-            require: ['suiRating', 'ngModel'],
-            template: '<div class="ui {{vm.uiStyle}} {{vm.size}} rating sui-rating">' +
-            '<i ng-repeat="v in vm.options track by $index" ng-mouseenter="vm._onHover(v)" ng-mouseleave="vm._onLeave(v)" ng-click="vm._onRate(v)" ' +
-            'ng-class="{ selected: v <= vm.hovered, active: v <= vm.model, disabled: vm.disabled }" class="icon"></i>' +
-            '</div>',
+            template:
+                '<div class="ui {{vm.uiStyle}} {{vm.size}} rating sui-rating">' +
+                    '<i ng-repeat="v in vm.options track by $index" ng-mouseenter="vm._onHover(v)" ng-mouseleave="vm._onLeave(v)" ng-click="vm._onRate(v)" ' +
+                        'ng-class="{ selected: v <= vm._hovered, active: v <= vm.model, disabled: vm.disabled }" class="icon"></i>' +
+                '</div>',
             controllerAs: 'vm',
             bindToController: true,
             controller: [function () {
                 var vm = this;
-                vm.hovered = NaN;
+                vm._hovered = NaN;
                 vm._onRate = _onRate;
                 vm._onHover = _onHover;
                 vm._onLeave = _onLeave;
@@ -122,13 +122,13 @@ angular.module('sui.rating', [])
                 }
 
                 function _onLeave(value) {
-                    vm.hovered = NaN;
+                    vm._hovered = NaN;
                     invokeHandler(vm.onLeave, value);
                 }
 
                 function invokeHandler(fn, value) {
                     if (!vm.disabled) {
-                        vm.hovered = value;
+                        vm._hovered = value;
                         fn && fn({
                             model: value || vm.model
                         });
