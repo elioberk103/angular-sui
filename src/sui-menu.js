@@ -34,7 +34,7 @@
  *  </example>
  */
 
-angular.module('sui.menu', ['sui.common'])
+angular.module('sui.menu', [])
     .directive('suiDropdownMenu', function () {
        return {
            restrict: 'AE',
@@ -50,7 +50,7 @@ angular.module('sui.menu', ['sui.common'])
                onChange: '&'
            },
            template:
-               '<div sui-common class="ui dropdown sui-dropdown-menu" ng-mouseenter="vm.active = true" ng-mouseleave="vm.active = false" ' +
+               '<div class="ui dropdown sui-dropdown-menu" ng-mouseenter="vm.active = true" ng-mouseleave="vm.active = false" ' +
                    'ng-class="{\'visible active\': vm.active}">' +
                    '<i ng-show="vm.icon" class="{{vm.icon}} icon"></i>' +
                    '{{vm.label}}' +
