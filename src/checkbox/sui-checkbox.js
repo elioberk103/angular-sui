@@ -221,17 +221,17 @@
                     name: '@'
                 },
                 template:
-                '<div class="ui {{vm.uiStyle}} ' + type.toLowerCase() + ' checkbox" ng-class="{disabled: vm.disabled}" ng-click="vm.onClick()">' +
-                '<input type="checkbox" name="{{vm.name}}" ng-model="vm.model" ng-disabled="{{vm.disabled}}" class="hidden" ng-checked="vm.model">' +
-                '<label ng-bind="vm.label"></label>' +
-                '</div>',
+                    '<div class="ui {{vm.uiStyle}} ' + type.toLowerCase() + ' checkbox sui-checkbox" ng-class="{disabled: vm.disabled}" ng-click="vm._onClick()">' +
+                        '<input type="checkbox" name="{{vm.name}}" ng-model="vm.model" ng-disabled="{{vm.disabled}}" class="hidden" ng-checked="vm.model">' +
+                        '<label ng-bind="vm.label"></label>' +
+                    '</div>',
                 controllerAs: 'vm',
                 bindToController: true,
                 controller: [function () {
                     var vm = this;
-                    vm.onClick = onClick;
+                    vm._onClick = _onClick;
 
-                    function onClick() {
+                    function _onClick() {
                         if (vm.disabled) {
                             return;
                         }
@@ -256,7 +256,7 @@
                 onCheck: '&'
             },
             template:
-                '<div>' +
+                '<div class="sui-checkbox-group">' +
                     '<div sui-checkbox ng-repeat="r in vm.options" model="vm._checkedItems[r.value]" ' +
                         'label="{{r.label}}" ' +
                         'name="{{vm.name}}" ' +
