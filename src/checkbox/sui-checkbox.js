@@ -163,7 +163,8 @@
             <div class="ui segment" ng-controller="DemoController as vm">
                 <div class="ui segment">
                     <div>This is a `sui-checkbox-group`:</div>
-                    <div sui-checkbox-group options="vm.options" disabled="true" model="vm.groupSelected"></div>
+                    <div sui-checkbox-group options="vm.options" disabled="{{vm.disabled}}" model="vm.groupSelected"></div>
+                    <button class="ui tiny primary button" ng-click="vm.toggleDisabled()">Toggle disabled</button>
                 </div>
                 <div class="ui positive message">
                     <div>groupSelected: {{ vm.groupSelected }}</div>
@@ -174,6 +175,10 @@
         angular.module('sui.checkbox')
             .controller('DemoController', ['$scope', function ($scope) {
                 var vm = this;
+                vm.disabled = '';
+                vm.toggleDisabled = function () {
+                    vm.disabled = vm.disabled ? '' : 'true';
+                };
                 vm.options = [{
                     label: 'Orange',
                     value: 'orangeColor'
