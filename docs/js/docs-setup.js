@@ -37,7 +37,7 @@ NG_DOCS={
       "type": "directive",
       "moduleName": "sui.checkbox",
       "shortDescription": "A checkbox group.",
-      "keywords": "$scope angular api app blue bluecolor called check checkbox checkboxes class cloudflare controller css democontroller directive disabled ea exchange function green greencolor group grouping groupselected href html https icon items js label list message model module ng-controller on-check option options orange orangecolor populate positive red redcolor rel segment selected stylesheet sui sui-checkbox-group suicheckbox text toggled type ui values var vm"
+      "keywords": "$scope angular api app blue bluecolor called check checkbox checkboxes class cloudflare controller css democontroller directive disabled ea exchange function green greencolor group grouping groupselected href html https icon items js label list message model module ng-controller on-check option options orange orangecolor populate positive red redcolor rel segment selected stylesheet sui sui-checkbox-group suicheckbox text toggled true type ui values var vm"
     },
     {
       "section": "api",

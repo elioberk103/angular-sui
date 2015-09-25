@@ -163,7 +163,7 @@
             <div class="ui segment" ng-controller="DemoController as vm">
                 <div class="ui segment">
                     <div>This is a `sui-checkbox-group`:</div>
-                    <div sui-checkbox-group options="vm.options" model="vm.groupSelected"></div>
+                    <div sui-checkbox-group options="vm.options" disabled="true" model="vm.groupSelected"></div>
                 </div>
                 <div class="ui positive message">
                     <div>groupSelected: {{ vm.groupSelected }}</div>
@@ -261,6 +261,7 @@
                         'label="{{r.label}}" ' +
                         'name="{{vm.name}}" ' +
                         'value="{{r.value}}" ' +
+                        'disabled="{{vm.disabled}}" ' +
                         'on-check="vm._onCheck(r.value)">' +
                     '</div>' +
                 '</div>',
@@ -280,8 +281,11 @@
                         return;
                     }
 
-                    var index = vm.model.findIndex(function (v) {
-                        return v === item;
+                    var index = -1;
+                    angular.forEach(vm.model, function (value, i) {
+                        if (item === value) {
+                            index = i;
+                        }
                     });
                     index >= 0 ? vm.model.splice(index, 1) : vm.model.push(item);
 

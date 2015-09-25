@@ -24,7 +24,14 @@ describe('sui-checkbox-group test', function () {
         vm.groupSelected = ['redColor', 'blueColor'];
         scope.$digest();
 
-        var rootElement = angular.element(element.children()[0]);
-        expect(rootElement.attr('class')).to.contain('sui-checkbox-group');
+        var checkboxes = element.find('.sui-checkbox');
+        $(checkboxes[0]).triggerHandler('click');
+        expect(vm.groupSelected).to.include('orangeColor');
+        $(checkboxes[1]).triggerHandler('click');
+        expect(vm.groupSelected).not.to.include('blueColor');
+        $(checkboxes[2]).triggerHandler('click');
+        expect(vm.groupSelected).to.include('greenColor');
+        $(checkboxes[3]).triggerHandler('click');
+        expect(vm.groupSelected).not.to.include('redColor');
     });
 });
