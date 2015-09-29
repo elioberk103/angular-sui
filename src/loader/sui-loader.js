@@ -12,27 +12,27 @@
     <example module="sui.loader">
         <file name="index.html">
             <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.0.7/semantic.css">
-            <div class="ui segment" ng-controller="demoCtrl as ctrl">
-                <div sui-loader active="ctrl.loader.active" size="{{ctrl.loader.size}}"
-                    dim-whole-page="ctrl.loader.dimWholePage" loading-text="Loading...">
+            <div class="ui segment" ng-controller="DemoCtrl as vm">
+                <div sui-loader active="vm.loader.active" size="{{vm.loader.size}}"
+                    dim-whole-page="vm.loader.dimWholePage" loading-text="Loading...">
                     <div class="ui positive message">
-                        {{ ctrl.loader | json }}
+                        {{ vm.loader | json }}
                     </div>
                 </div>
                 <div>
-                    <button class="ui primary button" ng-click="ctrl.toggle()">Toggle loader</button>
-                    <button class="ui primary button" ng-click="ctrl.toggleDimmingWholePage()">Toggle dimming whole page</button>
+                    <button class="ui primary button" ng-click="vm.toggle()">Toggle loader</button>
+                    <button class="ui primary button" ng-click="vm.toggleDimmingWholePage()">Toggle dimming whole page</button>
                 </div>
             </div>
         </file>
         <file name="app.js">
         angular.module('sui.loader')
-        .controller('demoCtrl', ['$scope', function ($scope) {
+        .controller('DemoCtrl', ['$scope', function ($scope) {
             var vm = this;
             vm.loader = {
                 active: false,
                 dimWholePage: false,
-                size: 'massive'
+                size: 'small'
             };
             vm.toggle = function () {
                 vm.loader.active = !vm.loader.active;

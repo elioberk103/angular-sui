@@ -10,7 +10,7 @@ NG_DOCS={
       "type": "directive",
       "moduleName": "sui.accordion",
       "shortDescription": "Accordion to switch to different sub-sections. It has ng-transclude: true to include an array of directive suiAccordionItem.",
-      "keywords": "$scope acc accordion accordions acquire active ae allows angular animal api app array assess breed breeds buy buying callback choosing class cloudflare common companion compatible content controller convenient css ctrl democtrl desires directive dog dogs domesticated faithfulness find finding function good guest helps households href html https include item items js json lastly lifestyle loyalty message model module ng-controller ng-repeat ng-transclude on-switch onswitch owner owners pedigree pet positive private prospective rel segment select selected shelter shelters shop shops size stylesheet sub-sections sui sui-accordion sui-accordion-item suiaccordionitem switch switching temperament text three title true type ui upbringing var varies vm ways world"
+      "keywords": "$scope acc accordion accordions acquire active ae allows angular animal api app array assess breed breeds buy buying callback choosing class cloudflare common companion compatible content controller convenient css democtrl desires directive dog dogs domesticated faithfulness find finding function good guest helps households href html https include item items js json lastly lifestyle loyalty message model module ng-controller ng-repeat ng-transclude on-switch onswitch owner owners pedigree pet positive private prospective rel segment select selected shelter shelters shop shops size stylesheet sub-sections sui sui-accordion sui-accordion-item suiaccordionitem switch switching temperament text three title true type ui upbringing var varies vm ways world"
     },
     {
       "section": "api",
@@ -64,7 +64,7 @@ NG_DOCS={
       "type": "directive",
       "moduleName": "sui.loader",
       "shortDescription": "A dimmed loader background when you are loading something.",
-      "keywords": "$scope active ae angular api app background button class cloudflare controller css ctrl democtrl dim dim-whole-page dimmed dimmer dimming dimwholepage directive display displayed empty exchange false function href html https huge icon js json large loader loading loading-text massive message mini module ng-click ng-controller positive primary rel segment size small spinner stylesheet sui sui-loader text tiny toggle toggledimmingwholepage type ui var vm"
+      "keywords": "$scope active ae angular api app background button class cloudflare controller css democtrl dim dim-whole-page dimmed dimmer dimming dimwholepage directive display displayed empty exchange false function href html https huge icon js json large loader loading loading-text massive message mini module ng-click ng-controller positive primary rel segment size small spinner stylesheet sui sui-loader text tiny toggle toggledimmingwholepage type ui var vm"
     },
     {
       "section": "api",

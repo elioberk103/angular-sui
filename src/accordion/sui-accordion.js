@@ -13,20 +13,20 @@
     <example module="sui.accordion">
         <file name="index.html">
             <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.0.7/semantic.css">
-            <div class="ui segment" ng-controller="demoCtrl as ctrl">
-                <div sui-accordion on-switch="ctrl.onSwitch(model)">
-                    <div sui-accordion-item ng-repeat="acc in ctrl.accordions" title="{{acc.title}}" active="acc.active">
+            <div class="ui segment" ng-controller="DemoCtrl as vm">
+                <div sui-accordion on-switch="vm.onSwitch(model)">
+                    <div sui-accordion-item ng-repeat="acc in vm.accordions" title="{{acc.title}}" active="acc.active">
                         {{ acc.content }}
                     </div>
                 </div>
                 <div class="ui positive message">
-                    Selected item after callback: {{ ctrl.model | json }}
+                    Selected item after callback: {{ vm.model | json }}
                 </div>
             </div>
         </file>
         <file name="app.js">
         angular.module('sui.accordion')
-            .controller('demoCtrl', ['$scope', function ($scope) {
+            .controller('DemoCtrl', ['$scope', function ($scope) {
                 var vm = this;
 
                 vm.accordions = [{
