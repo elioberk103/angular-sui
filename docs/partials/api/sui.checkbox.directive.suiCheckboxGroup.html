@@ -35,15 +35,17 @@ as attribute<pre class="prettyprint linenums">&lt;ANY sui-checkbox-group
 </div></td></tr></tbody></table></div>
 <h2 id="example">Example</h2>
 <div class="example"><div class="sui-checkbox-directive-page sui-checkbox-directive-suicheckboxgroup-page"><h4 id="example_source">Source</h4>
-<div source-edit="sui.checkbox" source-edit-deps="angular.js app.js" source-edit-html="index.html-4" source-edit-css="" source-edit-js="app.js" source-edit-json="" source-edit-unit="" source-edit-scenario=""></div>
+<div source-edit="sui.checkbox" source-edit-deps="angular.js app.js" source-edit-html="index.html-3" source-edit-css="" source-edit-js="app.js" source-edit-json="" source-edit-unit="" source-edit-scenario=""></div>
 <div class="tabbable"><div class="tab-pane" title="index.html">
-<pre class="prettyprint linenums" ng-set-text="index.html-4" ng-html-wrap-loaded="sui.checkbox angular.js app.js"></pre>
-<script type="text/ng-template" id="index.html-4">
+<pre class="prettyprint linenums" ng-set-text="index.html-3" ng-html-wrap-loaded="sui.checkbox angular.js app.js"></pre>
+<script type="text/ng-template" id="index.html-3">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.0.7/semantic.css">
     <div class="ui segment" ng-controller="DemoController as vm">
         <div class="ui segment">
-            <div>This is a `sui-checkbox-group`:</div>
-            <div sui-checkbox-group options="vm.options" model="vm.groupSelected"></div>
+            <p>This is a `sui-checkbox-group`:</p>
+            <div inline="{{vm.inline}}" sui-checkbox-group options="vm.options" disabled="{{vm.disabled}}" model="vm.groupSelected"></div>
+            <button class="ui tiny primary button" ng-click="vm.toggleDisabled()">Toggle disabled</button>
+            <button class="ui tiny primary button" ng-click="vm.toggleInline()">Toggle inline</button>
         </div>
         <div class="ui positive message">
             <div>groupSelected: {{ vm.groupSelected }}</div>
@@ -57,6 +59,13 @@ as attribute<pre class="prettyprint linenums">&lt;ANY sui-checkbox-group
 angular.module('sui.checkbox')
     .controller('DemoController', ['$scope', function ($scope) {
         var vm = this;
+        vm.disabled = '';
+        vm.toggleDisabled = function () {
+            vm.disabled = vm.disabled ? '' : 'true';
+        };
+        vm.toggleInline = function () {
+            vm.inline = vm.inline ? '' : 'true';
+        };
         vm.options = [{
             label: 'Orange',
             value: 'orangeColor'
@@ -75,6 +84,6 @@ angular.module('sui.checkbox')
 </script>
 </div>
 </div><h4 id="example_demo">Demo</h4>
-<div class="well doc-example-live animate-container" ng-embed-app="sui.checkbox" ng-set-html="index.html-4" ng-eval-javascript="app.js"></div>
+<div class="well doc-example-live animate-container" ng-embed-app="sui.checkbox" ng-set-html="index.html-3" ng-eval-javascript="app.js"></div>
 </div></div>
 </div>

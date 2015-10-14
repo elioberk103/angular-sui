@@ -10,7 +10,7 @@ NG_DOCS={
       "type": "directive",
       "moduleName": "sui.accordion",
       "shortDescription": "Accordion to switch to different sub-sections. It has ng-transclude: true to include an array of directive suiAccordionItem.",
-      "keywords": "$scope acc accordion accordions acquire active ae allows angular animal api app array assess breed breeds buy buying callback choosing class cloudflare common companion compatible content controller convenient css ctrl democtrl desires directive dog dogs domesticated faithfulness find finding function good guest helps households href html https include item items js json lastly lifestyle loyalty message model module ng-controller ng-repeat ng-transclude on-switch onswitch owner owners pedigree pet positive private prospective rel segment select selected shelter shelters shop shops size stylesheet sub-sections sui sui-accordion sui-accordion-item suiaccordionitem switch switching temperament text three title true type ui upbringing var varies vm ways world"
+      "keywords": "$scope acc accordion accordions acquire active ae allows angular animal api app array assess breed breeds buy buying callback choosing class cloudflare common companion compatible content controller convenient css democtrl desires directive dog dogs domesticated faithfulness find finding function good guest helps households href html https include item items js json lastly lifestyle loyalty message model module ng-controller ng-repeat ng-transclude on-switch onswitch owner owners pedigree pet positive private prospective rel segment select selected shelter shelters shop shops size stylesheet sub-sections sui sui-accordion sui-accordion-item suiaccordionitem switch switching temperament text three title true type ui upbringing var varies vm ways world"
     },
     {
       "section": "api",
@@ -37,7 +37,7 @@ NG_DOCS={
       "type": "directive",
       "moduleName": "sui.checkbox",
       "shortDescription": "A checkbox group.",
-      "keywords": "$scope angular api app blue bluecolor called check checkbox checkboxes class cloudflare controller css democontroller directive disabled ea exchange function green greencolor group grouping groupselected href html https icon items js label list message model module ng-controller on-check option options orange orangecolor populate positive red redcolor rel segment selected stylesheet sui sui-checkbox-group suicheckbox text toggled type ui values var vm"
+      "keywords": "$scope angular api app blue bluecolor button called check checkbox checkboxes class cloudflare controller css democontroller directive disabled ea exchange function green greencolor group grouping groupselected href html https icon inline items js label list message model module ng-click ng-controller on-check option options orange orangecolor populate positive primary red redcolor rel segment selected stylesheet sui sui-checkbox-group suicheckbox text tiny toggled toggledisabled toggleinline true type ui values var vm"
     },
     {
       "section": "api",
@@ -64,7 +64,7 @@ NG_DOCS={
       "type": "directive",
       "moduleName": "sui.loader",
       "shortDescription": "A dimmed loader background when you are loading something.",
-      "keywords": "$scope active ae angular api app background button class cloudflare controller css ctrl democtrl dim dim-whole-page dimmed dimmer dimming dimwholepage directive display displayed empty exchange false function href html https huge icon js json large loader loading loading-text massive message mini module ng-click ng-controller positive primary rel segment size small spinner stylesheet sui sui-loader text tiny toggle toggledimmingwholepage type ui var vm"
+      "keywords": "$scope active ae angular api app background button class cloudflare controller css democtrl dim dim-whole-page dimmed dimmer dimming dimwholepage directive display displayed empty exchange false function href html https huge icon js json large loader loading loading-text massive message mini module ng-click ng-controller positive primary rel segment size small spinner stylesheet sui sui-loader text tiny toggle toggledimmingwholepage type ui var vm"
     },
     {
       "section": "api",
@@ -82,16 +82,7 @@ NG_DOCS={
       "type": "directive",
       "moduleName": "sui.progress",
       "shortDescription": "A progress bar.",
-      "keywords": "$interval active ae alert alert-error angular animation api app attach attachedtocontent bar bootstrap bottom bottom-attached bottomattached button cancel class click cloudflare collision color colors content controller crashes css ctrl demo democtrl directive disabled display edit empty error exchange function gray- href html https huge icon indicating integer js json label large link loading massive message mini module ng-click ng-controller note null number percentage plunker positive primary progress rel return role segment semantic-ui show-percentage showpercentage size small stylesheet success sui sui-progress text tiny tiptap top top-attached topattached transcluded true type ui var view vm warning working"
-    },
-    {
-      "section": "api",
-      "id": "sui.radio.directive:suiRadio",
-      "shortName": "suiRadio",
-      "type": "directive",
-      "moduleName": "sui.radio",
-      "shortDescription": "A single radio. It is used by suiRadioGroup.",
-      "keywords": "ae api callback checked class demo directive disabled displayed example exchange function grouping icon label model on-check radio single sui suiradiogroup text"
+      "keywords": "$interval active ae alert alert-error angular animation api app attach attachedtocontent bar bootstrap bottom bottom-attached bottomattached button cancel class click cloudflare collision color colors content controller crashes css demo democtrl directive disable disabled display edit empty error exchange function gray- href html https huge icon indicating integer js json label large link loading massive message mini module ng-click ng-controller note null number percentage plunker positive primary progress rel return role segment semantic-ui show-percentage showpercentage size small stylesheet success sui sui-progress text tiny tiptap top top-attached topattached transcluded true type ui var view vm warning"
     },
     {
       "section": "api",
@@ -100,7 +91,7 @@ NG_DOCS={
       "type": "directive",
       "moduleName": "sui.radio",
       "shortDescription": "A form radio group.",
-      "keywords": "ae angular api app callback checked class cloudflare color console controller css democontroller directive disabled elements exchange fields form function green greencolor group groupcolor href html https icon inline item items js label list log message model module ng-controller ng-repeat null on-toggle oncheck option options orange orangecolor populate positive radio radios red redcolor rel segment selected stylesheet sui sui-radio sui-radio-group text true type ui var vm"
+      "keywords": "ae angular api app button callback called checked class cloudflare controller css democontroller directive disable disabled elements exchange form function green greencolor group groupcolor href html https icon inline item items js label list logaftercheck message model module ng-click ng-controller null on-check oncheck option options orange orangecolor populate positive primary radio radio-group radios red redcolor rel segment selected stylesheet sui sui-radio-group text toggledisabled toggleinline true type ui var vm"
     },
     {
       "section": "api",

@@ -1,145 +1,5 @@
 /**
  * @ngdoc directive
- * @name sui.rating.directiv:suiRating
- * @description
- * Rating directive
- *
- * @restrict EA
- * @element ANY
- * @scope
- *
- * @param {int} model <i class="exchange icon"></i>The selected value
- * @param {enum} size "`mini`" || "`tiny`" || "`small`" || "`large`" || "`huge`" || "`massive`" || `empty`
- * @param {enum} ui-style "`star`" || "`heart`"
- * @param {array} options <i class="exchange icon"></i> Array of integer values, e.g., `[1, 2, 3, 5, 8, 13]`
- * @param {boolean} disabled Disabled or not
- * @param {function} on-leave Callback when leaving the rating
- * @param {function} on-hover Callback when hovering the rating
- * @param {function} on-rate  Callback when confirming the rating
- *
- * @example
-    <example module="sui.rating">
-        <file name="index.html">
-            <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.0.7/semantic.css">
-            <div class="ui segment" ng-controller="DemoController as vm">
-                <div sui-rating model="vm.value" options="vm.options"
-                    on-rate="vm.onRate(model)" on-leave="vm.onLeave(model)" on-hover="vm.onHover(model)"
-                    size="{{vm.size}}" ui-style="{{vm.uiStyle}}" disabled="{{vm.disabled}}"></div>
-                <div class="ui divider"></div>
-                <button class="ui tiny negative button" ng-click="vm.toggleDisable()">Toggle disable</button>
-                <button class="ui tiny primary button" ng-click="vm.setSize('mini')">mini</button>
-                <button class="ui tiny primary button" ng-click="vm.setSize('tiny')">tiny</button>
-                <button class="ui tiny primary button" ng-click="vm.setSize('small')">small</button>
-                <button class="ui tiny primary button" ng-click="vm.setSize('')">normal</button>
-                <button class="ui tiny primary button" ng-click="vm.setSize('large')">large</button>
-                <button class="ui tiny primary button" ng-click="vm.setSize('huge')">huge</button>
-                <button class="ui tiny primary button" ng-click="vm.setSize('massive')">massive</button>
-                <div class="ui divider"></div>
-                <button class="ui tiny primary button" ng-click="vm.setStyle('heart')">
-                    <i class="heart icon"></i>
-                    Heart Icon
-                </button>
-                <button class="ui tiny primary button" ng-click="vm.setStyle('star')">
-                    <i class="star icon"></i>
-                    Star Icon
-                </button>
-                <button class="ui tiny primary button" ng-click="vm.setStyle('')">
-                    <i class="icon"></i>
-                    Default Icon
-                </button>
-                <div class="ui positive message">{{ vm | json }}</div>
-            </div>
-        </file>
-        <file name="app.js">
-            angular.module('sui.rating')
-                .controller('DemoController', [function () {
-                    var vm = this;
-
-                    vm.options = [1, 2, 3, 5, 8, 13];
-                    vm.size = "huge";
-                    vm.uiStyle = "heart";
-                    vm.disabled = '';
-                    vm.value = 5;
-
-                    vm.toggleDisable = function () {
-                        vm.disabled = vm.disabled ? '' : 'true';
-                    };
-                    vm.setSize = function (s) {
-                        vm.size = s;
-                    };
-                    vm.setStyle = function (s) {
-                        vm.uiStyle = s;
-                    };
-                    vm.onHover = function (value) {
-                        vm.hover = 'Callback hover: ' + value;  
-                    };
-                    vm.onLeave = function (value) {
-                        vm.leave = 'Callback leave: ' + value;  
-                    };
-                    vm.onRate = function (value) {
-                        vm.rate = 'Callback rate: ' + value;  
-                    };
-                }]);
-        </file>
-    </example>
- */
-
-angular.module('sui.rating', [])
-    .directive('suiRating', [function () {
-        return {
-            restrict: 'A',
-            scope: {
-                model: '=',
-                size: '@',
-                uiStyle: '@',
-                options: '=',
-                disabled: '@',
-                onLeave: '&',
-                onHover: '&',
-                onRate: '&'
-            },
-            template:
-                '<div class="ui {{vm.uiStyle}} {{vm.size}} rating sui-rating">' +
-                    '<i ng-repeat="v in vm.options track by $index" ng-mouseenter="vm._onHover(v)" ng-mouseleave="vm._onLeave(v)" ng-click="vm._onRate(v)" ' +
-                        'ng-class="{ selected: v <= vm._hovered, active: v <= vm.model, disabled: vm.disabled }" class="icon"></i>' +
-                '</div>',
-            controllerAs: 'vm',
-            bindToController: true,
-            controller: [function () {
-                var vm = this;
-                vm._hovered = NaN;
-                vm._onRate = _onRate;
-                vm._onHover = _onHover;
-                vm._onLeave = _onLeave;
-
-                function _onRate(value) {
-                    !vm.disabled && (vm.model = value);
-                    invokeHandler(vm.onRate, value);
-                }
-
-                function _onHover(value) {
-                    invokeHandler(vm.onHover, value);
-                }
-
-                function _onLeave(value) {
-                    vm._hovered = NaN;
-                    invokeHandler(vm.onLeave, value);
-                }
-
-                function invokeHandler(fn, value) {
-                    if (!vm.disabled) {
-                        vm._hovered = value;
-                        fn && fn({
-                            model: value || vm.model
-                        });
-                    }
-                }
-            }]
-        };
-    }]);
-
-/**
- * @ngdoc directive
  * @name sui.accordion.directive:suiAccordion
  * @restrict AE
  * @element any
@@ -153,20 +13,20 @@ angular.module('sui.rating', [])
     <example module="sui.accordion">
         <file name="index.html">
             <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.0.7/semantic.css">
-            <div class="ui segment" ng-controller="demoCtrl as ctrl">
-                <div sui-accordion on-switch="ctrl.onSwitch(model)">
-                    <div sui-accordion-item ng-repeat="acc in ctrl.accordions" title="{{acc.title}}" active="acc.active">
+            <div class="ui segment" ng-controller="DemoCtrl as vm">
+                <div sui-accordion on-switch="vm.onSwitch(model)">
+                    <div sui-accordion-item ng-repeat="acc in vm.accordions" title="{{acc.title}}" active="acc.active">
                         {{ acc.content }}
                     </div>
                 </div>
                 <div class="ui positive message">
-                    Selected item after callback: {{ ctrl.model | json }}
+                    Selected item after callback: {{ vm.model | json }}
                 </div>
             </div>
         </file>
         <file name="app.js">
         angular.module('sui.accordion')
-            .controller('demoCtrl', ['$scope', function ($scope) {
+            .controller('DemoCtrl', ['$scope', function ($scope) {
                 var vm = this;
 
                 vm.accordions = [{
@@ -437,8 +297,10 @@ angular.module('sui.accordion', [])
             <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.0.7/semantic.css">
             <div class="ui segment" ng-controller="DemoController as vm">
                 <div class="ui segment">
-                    <div>This is a `sui-checkbox-group`:</div>
-                    <div sui-checkbox-group options="vm.options" model="vm.groupSelected"></div>
+                    <p>This is a `sui-checkbox-group`:</p>
+                    <div inline="{{vm.inline}}" sui-checkbox-group options="vm.options" disabled="{{vm.disabled}}" model="vm.groupSelected"></div>
+                    <button class="ui tiny primary button" ng-click="vm.toggleDisabled()">Toggle disabled</button>
+                    <button class="ui tiny primary button" ng-click="vm.toggleInline()">Toggle inline</button>
                 </div>
                 <div class="ui positive message">
                     <div>groupSelected: {{ vm.groupSelected }}</div>
@@ -449,6 +311,13 @@ angular.module('sui.accordion', [])
         angular.module('sui.checkbox')
             .controller('DemoController', ['$scope', function ($scope) {
                 var vm = this;
+                vm.disabled = '';
+                vm.toggleDisabled = function () {
+                    vm.disabled = vm.disabled ? '' : 'true';
+                };
+                vm.toggleInline = function () {
+                    vm.inline = vm.inline ? '' : 'true';
+                };
                 vm.options = [{
                     label: 'Orange',
                     value: 'orangeColor'
@@ -496,17 +365,17 @@ angular.module('sui.accordion', [])
                     name: '@'
                 },
                 template:
-                '<div class="ui {{vm.uiStyle}} ' + type.toLowerCase() + ' checkbox" ng-class="{disabled: vm.disabled}" ng-click="vm.onClick()">' +
-                '<input type="checkbox" name="{{vm.name}}" ng-model="vm.model" ng-disabled="{{vm.disabled}}" class="hidden" ng-checked="vm.model">' +
-                '<label ng-bind="vm.label"></label>' +
-                '</div>',
+                    '<div class="ui {{vm.uiStyle}} ' + type.toLowerCase() + ' checkbox sui-checkbox" ng-class="{disabled: vm.disabled}" ng-click="vm._onClick()">' +
+                        '<input type="checkbox" name="{{vm.name}}" ng-model="vm.model" ng-disabled="{{vm.disabled}}" class="hidden" ng-checked="vm.model">' +
+                        '<label ng-bind="vm.label"></label>' +
+                    '</div>',
                 controllerAs: 'vm',
                 bindToController: true,
                 controller: [function () {
                     var vm = this;
-                    vm.onClick = onClick;
+                    vm._onClick = _onClick;
 
-                    function onClick() {
+                    function _onClick() {
                         if (vm.disabled) {
                             return;
                         }
@@ -528,14 +397,16 @@ angular.module('sui.accordion', [])
                 disabled: '@',
                 options: '=',
                 name: '@',
+                inline: '@',
                 onCheck: '&'
             },
             template:
-                '<div>' +
-                    '<div sui-checkbox ng-repeat="r in vm.options" model="vm._checkedItems[r.value]" ' +
+                '<div class="sui-checkbox-group">' +
+                    '<div ng-style="vm._getDisplayStyle()" sui-checkbox ng-repeat="r in vm.options" model="vm._checkedItems[r.value]" ' +
                         'label="{{r.label}}" ' +
                         'name="{{vm.name}}" ' +
                         'value="{{r.value}}" ' +
+                        'disabled="{{vm.disabled}}" ' +
                         'on-check="vm._onCheck(r.value)">' +
                     '</div>' +
                 '</div>',
@@ -545,18 +416,28 @@ angular.module('sui.accordion', [])
                 var vm = this;
                 vm._checkedItems = {};
                 vm._onCheck = _onCheck;
+                vm._getDisplayStyle = _getDisplayStyle;
 
                 angular.forEach(vm.model, function (value) {
                    vm._checkedItems[value] = true;
                 });
+
+                function _getDisplayStyle() {
+                    return {
+                        "display": vm.inline ? "inline-block" : "block"
+                    };
+                }
 
                 function _onCheck (item) {
                     if (vm.disabled) {
                         return;
                     }
 
-                    var index = vm.model.findIndex(function (v) {
-                        return v === item;
+                    var index = -1;
+                    angular.forEach(vm.model, function (value, i) {
+                        if (item === value) {
+                            index = i;
+                        }
                     });
                     index >= 0 ? vm.model.splice(index, 1) : vm.model.push(item);
 
@@ -584,27 +465,27 @@ angular.module('sui.accordion', [])
     <example module="sui.loader">
         <file name="index.html">
             <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.0.7/semantic.css">
-            <div class="ui segment" ng-controller="demoCtrl as ctrl">
-                <div sui-loader active="ctrl.loader.active" size="{{ctrl.loader.size}}"
-                    dim-whole-page="ctrl.loader.dimWholePage" loading-text="Loading...">
+            <div class="ui segment" ng-controller="DemoCtrl as vm">
+                <div sui-loader active="vm.loader.active" size="{{vm.loader.size}}"
+                    dim-whole-page="vm.loader.dimWholePage" loading-text="Loading...">
                     <div class="ui positive message">
-                        {{ ctrl.loader | json }}
+                        {{ vm.loader | json }}
                     </div>
                 </div>
                 <div>
-                    <button class="ui primary button" ng-click="ctrl.toggle()">Toggle loader</button>
-                    <button class="ui primary button" ng-click="ctrl.toggleDimmingWholePage()">Toggle dimming whole page</button>
+                    <button class="ui primary button" ng-click="vm.toggle()">Toggle loader</button>
+                    <button class="ui primary button" ng-click="vm.toggleDimmingWholePage()">Toggle dimming whole page</button>
                 </div>
             </div>
         </file>
         <file name="app.js">
         angular.module('sui.loader')
-        .controller('demoCtrl', ['$scope', function ($scope) {
+        .controller('DemoCtrl', ['$scope', function ($scope) {
             var vm = this;
             vm.loader = {
                 active: false,
                 dimWholePage: false,
-                size: 'massive'
+                size: 'small'
             };
             vm.toggle = function () {
                 vm.loader.active = !vm.loader.active;
@@ -642,6 +523,384 @@ angular.module('sui.loader', [])
                 '</div>'
         };
     }]);
+/**
+ * @ngdoc directive
+ * @name sui.progress.directive:suiProgress
+ * @description
+ * A progress bar.
+ * 
+ * @element ANY
+ * @restrict AE
+ * @scope
+ *
+ * @param {int} percentage <i class="exchange icon"></i>[0, 100] integer number indicating percentage
+ * @param {enum} size "`mini`" || "`tiny`" || "`small`" || "`large`" || "`huge`" || "`massive`" || `empty`
+ * @param {string} color Color of the bar
+ * @param {boolean} disabled Disabled or not
+ * @param {boolean} show-percentage Whether to show the percentage number on the bar
+ * @param {boolean} bottom-attached Attach the bar to bottom of the transcluded content
+ * @param {boolean} top-attached Attach the bar to top of the transcluded content
+ * @param {enum} type "`success`" || "`warning`" || "`error`"
+ * @param {boolean} active Whether show animation on the bar
+ * @param {boolean} indicating If `true`: different color when the value is different. Colors are: gray->red->yellow->green
+ * @param {string} label If not empty, display the label under the bar
+ *
+ * @example
+ *  <div class="alert alert-error" role="alert">
+ *      Note: The UI of this demo crashes because of CSS collision (`.progress`, `.label`) between Bootstrap and Semantic-UI. Please click The link "Edit in Plunker" to view.
+ *  </div>
+    <example module="sui.progress">
+        <file name="index.html">
+            <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.0.7/semantic.css">
+            <div class="ui segment" ng-controller="DemoCtrl as vm">
+                <div sui-progress percentage="vm.progress.percentage" active="{{vm.progress.active}}"
+                    show-percentage="{{vm.progress.showPercentage}}"
+                    bottom-attached="{{vm.progress.bottomAttached}}"
+                    top-attached="{{vm.progress.topAttached}}"
+                    disabled="{{vm.progress.disabled}}"
+                    indicating="true" label="Loading ({{ vm.progress.percentage }}%)...">
+                    <div>Then content</div>
+                </div>
+                <div class="ui segment">
+                    <div class="ui primary button" ng-click="vm.tiptap()">Start Progress</div>
+                    <div class="ui primary button" ng-click="vm.attachedToContent()">Attach to top and bottom</div>
+                    <div class="ui primary button" ng-click="vm.disable()">Disable</div>
+                </div>
+                <div class="ui positive message">
+                    {{ vm.progress | json }}
+                </div>
+            </div>
+        </file>
+        <file name="app.js">
+        angular.module('sui.progress')
+            .controller('DemoCtrl', ['$interval', function ($interval) {
+                var vm = this;
+                vm.progress = {
+                    percentage: 33,
+                    showPercentage: true,
+                    indicating: true,
+                    active: true,
+                    bottomAttached: '',
+                    topAttached: ''
+                };
+
+                var t;
+                vm.tiptap = function() {
+                    if (t) {
+                        return;
+                    }
+                    t = $interval(function() {
+                        if (vm.progress.percentage >= 100) {
+                            $interval.cancel(t);
+                            t = null;
+                        } else {
+                            vm.progress.percentage++;
+                        }
+                    }, 1000);
+                };
+                vm.attachedToContent = function () {
+                    vm.progress.bottomAttached = true;
+                    vm.progress.topAttached = true;
+                };
+                vm.disable = function () {
+                    vm.progress.disabled = true;
+                };
+            }]);
+        </file>
+    </example>
+ */
+
+angular.module('sui.progress', [])
+    .directive('suiProgress', [function () {
+        return {
+            restrict: 'AE',
+            scope: {
+                percentage: '=',
+                size: '@',
+                color: '@',
+                disabled: '@',
+                showPercentage: '@',
+                bottomAttached: '@',
+                topAttached: '@', 
+                type: '@',
+                active: '@',
+                indicating: '@',
+                label: '@'
+            },
+            transclude: true,
+            template:
+                '<div class="ui segment sui-progress">' +
+                    '<div ng-show="topAttached" ng-class="{active: active, indicating: indicating, disabled: disabled}" ' + 
+                        'class="ui {{type}} {{color}} {{size}} top attached progress" data-percent="{{percentage}}">' +
+                        '<div class="bar" style="{{animationStyle}} width: {{percentage}}%;"></div>' +
+                    '</div>' +
+                    '<div ng-show="topAttached || bottomAttached" ng-transclude></div>' +
+                    '<div ng-show="bottomAttached" class="ui {{type}} {{color}} {{size}} bottom attached progress" data-percent="{{percentage}}" ' + 
+                        'ng-class="{active: active, indicating: indicating, disabled: disabled}">' +
+                        '<div class="bar" style="{{animationStyle}} width: {{percentage}}%;"></div>' +
+                    '</div>' +
+                    '<div ng-show="!bottomAttached && !topAttached" class="ui {{type}} {{color}} {{size}} progress" data-percent="{{ percentage }}" ' +
+                        'ng-class="{active: active, indicating: indicating, disabled: disabled}">' +
+                        '<div class="bar" style="{{animationStyle}} width: {{percentage}}%;">' +
+                            '<div class="progress" ng-show="showPercentage">{{ percentage }}%</div>' +
+                        '</div>' +
+                        '<div ng-show="label" class="label" ng-bind="label"></div>' + 
+                    '</div>' +
+                '</div>',
+            controller: ['$scope', function ($scope) {
+                $scope.animationStyle = "transition-duration: 300ms; -webkit-transition-duration: 300ms; ";
+            }]
+        };
+    }])
+/**
+ * @ngdoc directive
+ * @name sui.radio.directive:suiRadioGroup
+ * @element ANY
+ * @restrict AE
+ * @scope
+ * @description
+ * A form radio group.
+ *
+ * @example
+    <example module="sui.radio">
+        <file name="index.html">
+            <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.0.7/semantic.css">
+            <div class="ui segment form" ng-controller="DemoController as vm">
+                <div sui-radio-group inline="{{vm.inline}}" disabled="{{vm.disabled}}" options="vm.radios" model="vm.model" name="groupColor" on-check="vm.onCheck(model)"></div>
+                <div class="ui segment">
+                    <div class="ui primary button" ng-click="vm.toggleDisabled()">Toggle Disable</div>
+                    <div class="ui primary button" ng-click="vm.toggleInline()">Toggle Inline</div>
+                </div>
+                <div class="ui positive message">
+                    <p>Model: {{ vm.model }}</p>
+                    <p>{{ vm.logAfterCheck }}</p>
+                </div>
+            </div>
+        </file>
+        <file name="app.js">
+        angular.module('sui.radio')
+            .controller('DemoController', [function () {
+                var vm = this;
+                vm.value = null;
+                vm.radios = [{
+                    label: 'Green',
+                    value: 'greenColor'
+                }, {
+                    label: 'Red',
+                    value: 'redColor'
+                }, {
+                    label: 'Orange',
+                    value: 'orangeColor'
+                }];
+
+                vm.onCheck = function (model) {
+                    vm.logAfterCheck = 'The radio-group callback function is called: ' + model;
+                }
+
+                vm.toggleDisabled = function () {
+                    vm.disabled = vm.disabled ? '' : true;
+                };
+                vm.toggleInline = function () {
+                    vm.inline = vm.inline ? '' : true;
+                };
+            }]);
+        </file>
+    </example>
+
+ * @param {string} model <i class="exchange icon"></i>The value of selected item
+ * @param {boolean} disabled Whether disabled or not
+ * @param {array} options <i class="exchange icon"></i>A list of options to populate the radios. Every option should contain `label` and `value`.
+ * @param {string} name Name of the radio group
+ * @param {boolean} inline If `true`, the radio items are put as `inline` elements
+ * @param {function} onCheck Callback function when checked.
+ *
+ */
+
+angular.module('sui.radio', [])
+    .directive('suiRadioGroup', [function () {
+        return {
+            restrict: 'AE',
+            scope: {
+                model: '=',
+                options: '=',
+                disabled: '@',
+                inline: '@',
+                name: '@',
+                onCheck: '&'
+            },
+            template: 
+                '<div class="ui sui-radio-group">' +
+                    '<div class="ui radio checkbox sui-radio" ng-style="vm._getDisplayStyle()" ng-repeat="r in vm.options" ng-click="vm._onCheck(r.value)" ' +
+                        'ng-class="{ checked: vm.model === r.value, disabled: vm.disabled }">' +
+                        '<input type="radio" name="{{ vm.name }}" class="hidden" ng-model="vm.model" value="{{ r.value }}">' +
+                        '<label ng-bind="r.label"></label>' +
+                    '</div>' +
+                '</div>',
+            controllerAs: 'vm',
+            bindToController: true,
+            controller: [function () {
+                var vm = this;
+                vm._onCheck = _onCheck;
+                vm._getDisplayStyle = _getDisplayStyle;
+
+                function _getDisplayStyle() {
+                    return {
+                        "display": vm.inline ? "inline-block" : "block"
+                    };
+                }
+
+                function _onCheck (value) {
+                    if (vm.disabled) {
+                        return;
+                    }
+                    vm.model = value;
+                    vm.onCheck && vm.onCheck({
+                        model: vm.model
+                    });
+                }
+            }]
+        };
+    }]);
+/**
+ * @ngdoc directive
+ * @name sui.rating.directiv:suiRating
+ * @description
+ * Rating directive
+ *
+ * @restrict EA
+ * @element ANY
+ * @scope
+ *
+ * @param {int} model <i class="exchange icon"></i>The selected value
+ * @param {enum} size "`mini`" || "`tiny`" || "`small`" || "`large`" || "`huge`" || "`massive`" || `empty`
+ * @param {enum} ui-style "`star`" || "`heart`"
+ * @param {array} options <i class="exchange icon"></i> Array of integer values, e.g., `[1, 2, 3, 5, 8, 13]`
+ * @param {boolean} disabled Disabled or not
+ * @param {function} on-leave Callback when leaving the rating
+ * @param {function} on-hover Callback when hovering the rating
+ * @param {function} on-rate  Callback when confirming the rating
+ *
+ * @example
+    <example module="sui.rating">
+        <file name="index.html">
+            <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.0.7/semantic.css">
+            <div class="ui segment" ng-controller="DemoController as vm">
+                <div sui-rating model="vm.value" options="vm.options"
+                    on-rate="vm.onRate(model)" on-leave="vm.onLeave(model)" on-hover="vm.onHover(model)"
+                    size="{{vm.size}}" ui-style="{{vm.uiStyle}}" disabled="{{vm.disabled}}"></div>
+                <div class="ui divider"></div>
+                <button class="ui tiny negative button" ng-click="vm.toggleDisable()">Toggle disable</button>
+                <button class="ui tiny primary button" ng-click="vm.setSize('mini')">mini</button>
+                <button class="ui tiny primary button" ng-click="vm.setSize('tiny')">tiny</button>
+                <button class="ui tiny primary button" ng-click="vm.setSize('small')">small</button>
+                <button class="ui tiny primary button" ng-click="vm.setSize('')">normal</button>
+                <button class="ui tiny primary button" ng-click="vm.setSize('large')">large</button>
+                <button class="ui tiny primary button" ng-click="vm.setSize('huge')">huge</button>
+                <button class="ui tiny primary button" ng-click="vm.setSize('massive')">massive</button>
+                <div class="ui divider"></div>
+                <button class="ui tiny primary button" ng-click="vm.setStyle('heart')">
+                    <i class="heart icon"></i>
+                    Heart Icon
+                </button>
+                <button class="ui tiny primary button" ng-click="vm.setStyle('star')">
+                    <i class="star icon"></i>
+                    Star Icon
+                </button>
+                <button class="ui tiny primary button" ng-click="vm.setStyle('')">
+                    <i class="icon"></i>
+                    Default Icon
+                </button>
+                <div class="ui positive message">{{ vm | json }}</div>
+            </div>
+        </file>
+        <file name="app.js">
+            angular.module('sui.rating')
+                .controller('DemoController', [function () {
+                    var vm = this;
+
+                    vm.options = [1, 2, 3, 5, 8, 13];
+                    vm.size = "huge";
+                    vm.uiStyle = "heart";
+                    vm.disabled = '';
+                    vm.value = 5;
+
+                    vm.toggleDisable = function () {
+                        vm.disabled = vm.disabled ? '' : 'true';
+                    };
+                    vm.setSize = function (s) {
+                        vm.size = s;
+                    };
+                    vm.setStyle = function (s) {
+                        vm.uiStyle = s;
+                    };
+                    vm.onHover = function (value) {
+                        vm.hover = 'Callback hover: ' + value;  
+                    };
+                    vm.onLeave = function (value) {
+                        vm.leave = 'Callback leave: ' + value;  
+                    };
+                    vm.onRate = function (value) {
+                        vm.rate = 'Callback rate: ' + value;  
+                    };
+                }]);
+        </file>
+    </example>
+ */
+
+angular.module('sui.rating', [])
+    .directive('suiRating', [function () {
+        return {
+            restrict: 'A',
+            scope: {
+                model: '=',
+                size: '@',
+                uiStyle: '@',
+                options: '=',
+                disabled: '@',
+                onLeave: '&',
+                onHover: '&',
+                onRate: '&'
+            },
+            template:
+                '<div class="ui {{vm.uiStyle}} {{vm.size}} rating sui-rating">' +
+                    '<i ng-repeat="v in vm.options track by $index" ng-mouseenter="vm._onHover(v)" ng-mouseleave="vm._onLeave(v)" ng-click="vm._onRate(v)" ' +
+                        'ng-class="{ selected: v <= vm._hovered, active: v <= vm.model, disabled: vm.disabled }" class="icon"></i>' +
+                '</div>',
+            controllerAs: 'vm',
+            bindToController: true,
+            controller: [function () {
+                var vm = this;
+                vm._hovered = NaN;
+                vm._onRate = _onRate;
+                vm._onHover = _onHover;
+                vm._onLeave = _onLeave;
+
+                function _onRate(value) {
+                    !vm.disabled && (vm.model = value);
+                    invokeHandler(vm.onRate, value);
+                }
+
+                function _onHover(value) {
+                    invokeHandler(vm.onHover, value);
+                }
+
+                function _onLeave(value) {
+                    vm._hovered = NaN;
+                    invokeHandler(vm.onLeave, value);
+                }
+
+                function invokeHandler(fn, value) {
+                    if (!vm.disabled) {
+                        vm._hovered = value;
+                        fn && fn({
+                            model: value || vm.model
+                        });
+                    }
+                }
+            }]
+        };
+    }]);
+
 /**
  * @ngdoc directive
  * @name sui.menu.directive: suiDropdownMenu
@@ -709,290 +968,6 @@ angular.module('sui.menu', [])
            }]
        }
     });
-/**
- * @ngdoc directive
- * @name sui.progress.directive:suiProgress
- * @description
- * A progress bar.
- * 
- * @element ANY
- * @restrict AE
- * @scope
- *
- * @param {int} percentage <i class="exchange icon"></i>[0, 100] integer number indicating percentage
- * @param {enum} size "`mini`" || "`tiny`" || "`small`" || "`large`" || "`huge`" || "`massive`" || `empty`
- * @param {string} color Color of the bar
- * @param {boolean} disabled Disabled or not
- * @param {boolean} show-percentage Whether to show the percentage number on the bar
- * @param {boolean} bottom-attached Attach the bar to bottom of the transcluded content
- * @param {boolean} top-attached Attach the bar to top of the transcluded content
- * @param {enum} type "`success`" || "`warning`" || "`error`"
- * @param {boolean} active Whether show animation on the bar
- * @param {boolean} indicating If `true`: different color when the value is different. Colors are: gray->red->yellow->green
- * @param {string} label If not empty, display the label under the bar
- *
- * @example
- *  <div class="alert alert-error" role="alert">
- *      Note: The UI of this demo crashes because of CSS collision (`.progress`, `.label`) between Bootstrap and Semantic-UI. Please click The link "Edit in Plunker" to view.
- *  </div>
-    <example module="sui.progress">
-        <file name="index.html">
-            <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.0.7/semantic.css">
-            <div class="ui segment" ng-controller="demoCtrl as ctrl">
-                <div sui-progress percentage="ctrl.progress.percentage" active="{{ctrl.progress.active}}" 
-                    show-percentage="{{ctrl.progress.showPercentage}}" 
-                    bottom-attached="{{ctrl.progress.bottomAttached}}" 
-                    top-attached="{{ctrl.progress.topAttached}}" 
-                    indicating="true" label="Loading ({{ ctrl.progress.percentage }}%)...">
-                    <div>Then content</div>
-                </div>
-                <div class="ui segment">
-                    <div class="ui primary button" ng-click="ctrl.tiptap()">Start Progress</div>
-                    <div class="ui primary button" ng-click="ctrl.attachedToContent()">Attach to top and bottom</div>
-                </div>
-                <div class="ui positive message">
-                    {{ ctrl.progress | json }}
-                </div>
-            </div>
-        </file>
-        <file name="app.js">
-        angular.module('sui.progress')
-            .controller('demoCtrl', ['$interval', function ($interval) {
-                var vm = this;
-                vm.progress = {
-                    percentage: 33,
-                    showPercentage: true,
-                    indicating: true,
-                    label: 'We are working...',
-                    active: true,
-                    bottomAttached: '',
-                    topAttached: ''
-                };
-
-                var t;
-                vm.tiptap = function() {
-                    if (t) {
-                        return;
-                    }
-                    t = $interval(function() {
-                        if (vm.progress.percentage >= 100) {
-                            $interval.cancel(t);
-                            t = null;
-                        } else {
-                            vm.progress.percentage++;
-                        }
-                    }, 1000);
-                };
-                vm.attachedToContent = function () {
-                    vm.progress.bottomAttached = true;
-                    vm.progress.topAttached = true;
-                };
-            }]);
-        </file>
-    </example>
- */
-
-angular.module('sui.progress', [])
-    .directive('suiProgress', [function () {
-        return {
-            restrict: 'AE',
-            scope: {
-                percentage: '=',
-                size: '@',
-                color: '@',
-                disabled: '@',
-                showPercentage: '@',
-                bottomAttached: '@',
-                topAttached: '@', 
-                type: '@',
-                active: '@',
-                indicating: '@',
-                label: '@'
-            },
-            transclude: true,
-            template:
-                '<div class="ui segment sui-progress">' +
-                    '<div ng-show="topAttached" ng-class="{active: active, indicating: indicating, disabled: disabled}" ' + 
-                        'class="ui {{type}} {{color}} {{size}} top attached progress" data-percent="{{percentage}}">' +
-                        '<div class="bar" style="{{animationStyle}} width: {{percentage}}%;"></div>' +
-                    '</div>' +
-                    '<div ng-show="topAttached || bottomAttached" ng-transclude></div>' +
-                    '<div ng-show="bottomAttached" class="ui {{type}} {{color}} {{size}} bottom attached progress" data-percent="{{percentage}}" ' + 
-                        'ng-class="{active: active, indicating: indicating, disabled: disabled}">' +
-                        '<div class="bar" style="{{animationStyle}} width: {{percentage}}%;"></div>' +
-                    '</div>' +
-                    '<div ng-show="!bottomAttached && !topAttached" class="ui {{type}} {{color}} {{size}} progress sui-progress" data-percent="{{ percentage }}" ' + 
-                        'ng-class="{active: active, indicating: indicating, disabled: disabled}">' +
-                        '<div class="bar" style="{{animationStyle}} width: {{percentage}}%;">' +
-                            '<div class="progress" ng-show="showPercentage">{{ percentage }}%</div>' +
-                        '</div>' +
-                        '<div ng-show="label" class="label" ng-bind="label"></div>' + 
-                    '</div>' +
-                '</div>',
-            controller: ['$scope', function ($scope) {
-                $scope.animationStyle = "transition-duration: 300ms; -webkit-transition-duration: 300ms; ";
-            }]
-        };
-    }])
-/**
- * @ngdoc directive
- * @name sui.radio.directive:suiRadioGroup
- * @element ANY
- * @restrict AE
- * @scope
- * @description
- * A form radio group.
- *
- * @param {string} model<i class="exchange icon"></i> The value of selected item
- * @param {boolean} disabled Whether disabled or not
- * @param {array} options A list of options to populate the radios. Every option should contain `label` and `value`.
- * @param {string} name Name of the radio group
- * @param {boolean} inline If `true`, the radio items are put as `inline` elements
- * @param {function} onCheck Callback function when checked.
- *
- * @example
-    <example module="sui.radio">
-        <file name="index.html">
-            <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.0.7/semantic.css">
-            <div class="ui segment form" ng-controller="DemoController as vm">
-                <div class="inline fields">
-                    <div sui-radio ng-repeat="r in vm.radios" model="vm.value"
-                        label="{{r.label}}" 
-                        name="{{r.name}}" 
-                        value="{{r.value}}" 
-                        on-toggle="r.onCheck(model)">
-                    </div>
-                </div>
-                <div sui-radio-group inline="true" options="vm.radios" model="vm.value" name="groupColor"></div>
-                <div class="ui positive message">
-                    {{ vm.value }}
-                </div>
-            </div>
-        </file>
-        <file name="app.js">
-        angular.module('sui.radio')
-            .controller('DemoController', [function () {
-                var vm = this;
-                vm.value = null;
-                vm.radios = [{
-                    label: 'Green',
-                    checked: vm.checked,
-                    name: 'color',
-                    value: 'greenColor',
-                    onCheck: onCheck
-                }, {
-                    label: 'Red',
-                    checked: vm.checked,
-                    name: 'color',
-                    value: 'redColor',
-                    onCheck: onCheck
-                }, {
-                    label: 'Orange',
-                    checked: vm.checked,
-                    name: 'color',
-                    value: 'orangeColor',
-                    onCheck: onCheck
-                }];
-
-                function onCheck (model) {
-                    console.log(model);
-                    vm.value = model;
-                }
-            }]);
-        </file>
-    </example>
- */
-
-/**
- * @ngdoc directive
- * @name sui.radio.directive:suiRadio
- * @element ANY
- * @restrict AE
- * @scope
- * @description
- * A single radio. It is used by {@link sui.radio.directive:suiRadioGroup suiRadioGroup}.
- *
- * {@link sui.radio.directive:suiRadioGroup#example Demo}
- *
- * @param {string} model<i class="exchange icon"></i> The value
- * @param {boolean} disabled Whether disabled or not
- * @param {string} label The label text displayed next to the radio
- * @param {string} value Value for grouping
- * @param {function} on-check Callback function when checked.
- */
-
-angular.module('sui.radio', [])
-    .directive('suiRadioGroup', [function () {
-        return {
-            restrict: 'AE',
-            scope: {
-                model: '=',
-                disabled: '@',
-                options: '=',
-                name: '@',
-                onCheck: '&',
-                inline: '@'
-            },
-            template: 
-                '<div class="sui-radio" ng-class="{\'ui fields\': vm.inline}">' +
-                    '<div sui-radio ng-repeat="r in vm.options" model="vm.model" ' +
-                        'label="{{r.label}}" ' +
-                        'name="{{vm.name}}" ' +
-                        'value="{{r.value}}" ' +
-                        'on-check="vm._onCheck(model)">' +
-                    '</div>' +
-                '</div>',
-            controllerAs: 'vm',
-            bindToController: true,
-            controller: [function () {
-                var vm = this;
-                vm._onCheck = _onCheck;
-
-                function _onCheck () {
-                    !vm.disabled && vm.onCheck && vm.onCheck({
-                        model: vm.model
-                    });
-                }
-            }]
-        };
-    }]);
-
-angular.module('sui.radio')
-    .directive('suiRadio', [function () {
-        return {
-            restrict: 'AE',
-            scope: {
-                disabled: '@',
-                label: '@',
-                model: '=',
-                name: '@',
-                value: '@',
-                onCheck: '&'
-            },
-            template: 
-                '<div class="field sui-radio-item">' +
-                    '<div ng-click="vm._onCheck()" class="ui radio checkbox" ng-class="{ checked: vm.model === vm.value, disabled: vm.disabled }">' +
-                        '<input type="radio" name="{{ vm.name }}" class="hidden" ng-model="vm.model" value="{{ vm.value }}">' +
-                        '<label ng-bind="vm.label"></label>' +
-                    '</div>' +
-                '</div>',
-            bindToController: true,
-            controllerAs: 'vm',
-            controller: [function () {
-                var vm = this;
-                vm._onCheck = _onCheck;
-
-                function _onCheck () {
-                    if (!vm.disabled) {
-                        vm.model = vm.value;
-                        vm.onCheck && vm.onCheck({
-                            model: vm.model
-                        });
-                    }
-                }
-            }]
-        };
-    }]);
 /**
  * @ngdoc directive
  * @name sui.select.directive:suiSelect

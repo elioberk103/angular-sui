@@ -17,10 +17,7 @@ describe('sui-rating test', function () {
             size: 'massive',
         };
         scope.$digest();
-
-        //element.triggerHandler('mouseenter');
         expect(angular.element(element.children()[0]).attr('class')).to.equal('ui heart massive rating sui-rating');
-
     });
 
     it("should change the model correctly", function () {
