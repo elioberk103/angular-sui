@@ -162,9 +162,10 @@
             <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.0.7/semantic.css">
             <div class="ui segment" ng-controller="DemoController as vm">
                 <div class="ui segment">
-                    <div>This is a `sui-checkbox-group`:</div>
-                    <div sui-checkbox-group options="vm.options" disabled="{{vm.disabled}}" model="vm.groupSelected"></div>
+                    <p>This is a `sui-checkbox-group`:</p>
+                    <div inline="{{vm.inline}}" sui-checkbox-group options="vm.options" disabled="{{vm.disabled}}" model="vm.groupSelected"></div>
                     <button class="ui tiny primary button" ng-click="vm.toggleDisabled()">Toggle disabled</button>
+                    <button class="ui tiny primary button" ng-click="vm.toggleInline()">Toggle inline</button>
                 </div>
                 <div class="ui positive message">
                     <div>groupSelected: {{ vm.groupSelected }}</div>
@@ -178,6 +179,9 @@
                 vm.disabled = '';
                 vm.toggleDisabled = function () {
                     vm.disabled = vm.disabled ? '' : 'true';
+                };
+                vm.toggleInline = function () {
+                    vm.inline = vm.inline ? '' : 'true';
                 };
                 vm.options = [{
                     label: 'Orange',
@@ -258,11 +262,12 @@
                 disabled: '@',
                 options: '=',
                 name: '@',
+                inline: '@',
                 onCheck: '&'
             },
             template:
                 '<div class="sui-checkbox-group">' +
-                    '<div sui-checkbox ng-repeat="r in vm.options" model="vm._checkedItems[r.value]" ' +
+                    '<div ng-style="vm._getDisplayStyle()" sui-checkbox ng-repeat="r in vm.options" model="vm._checkedItems[r.value]" ' +
                         'label="{{r.label}}" ' +
                         'name="{{vm.name}}" ' +
                         'value="{{r.value}}" ' +
@@ -276,10 +281,17 @@
                 var vm = this;
                 vm._checkedItems = {};
                 vm._onCheck = _onCheck;
+                vm._getDisplayStyle = _getDisplayStyle;
 
                 angular.forEach(vm.model, function (value) {
                    vm._checkedItems[value] = true;
                 });
+
+                function _getDisplayStyle() {
+                    return {
+                        "display": vm.inline ? "inline-block" : "block"
+                    };
+                }
 
                 function _onCheck (item) {
                     if (vm.disabled) {

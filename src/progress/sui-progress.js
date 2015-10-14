@@ -27,32 +27,33 @@
     <example module="sui.progress">
         <file name="index.html">
             <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.0.7/semantic.css">
-            <div class="ui segment" ng-controller="demoCtrl as ctrl">
-                <div sui-progress percentage="ctrl.progress.percentage" active="{{ctrl.progress.active}}" 
-                    show-percentage="{{ctrl.progress.showPercentage}}" 
-                    bottom-attached="{{ctrl.progress.bottomAttached}}" 
-                    top-attached="{{ctrl.progress.topAttached}}" 
-                    indicating="true" label="Loading ({{ ctrl.progress.percentage }}%)...">
+            <div class="ui segment" ng-controller="DemoCtrl as vm">
+                <div sui-progress percentage="vm.progress.percentage" active="{{vm.progress.active}}"
+                    show-percentage="{{vm.progress.showPercentage}}"
+                    bottom-attached="{{vm.progress.bottomAttached}}"
+                    top-attached="{{vm.progress.topAttached}}"
+                    disabled="{{vm.progress.disabled}}"
+                    indicating="true" label="Loading ({{ vm.progress.percentage }}%)...">
                     <div>Then content</div>
                 </div>
                 <div class="ui segment">
-                    <div class="ui primary button" ng-click="ctrl.tiptap()">Start Progress</div>
-                    <div class="ui primary button" ng-click="ctrl.attachedToContent()">Attach to top and bottom</div>
+                    <div class="ui primary button" ng-click="vm.tiptap()">Start Progress</div>
+                    <div class="ui primary button" ng-click="vm.attachedToContent()">Attach to top and bottom</div>
+                    <div class="ui primary button" ng-click="vm.disable()">Disable</div>
                 </div>
                 <div class="ui positive message">
-                    {{ ctrl.progress | json }}
+                    {{ vm.progress | json }}
                 </div>
             </div>
         </file>
         <file name="app.js">
         angular.module('sui.progress')
-            .controller('demoCtrl', ['$interval', function ($interval) {
+            .controller('DemoCtrl', ['$interval', function ($interval) {
                 var vm = this;
                 vm.progress = {
                     percentage: 33,
                     showPercentage: true,
                     indicating: true,
-                    label: 'We are working...',
                     active: true,
                     bottomAttached: '',
                     topAttached: ''
@@ -75,6 +76,9 @@
                 vm.attachedToContent = function () {
                     vm.progress.bottomAttached = true;
                     vm.progress.topAttached = true;
+                };
+                vm.disable = function () {
+                    vm.progress.disabled = true;
                 };
             }]);
         </file>
@@ -110,7 +114,7 @@ angular.module('sui.progress', [])
                         'ng-class="{active: active, indicating: indicating, disabled: disabled}">' +
                         '<div class="bar" style="{{animationStyle}} width: {{percentage}}%;"></div>' +
                     '</div>' +
-                    '<div ng-show="!bottomAttached && !topAttached" class="ui {{type}} {{color}} {{size}} progress sui-progress" data-percent="{{ percentage }}" ' + 
+                    '<div ng-show="!bottomAttached && !topAttached" class="ui {{type}} {{color}} {{size}} progress" data-percent="{{ percentage }}" ' +
                         'ng-class="{active: active, indicating: indicating, disabled: disabled}">' +
                         '<div class="bar" style="{{animationStyle}} width: {{percentage}}%;">' +
                             '<div class="progress" ng-show="showPercentage">{{ percentage }}%</div>' +
