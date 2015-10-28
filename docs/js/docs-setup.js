@@ -59,12 +59,30 @@ NG_DOCS={
     },
     {
       "section": "api",
-      "id": "sui.label.directive:suiLabel",
-      "shortName": "suiLabel",
+      "id": "sui.label.directive:suiBaseLabel",
+      "shortName": "suiBaseLabel",
       "type": "directive",
       "moduleName": "sui.label",
       "shortDescription": "Semantic-UI style labels",
-      "keywords": "ae angular api app callback class click cloudflare color controller css democontroller detail-text detailtext directive displayed form friend function href html http https image invoked jpg js label label-text labels labeltext logafterclicking message model module ng-controller on-click positive rel removable segment semantic-ui style stylesheet sui teal text true type ui var veronkia vm"
+      "keywords": "ae angular api app callback class click cloudflare color controller css democontroller detail-text detailtext directive displayed form friend function href html http https icon image invoked jpg js label label-text labels labeltext logafterclicking mail message model module ng-controller on-click positive rel removable segment semantic-ui style stylesheet sui teal text true type ui var veronkia vm"
+    },
+    {
+      "section": "api",
+      "id": "sui.label.directive:suiCornerLabel",
+      "shortName": "suiCornerLabel",
+      "type": "directive",
+      "moduleName": "sui.label",
+      "shortDescription": "Semantic-UI style labels",
+      "keywords": "ae angular api app callback class click cloudflare color controller css democontroller directive form function href html https icon invoked js label labels logafterclicking message module ng-controller on-click position positive rel save segment semantic-ui style stylesheet sui teal text type ui var vm"
+    },
+    {
+      "section": "api",
+      "id": "sui.label.directive:suiTagLabel",
+      "shortName": "suiTagLabel",
+      "type": "directive",
+      "moduleName": "sui.label",
+      "shortDescription": "Semantic-UI style labels",
+      "keywords": "ae angular api app callback class click cloudflare color controller css democontroller directive displayed form function href html https icon invoked js label label-text labels labeltext logafterclicking mail message model module ng-controller on-click positive rel removable segment semantic-ui style stylesheet sui teal text true type ui var veronkia vm"
     },
     {
       "section": "api",
