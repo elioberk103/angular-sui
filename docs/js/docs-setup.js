@@ -59,6 +59,15 @@ NG_DOCS={
     },
     {
       "section": "api",
+      "id": "sui.label.directive:suiLabel",
+      "shortName": "suiLabel",
+      "type": "directive",
+      "moduleName": "sui.label",
+      "shortDescription": "Semantic-UI style labels",
+      "keywords": "ae angular api app callback class click cloudflare color controller css democontroller detail-text detailtext directive displayed form friend function href html http https image invoked jpg js label label-text labels labeltext logafterclicking message model module ng-controller on-click positive rel removable segment semantic-ui style stylesheet sui teal text true type ui var veronkia vm"
+    },
+    {
+      "section": "api",
       "id": "sui.loader.directive:suiLoader",
       "shortName": "suiLoader",
       "type": "directive",
