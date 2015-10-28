@@ -22,7 +22,7 @@
             <div class="ui segment form" ng-controller="DemoCtrl as vm">
                 <div class="fields">
                     <div class="eight wide field">
-                        <div sui-select indicating-text="select a country" on-select="vm.onSelect(model)" options="vm.countryOptions" model="vm.selected" label="Country: " searchable="true"></div>
+                        <div sui-select indicating-text="select a country" on-select="vm.onSelect(model)" options="vm.countryOptions" model="vm.selected" label="Country: " searchable="true" disabled=""></div>
                     </div>
                     <div class="eight wide field">
                         <div sui-select indicating-text="click to load options" ajax-url="../json/form-options-country.json" label="Load options from some URL: " selected="vm.ajaxSelected" default-option="Click to fetch country list" searchable="true"></div>
@@ -84,25 +84,25 @@ angular.module('sui.select', [])
             },
             controllerAs: 'vm',
             bindToController: true,
-            template: 
+            template:
                 '<div class="field sui-select" ng-class="{error: vm._failed}">' +
                     '<label ng-bind="label"></label>' +
-                    '<div class="ui search selection dropdown" ng-class="{active: vm._isSelecting, disabled: disabled}" ng-click="vm._loadOptions($event)">' +
+                    '<div class="ui search selection dropdown" ng-class="{active: vm._isSelecting, disabled: vm.disabled}" ng-click="vm._loadOptions($event)">' +
                         '<select ng-model="vm.model.value">' +
                            '<option ng-repeat="opt in vm.options" value="{{opt.value}}" ng-bind="opt.label"></option>' +
                         '</select>' +
                         '<i class="dropdown icon"></i><div ng-show="vm._isLoading" class="ui active mini inline loader"></div> ' +
-                        '<input class="search"" ng-show="vm.searchable" ng-model="vm._keyword" ng-model-options="{debounce: 300}" ng-change="vm._search(vm._keyword)">' +
-                        '<div class="text" ng-hide="vm._keyword || vm._isLoading" ng-class="{default: vm._noDefaultModel() }">' + 
+                        '<input class="search" ng-show="vm.searchable" ng-model="vm._keyword" ng-model-options="{debounce: 300}" ng-change="vm._search(vm._keyword)">' +
+                        '<div class="text" ng-hide="vm._keyword || vm._isLoading" ng-class="{default: vm._noDefaultModel() }">' +
                             '<i ng-show="vm.model.icon" class="{{ vm.model.icon }}"></i>' +
                             '<span ng-bind="vm.model.label || vm.indicatingText"></span>' +
                         '</div>' +
                         '<div class="menu transition animating slide down in" ng-class="{visible: vm._isSelecting, _hidden: !vm._isSelecting}">' +
-                            '<div class="item" ng-class="{active: vm._isSelected(opt), selected: vm._isSelected(opt)}"' + 
-                                'ng-click="vm._onSelect(opt, $event)" ng-repeat="opt in vm.options" ng-hide="opt._hidden">' + 
-                                '<i ng-show="opt.icon" class="{{ opt.icon }}"></i>' + 
+                            '<div class="item" ng-class="{active: vm._isSelected(opt), selected: vm._isSelected(opt)}"' +
+                                'ng-click="vm._onSelect(opt, $event)" ng-repeat="opt in vm.options" ng-hide="opt._hidden">' +
+                                '<i ng-show="opt.icon" class="{{ opt.icon }}"></i>' +
                                 '<span ng-bind="opt.label"></span>' +
-                            '</div>' + 
+                            '</div>' +
                         '</div>' +
                     '</div>' +
                 '</div>',
@@ -119,7 +119,7 @@ angular.module('sui.select', [])
                 _indexOptions();
 
                 // Index the all fields of the options
-                function _indexOptions () {
+                function _indexOptions() {
                     vm._indexes = [];
                     angular.forEach(vm.options, function (field, index) {
                         var chainedFields = '';
@@ -131,7 +131,7 @@ angular.module('sui.select', [])
                 }
 
                 // Search the options
-                function _search (keyword) {
+                function _search(keyword) {
                     $timeout(function () {
                         findInAllFields(keyword);
                     });
@@ -164,6 +164,7 @@ angular.module('sui.select', [])
                     vm._keyword = '';
                     vm._isSelecting = false;
                     vm._isLoading = false;
+                    vm._failed = false;
                 };
 
                 // Check whether an option is selected
@@ -193,6 +194,7 @@ angular.module('sui.select', [])
                         }).error(function () {
                             console.error('_failed to load options from ' + scope.ajaxUrl);
                             vm._reset();
+                            vm._failed = true;
                         });
                     }
 
