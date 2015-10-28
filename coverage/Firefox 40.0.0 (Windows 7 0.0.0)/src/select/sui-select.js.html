@@ -1,0 +1,690 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for ./src/select/sui-select.js</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../../prettify.css">
+    <link rel="stylesheet" href="../../base.css">
+    <style type='text/css'>
+        div.coverage-summary .sorter {
+            background-image: url(../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class="header medium">
+    <h1>Code coverage report for <span class="entity">./src/select/sui-select.js</span></h1>
+    <h2>
+        Statements: <span class="metric">69.84% <small>(44 / 63)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Branches: <span class="metric">63.16% <small>(12 / 19)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Functions: <span class="metric">60% <small>(12 / 20)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">69.84% <small>(44 / 63)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
+    </h2>
+    <div class="path"><a href="../../index.html">All files</a> &#187; <a href="index.html">./src/select/</a> &#187; sui-select.js</div>
+</div>
+<div class="body">
+<pre><table class="coverage">
+<tr><td class="line-count">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-yes">25</span>
+<span class="cline-any cline-yes">25</span>
+<span class="cline-any cline-yes">75</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">25</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">15</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">240</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">29</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
+ * @ngdoc directive
+ * @name sui.select.directive:suiSelect
+ * @element ANY
+ * @restrict AE
+ * @scope
+ * @description
+ * Form select field.
+ *
+ * @param {string} model &lt;i class="exchange icon"&gt;&lt;/i&gt;Value of the selected option
+ * @param {object} options &lt;i class="exchange icon"&gt;&lt;/i&gt;Options of the select
+ * @param {string} indicating-text Text when no default option is selected
+ * @param {boolean} disabled The select is disabled or not
+ * @param {string} label The text shown above the select
+ * @param {boolean} searchable Whether searchable or not
+ * @param {string} ajax-url If specified, go to fetch options from this URL
+ *
+ * @example
+    &lt;example module="sui.select"&gt;
+        &lt;file name="index.html"&gt;
+            &lt;link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.0.7/semantic.css"&gt;
+            &lt;div class="ui segment form" ng-controller="DemoCtrl as vm"&gt;
+                &lt;div class="fields"&gt;
+                    &lt;div class="eight wide field"&gt;
+                        &lt;div sui-select indicating-text="select a country" on-select="vm.onSelect(model)" options="vm.countryOptions" model="vm.selected" label="Country: " searchable="true" disabled=""&gt;&lt;/div&gt;
+                    &lt;/div&gt;
+                    &lt;div class="eight wide field"&gt;
+                        &lt;div sui-select indicating-text="click to load options" ajax-url="../json/form-options-country.json" label="Load options from some URL: " selected="vm.ajaxSelected" default-option="Click to fetch country list" searchable="true"&gt;&lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class="ui positive message"&gt;
+                    Country: {{ vm.selected }}; From Ajax: {{ vm.ajaxSelected }}; After change: {{ vm.valueAfterSelect }}
+                &lt;/div&gt;
+            &lt;div&gt;
+        &lt;/file&gt;
+        &lt;file name="app.js"&gt;
+        angular.module('sui.select')
+            .controller('DemoCtrl', function () {
+                var vm = this;
+                vm.selected = {
+                    label: 'United States',
+                    value: 'us',
+                    icon: 'us flag'
+                };
+                vm.ajaxSelected = '';
+                vm.countryOptions = [{
+                    label: 'China',
+                    value: 'cn',
+                    icon: 'cn flag'
+                }, vm.selected, {
+                    label: 'Russia',
+                    value: 'ru',
+                    icon: 'ru flag'
+                }, {
+                    label: 'United Kingdom',
+                    value: 'uk',
+                    icon: 'uk flag'
+                }, {
+                    label: 'Philippines',
+                    value: 'ph',
+                    icon: 'ph flag'
+                }];
+                vm.onSelect = function (model) {
+                    vm.valueAfterSelect = model;
+                };
+            });
+        &lt;/file&gt;
+    &lt;/example&gt;
+ */
+&nbsp;
+angular.module('sui.select', [])
+    .directive('suiSelect', ['$document', '$http', '$timeout', function ($document, $http, $timeout) {
+        return {
+            restrict: 'AE',
+            scope: {
+                model: '=',
+                options: '=',
+                indicatingText: '@',
+                disabled: '@',
+                label: '@',
+                searchable: '@',
+                ajaxUrl: '@',
+                onSelect: '&amp;'
+            },
+            controllerAs: 'vm',
+            bindToController: true,
+            template:
+                '&lt;div class="field sui-select" ng-class="{error: vm._failed}"&gt;' +
+                    '&lt;label ng-bind="label"&gt;&lt;/label&gt;' +
+                    '&lt;div class="ui search selection dropdown" ng-class="{active: vm._isSelecting, disabled: vm.disabled}" ng-click="vm._loadOptions($event)"&gt;' +
+                        '&lt;select ng-model="vm.model.value"&gt;' +
+                           '&lt;option ng-repeat="opt in vm.options" value="{{opt.value}}" ng-bind="opt.label"&gt;&lt;/option&gt;' +
+                        '&lt;/select&gt;' +
+                        '&lt;i class="dropdown icon"&gt;&lt;/i&gt;&lt;div ng-show="vm._isLoading" class="ui active mini inline loader"&gt;&lt;/div&gt; ' +
+                        '&lt;input class="search" ng-show="vm.searchable" ng-model="vm._keyword" ng-model-options="{debounce: 300}" ng-change="vm._search(vm._keyword)"&gt;' +
+                        '&lt;div class="text" ng-hide="vm._keyword || vm._isLoading" ng-class="{default: vm._noDefaultModel() }"&gt;' +
+                            '&lt;i ng-show="vm.model.icon" class="{{ vm.model.icon }}"&gt;&lt;/i&gt;' +
+                            '&lt;span ng-bind="vm.model.label || vm.indicatingText"&gt;&lt;/span&gt;' +
+                        '&lt;/div&gt;' +
+                        '&lt;div class="menu transition animating slide down in" ng-class="{visible: vm._isSelecting, _hidden: !vm._isSelecting}"&gt;' +
+                            '&lt;div class="item" ng-class="{active: vm._isSelected(opt), selected: vm._isSelected(opt)}"' +
+                                'ng-click="vm._onSelect(opt, $event)" ng-repeat="opt in vm.options" ng-hide="opt._hidden"&gt;' +
+                                '&lt;i ng-show="opt.icon" class="{{ opt.icon }}"&gt;&lt;/i&gt;' +
+                                '&lt;span ng-bind="opt.label"&gt;&lt;/span&gt;' +
+                            '&lt;/div&gt;' +
+                        '&lt;/div&gt;' +
+                    '&lt;/div&gt;' +
+                '&lt;/div&gt;',
+            controller: ['$scope', '$timeout', function ($scope, $timeout) {
+&nbsp;
+                var vm = this;
+                vm._search = _search;
+                vm._onSelect = _onSelect;
+                vm._isSelected = _isSelected;
+                vm._indexOptions = _indexOptions;
+                vm._reset = _reset;
+                vm._noDefaultModel = _noDefaultModel;
+&nbsp;
+                _indexOptions();
+&nbsp;
+                // Index the all fields of the options
+                function _indexOptions() {
+                    vm._indexes = [];
+                    angular.forEach(vm.options, function (field, index) {
+                        var chainedFields = '';
+                        angular.forEach(field, function (value, key) {
+                            (key.indexOf('$') &lt; 0) &amp;&amp; (key !== '_hidden') &amp;&amp; (chainedFields += value.toString().toLowerCase() + '***');
+                        });
+                        vm._indexes.push(chainedFields);
+                    });
+                }
+&nbsp;
+                // Search the options
+<span class="fstat-no" title="function not covered" >                function _search(keyword) {</span>
+<span class="cstat-no" title="statement not covered" >                    $timeout(<span class="fstat-no" title="function not covered" >function () {</span></span>
+<span class="cstat-no" title="statement not covered" >                        findInAllFields(keyword);</span>
+                    });
+&nbsp;
+<span class="fstat-no" title="function not covered" >                    function findInAllFields (keyword) {</span>
+<span class="cstat-no" title="statement not covered" >                        keyword = keyword.toLowerCase();</span>
+<span class="cstat-no" title="statement not covered" >                        angular.forEach(vm._indexes, <span class="fstat-no" title="function not covered" >function(fieldString, index) {</span></span>
+<span class="cstat-no" title="statement not covered" >                            var opt = vm.options[index];</span>
+<span class="cstat-no" title="statement not covered" >                            opt._hidden = true;</span>
+<span class="cstat-no" title="statement not covered" >                            (fieldString.indexOf(keyword) &gt;= 0) &amp;&amp; (opt._hidden = false);</span>
+                        });
+                    }
+                }
+&nbsp;
+                // When clicking on some option on the dropdown
+                function _onSelect(opt, $event) {
+                    $event.stopPropagation();
+                    vm.model = opt;
+                    vm._reset();
+                    vm.onSelect &amp;&amp; vm.onSelect({
+                        model: vm.model
+                    });
+                }
+&nbsp;
+                // Reset all flags on the view model
+                function _reset() {
+                    angular.forEach(vm.options, function (opts) {
+                        opts._hidden = false;
+                    });
+                    vm._keyword = '';
+                    vm._isSelecting = false;
+                    vm._isLoading = false;
+                    vm._failed = false;
+                };
+&nbsp;
+                // Check whether an option is selected
+                function _isSelected(opt) {
+                    return vm.model === opt;
+                }
+&nbsp;
+                function _noDefaultModel() {
+                    return !(vm.model &amp;&amp; vm.model.hasOwnProperty('value'));
+                }
+&nbsp;
+            }],
+            link: function (scope, iElement, attrs) {
+                var vm = scope.vm;
+                vm._loadOptions = _loadOptions;
+&nbsp;
+                function _loadOptions($event) {
+                    $event.stopPropagation();
+&nbsp;
+                    <span class="missing-if-branch" title="if path not taken" >I</span>if (!vm.options &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >vm.ajaxUrl)</span> {
+<span class="cstat-no" title="statement not covered" >                        vm._isLoading = true;</span>
+<span class="cstat-no" title="statement not covered" >                        $http.get(vm.ajaxUrl).success(<span class="fstat-no" title="function not covered" >function (data) {</span></span>
+<span class="cstat-no" title="statement not covered" >                            vm.options = data.options;</span>
+<span class="cstat-no" title="statement not covered" >                            vm._indexOptions();</span>
+<span class="cstat-no" title="statement not covered" >                            vm._reset();</span>
+<span class="cstat-no" title="statement not covered" >                            vm._isSelecting = true;</span>
+                        }).error(<span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >                            console.error('_failed to load options from ' + scope.ajaxUrl);</span>
+<span class="cstat-no" title="statement not covered" >                            vm._reset();</span>
+<span class="cstat-no" title="statement not covered" >                            vm._failed = true;</span>
+                        });
+                    }
+&nbsp;
+                    <span class="missing-if-branch" title="if path not taken" >I</span>if (vm._isSelecting &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >vm.searchable)</span> {
+<span class="cstat-no" title="statement not covered" >                        return;</span>
+                    }
+&nbsp;
+                    vm._isSelecting = !vm._isSelecting;
+                    vm._isSelecting ? $document.on('click', clickToHideSelect) : <span class="branch-1 cbranch-no" title="branch not covered" >$document.off('click', clickToHideSelect);</span>
+&nbsp;
+<span class="fstat-no" title="function not covered" >                    function clickToHideSelect(e) {</span>
+<span class="cstat-no" title="statement not covered" >                        scope.$apply(<span class="fstat-no" title="function not covered" >function () {</span></span>
+<span class="cstat-no" title="statement not covered" >                            vm._reset();</span>
+                        });
+                    }
+                };
+            }
+        };
+    }]);</pre></td></tr>
+</table></pre>
+
+</div>
+<div class="footer">
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Oct 28 2015 13:31:50 GMT+0800 (China Standard Time)</div>
+</div>
+<script src="../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../sorter.js"></script>
+</body>
+</html>

@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for ./src/sui-menu.js</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../prettify.css">
+    <link rel="stylesheet" href="../base.css">
+    <style type='text/css'>
+        div.coverage-summary .sorter {
+            background-image: url(../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class="header medium">
+    <h1>Code coverage report for <span class="entity">./src/sui-menu.js</span></h1>
+    <h2>
+        Statements: <span class="metric">50% <small>(1 / 2)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Branches: <span class="metric">100% <small>(0 / 0)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Functions: <span class="metric">0% <small>(0 / 2)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">50% <small>(1 / 2)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
+    </h2>
+    <div class="path"><a href="../index.html">All files</a> &#187; <a href="index.html">./src/</a> &#187; sui-menu.js</div>
+</div>
+<div class="body">
+<pre><table class="coverage">
+<tr><td class="line-count">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
+ * @ngdoc directive
+ * @name sui.menu.directive: suiDropdownMenu
+ * @description
+ * Dropdown menu. When hovered, the menus is displayed.
+ *
+ * @scope
+ * @restrict AE
+ * @element ANY
+ *
+ * @example
+ *  &lt;example module="sui.menu"&gt;
+ *      &lt;file name="index.html"&gt;
+ *          &lt;link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.0.7/semantic.css"&gt;
+ *          &lt;div ng-controller="demoCtrl as ctrl"&gt;
+ *              &lt;div size="Large" label="Dropdown Menu" icon="wrench" sui-dropdown-menu options="ctrl.options"&gt;&lt;/div&gt;
+ *          &lt;/div&gt;
+ *      &lt;/file&gt;
+ *      &lt;file name="app.js"&gt;
+ *          angular.module('sui.menu')
+ *              .controller('demoCtrl', ['$scope', function ($scope) {
+ *                  this.options = [{
+ *                      value: 'zero',
+ *                      label: 'Option Zero'
+ *                  }, {
+ *                      value: 'One',
+ *                      label: 'Option One'
+ *                  }, {
+ *                      value: 'Two',
+ *                      label: 'Option Two'
+ *                  }];
+ *              }]);
+ *      &lt;/file&gt;
+ *  &lt;/example&gt;
+ */
+&nbsp;
+angular.module('sui.menu', [])
+    .directive('suiDropdownMenu', <span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >       return {</span>
+           restrict: 'AE',
+           scope: {
+               options: '=',
+               selected: '=',
+               label: '@',
+               icon: '@',
+               dropdownIcon: '@',
+               size: '@',
+               color: '@',
+               disabled: '@',
+               onChange: '&amp;'
+           },
+           template:
+               '&lt;div class="ui dropdown sui-dropdown-menu" ng-mouseenter="vm.active = true" ng-mouseleave="vm.active = false" ' +
+                   'ng-class="{\'visible active\': vm.active}"&gt;' +
+                   '&lt;i ng-show="vm.icon" class="{{vm.icon}} icon"&gt;&lt;/i&gt;' +
+                   '{{vm.label}}' +
+                   '&lt;i class="{{vm.dropdownIcon || \'dropdown\'}} icon"&gt;&lt;/i&gt;' +
+                   '&lt;div class="menu" ng-class="{\'visible transition slide down\': vm.active}"&gt;' +
+                       '&lt;div class="item" ng-repeat="opt in vm.options" ng-bind="opt.label"&gt;&lt;/div&gt;' +
+                   '&lt;/div&gt;' +
+               '&lt;/div&gt;',
+           bindToController: true,
+           controllerAs: 'vm',
+           controller: ['$scope', <span class="fstat-no" title="function not covered" >function ($scope) {</span>
+           }]
+       }
+    });</pre></td></tr>
+</table></pre>
+
+</div>
+<div class="footer">
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Oct 28 2015 13:31:50 GMT+0800 (China Standard Time)</div>
+</div>
+<script src="../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../sorter.js"></script>
+</body>
+</html>
