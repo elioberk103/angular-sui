@@ -64,7 +64,7 @@ NG_DOCS={
       "type": "directive",
       "moduleName": "sui.label",
       "shortDescription": "Semantic-UI style labels",
-      "keywords": "ae angular api app callback class click cloudflare color controller css democontroller detail-text detailtext directive displayed form friend function href html http https icon image invoked jpg js label label-text labels labeltext logafterclicking mail message model module ng-controller on-click positive rel removable segment semantic-ui style stylesheet sui teal text true type ui var veronkia vm"
+      "keywords": "ae angular api app callback class click cloudflare color controller css democontroller detail-text detailtext directive form friend function href html http https icon image invoked jpg js label label-text labels labeltext logafterclicking mail message model module ng-controller on-click positive rel removable segment semantic-ui style stylesheet sui teal text true type ui var veronkia vm"
     },
     {
       "section": "api",
@@ -74,6 +74,42 @@ NG_DOCS={
       "moduleName": "sui.label",
       "shortDescription": "Semantic-UI style labels",
       "keywords": "ae angular api app callback class click cloudflare color controller css democontroller directive form function href html https icon invoked js label labels logafterclicking message module ng-controller on-click position positive rel save segment semantic-ui style stylesheet sui teal text type ui var vm"
+    },
+    {
+      "section": "api",
+      "id": "sui.label.directive:suiFloatingLabel",
+      "shortName": "suiFloatingLabel",
+      "type": "directive",
+      "moduleName": "sui.label",
+      "shortDescription": "Semantic-UI style labels",
+      "keywords": "ae angular api app class cloudflare color controller css democontroller directive floating form href html https js label label-text labels module ng-controller paragraph red rel segment semantic-ui style stylesheet sui text type ui var vm"
+    },
+    {
+      "section": "api",
+      "id": "sui.label.directive:suiLabelGroup",
+      "shortName": "suiLabelGroup",
+      "type": "directive",
+      "moduleName": "sui.label",
+      "shortDescription": "Semantic-UI style labels",
+      "keywords": "ae alarm angular api app blue class cloudflare color controller css democontroller detailtext directive form href html http https icon image java javascript jpg js label labels message model module ng-controller oracle orange php positive purple rel removable save segment semantic-ui spoon style stylesheet sui teal text true type ui var vm wordpress"
+    },
+    {
+      "section": "api",
+      "id": "sui.label.directive:suiPointingLabel",
+      "shortName": "suiPointingLabel",
+      "type": "directive",
+      "moduleName": "sui.label",
+      "shortDescription": "Semantic-UI style labels",
+      "keywords": "ae alert alert-error angular api app bootstrap class click cloudflare collision color controller crashes css demo democontroller directive edit field form href html https indicating inline input js label labels link module ng-controller note placeholder plunker position red rel role segment semantic-ui style stylesheet sui text type ui var view vm"
+    },
+    {
+      "section": "api",
+      "id": "sui.label.directive:suiRibbonLabel",
+      "shortName": "suiRibbonLabel",
+      "type": "directive",
+      "moduleName": "sui.label",
+      "shortDescription": "Semantic-UI style labels",
+      "keywords": "ae angular api app blue callback class click cloudflare color controller css democontroller directive food form function href html https icon invoked js label label-text labels logafterclicking message module ng-controller on-click position positive rel segment semantic-ui spoon style stylesheet sui text type ui var vm"
     },
     {
       "section": "api",
